@@ -1,6 +1,5 @@
 # bxms-workshops
-A repository to share workshops for the bxms product line. For mor einformation, see http://www.redhat.com/en/technologies/jboss-middleware/business-rules
-https://www.redhat.com/en/technologies/jboss-middleware/bpm 
+A repository to share workshops for Red Hat JBoss [BPM Suite](https://www.redhat.com/en/technologies/jboss-middleware/bpm) and [BRMS](http://www.redhat.com/en/technologies/jboss-middleware/business-rules)
 
 
 ### Spring BRMS App
