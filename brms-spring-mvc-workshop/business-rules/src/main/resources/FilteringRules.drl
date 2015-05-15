@@ -1,0 +1,13 @@
+package com.rhc.rules;
+
+
+
+
+rule "Filtering - Only Applicable to Continental United States"
+	ruleflow-group "Filtering"
+	when 
+		
+	then
+		System.out.println( "filtering" );	
+		
+end		

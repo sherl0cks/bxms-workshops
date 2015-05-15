@@ -1,0 +1,38 @@
+package com.rhc.rules;
+
+
+rule "Enrichment - Customer Is From West Coast"
+	ruleflow-group "Enrichment"
+	when 
+		
+	then
+		System.out.println( "e1" );	
+		
+end		
+
+rule "Enrichment - Customer Is From East Coast"
+	ruleflow-group "Enrichment"
+	when 
+		
+	then
+		System.out.println( "e2" );	
+		
+end		
+
+rule "Enrichment - Customer Has Made A Purchase"
+	ruleflow-group "Enrichment"
+	when 
+		
+	then
+		System.out.println( "e3" );	
+		
+end		
+
+rule "Enrichment - Customer Has Not Made A Purchase"
+	ruleflow-group "Enrichment"
+	when 
+		
+	then
+		System.out.println( "e4" );	
+		
+end		

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService" />
+
+	<beans profile="test-local">
+		<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
+			<!-- 
+				Enables the audit log. Requires eclipse tooling to view file brmsAudit.log
+				https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#sect-Debugging_Views_in_JBoss_Developer_Studio 
+			-->
+			<property name="auditLogName" value="brmsAudit" />
+			<!-- 
+				Enables console debug logging:
+				https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#KieRuntimeLogger
+			 -->
+			<property name="debugConsoleLogging" value="true" />
+		</bean>
+	</beans>
+	
+	<beans profile="test-remote">
+		<bean id="statelessKieDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
+			<property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" />
+			<property name="containerId" value="test"/>
+		</bean>
+	</beans>
+
+
+</beans>

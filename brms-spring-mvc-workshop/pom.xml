@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.redhat.workshops</groupId>
 	<artifactId>brms-spring-mvc</artifactId>
@@ -15,8 +14,70 @@
 		<module>spring-mvc-war</module>
 	</modules>
 
-	<!-- These sections should be in a separate bill of material (BOM). It is 
-		here for simplicity when distributing the workshop -->
+	<!-- This provides access to supported maven repositories. This sections should be in settings.xml -->
+
+	<profiles>
+		<profile>
+			<id>jboss</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+			
+				<repository>
+					<id>jboss-maven-repository</id>
+					<name>JBoss Maven Repository</name>
+					<url>http://maven.repository.redhat.com/techpreview/all/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+				</repository>
+
+				<!-- TODO: Disable before distribution -->
+				<repository>
+					<id>holmes</id>
+					<name>Holmes</name>
+					<url>bpmpaas-jholmes.rhcloud.com/business-central/maven2/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+				
+			</repositories>
+			
+			<pluginRepositories>
+				<pluginRepository>
+					<id>jboss-maven-repository</id>
+					<name>JBoss Maven Repository</name>
+					<url>http://maven.repository.redhat.com/techpreview/all/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+
+	
+	<!-- These sections should be in a separate bill of material (BOM). It is here for simplicity when distributing the workshop -->
 
 	<build>
 		<pluginManagement>
@@ -25,8 +86,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>1.7</source>
+						<target>1.7</target>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -242,48 +303,6 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- This provides access to supported maven repositories. This sections 
-		should be in settings.xml -->
 
-	<profiles>
-		<profile>
-			<id>jboss</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<repositories>
-				<repository>
-					<id>jboss-maven-repository</id>
-					<name>JBoss Maven Repository</name>
-					<url>http://maven.repository.redhat.com/techpreview/all/</url>
-					<layout>default</layout>
-					<releases>
-						<enabled>true</enabled>
-						<updatePolicy>never</updatePolicy>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-						<updatePolicy>never</updatePolicy>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>jboss-maven-repository</id>
-					<name>JBoss Maven Repository</name>
-					<url>http://maven.repository.redhat.com/techpreview/all/</url>
-					<layout>default</layout>
-					<releases>
-						<enabled>true</enabled>
-						<updatePolicy>never</updatePolicy>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-						<updatePolicy>never</updatePolicy>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-	</profiles>
 </project>
 
