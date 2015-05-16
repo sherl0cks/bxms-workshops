@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.drools.core.command.runtime.process.StartProcessCommand;
 import org.kie.api.KieServices;
 import org.kie.api.command.BatchExecutionCommand;
 import org.kie.api.command.Command;
 import org.kie.api.command.KieCommands;
 import org.kie.api.runtime.ExecutionResults;
 import org.kie.internal.runtime.helper.BatchExecutionHelper;
+import org.kie.server.api.model.KieContainerResource;
+import org.kie.server.api.model.KieContainerStatus;
+import org.kie.server.api.model.ReleaseId;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.api.model.ServiceResponse.ResponseType;
 import org.kie.server.client.KieServicesClient;
@@ -80,7 +82,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 
 		String payload = getPayload(facts, processId, responseClazz);
 
-		LOGGER.info(String.format("Remote BRMS request to %s/%s with below payload: \n %s", httpUrl, containerId, payload));
+		LOGGER.debug(String.format("Remote BRMS request to %s/%s with below payload: \n %s", httpUrl, containerId, payload));
 
 		ServiceResponse<String> reply = client.executeCommands(containerId, payload);
 		if (reply.getType().equals(ResponseType.FAILURE)) {
@@ -88,7 +90,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			throw new RuntimeException(reply.getMsg());
 		}
 
-		LOGGER.info(reply.getResult());
+		LOGGER.debug(String.format("Response from decision server:\n %s", reply.getResult()));
 
 		ExecutionResults results = (ExecutionResults) xstream.fromXML(reply.getResult());
 
@@ -111,26 +113,23 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 
 		return commandFactory.newBatchExecution(commands, "defaultStatelessKieSession");
 	}
-	
-	private String getPayload(Collection<Object> facts, String processId, Class<?> responseClazz){
+
+	@SuppressWarnings("rawtypes")
+	private String getPayload(Collection<Object> facts, String processId, Class<?> responseClazz) {
 		String payload = null;
-		if ( processId == null){
+		if (processId == null) {
 			BatchExecutionCommand command = createBatchExecutionCommand(facts, responseClazz);
 			payload = xstream.toXML(command);
 		} else {
-			String payloadTemplate = "<batch-execution lookup=\"defaultStatelessKieSession\">\n" +
-	                "  <start-process processId=\"%s\"/>\n" +
-	                "%s\n" +
-	                "  <fire-all-rules/>\n" +
-	                "</batch-execution>\n";
+			String payloadTemplate = "<batch-execution lookup=\"defaultStatelessKieSession\">\n" + "  <start-process processId=\"%s\"/>\n" + "%s\n" + "  <fire-all-rules/>\n" + "</batch-execution>\n";
 			String insertElements = "";
-			if ( facts != null && facts.size() > 0){
+			if (facts != null && facts.size() > 0) {
 				Command command = commandFactory.newInsertElements(facts);
 				insertElements = xstream.toXML(command);
 			}
-			payload = String.format(payloadTemplate, processId, insertElements );
+			payload = String.format(payloadTemplate, processId, insertElements);
 		}
-		
+
 		return payload;
 	}
 
@@ -150,8 +149,25 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 	}
 
 	@Override
-	public boolean upgradeRulesToVersion(String group, String artifact, String version) {
-		return false;
+	public boolean createOrUpgradeRulesWithVersion(String group, String artifact, String version) {
+		ServiceResponse<ReleaseId> response = client.updateReleaseId(this.containerId, new ReleaseId(group, artifact, version));
+		if (response.getType().equals(ResponseType.FAILURE)) {
+			if (response.getMsg().contains("is not instantiated")) {
+				LOGGER.info(response.getMsg());
+				LOGGER.info(String.format("Instantiating container %s now...", containerId));
+				ServiceResponse<KieContainerResource> response2 = client.createContainer("test100", new KieContainerResource(containerId, new ReleaseId(group, artifact, version), KieContainerStatus.STARTED));
+				if (response2.getType().equals(ResponseType.SUCCESS)) {
+					LOGGER.info(response2.getMsg());
+					return true;
+				}
+				// else fall through to fail
+			}
+			LOGGER.error(response.getMsg());
+			return false;
+		} else {
+			LOGGER.info(String.format("%sd to %s", response.getMsg().substring(0, response.getMsg().length()-2), response.getResult()));
+			return true;
+		}
 	}
 
 	public String getHttpUrl() {
@@ -192,6 +208,14 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 
 	public void setTimeout(int timeout) {
 		this.timeout = timeout;
+	}
+
+	public KieServicesClient getClient() {
+		return client;
+	}
+
+	public void setClient(KieServicesClient client) {
+		this.client = client;
 	}
 
 }

@@ -23,8 +23,10 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 	
 	@Test
 	public void shouldLoadRulesAndCreateAnAuditLog() {
-		decisionService.upgradeRulesToVersion("com.redhat.workshops", "business-rules", "1.1");
+		decisionService.createOrUpgradeRulesWithVersion("com.rhc", "basic-business-rules", "1.0");
 		Assert.assertNotNull(decisionService);
+		decisionService.execute(null, "Ruleflow");
+		decisionService.createOrUpgradeRulesWithVersion("com.rhc", "basic-business-rules", "1.1");
 		decisionService.execute(null, "Ruleflow");
 	}
 

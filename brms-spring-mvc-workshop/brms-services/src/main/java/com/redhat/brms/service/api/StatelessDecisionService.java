@@ -12,6 +12,6 @@ public interface StatelessDecisionService {
 
 	public <Response> Response execute(Collection<Object> facts);
 
-	public boolean upgradeRulesToVersion(String group, String artifact, String version);
+	public boolean createOrUpgradeRulesWithVersion(String group, String artifact, String version);
 
 }

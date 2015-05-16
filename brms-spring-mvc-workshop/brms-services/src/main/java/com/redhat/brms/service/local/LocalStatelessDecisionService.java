@@ -100,7 +100,7 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 	}
 
 	@Override
-	public boolean upgradeRulesToVersion(String group, String artifact, String version) {
+	public boolean createOrUpgradeRulesWithVersion(String group, String artifact, String version) {
 		ReleaseId releaseId = KieServices.Factory.get().newReleaseId(group, artifact, version);
 		Results results = null;
 		try {
