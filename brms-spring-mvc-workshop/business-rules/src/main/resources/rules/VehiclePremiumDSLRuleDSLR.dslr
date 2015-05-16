@@ -1,0 +1,48 @@
+package com.redhat.brms.dsl
+
+import com.redhat.brms.Driver;
+import com.redhat.brms.Premium;
+
+expander VehiclePremiumDSLRule.dsl
+
+
+
+rule "VehiclePremiumRule1"
+dialect "mvel"
+ruleflow-group "VehiclePremiumRule" 
+    when
+        Driver is at least {age} years old and lives in "{city}"
+    then
+       //
+
+end
+
+rule "VehiclePremiumRule2"
+dialect "mvel"
+ruleflow-group "VehiclePremiumRule" 
+    when
+        Driver is between {lower} and {upper} years old
+    then
+       //
+
+end
+
+rule "VehiclePremiumRule3"
+dialect "mvel"
+ruleflow-group "VehiclePremiumRule" 
+    when
+        Driver is greater than {age} years old
+    then
+       //
+
+end
+
+rule "VehiclePremiumRule4"
+dialect "mvel"
+ruleflow-group "VehiclePremiumRule" 
+    when
+        Driver is less than {age} years old
+    then
+       //
+
+end
