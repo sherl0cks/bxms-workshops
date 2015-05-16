@@ -11,11 +11,10 @@ dialect "mvel"
 salience 100
 ruleflow-group "EligibilityRule"
     when
-        $d : Driver( age < 18 )
+        $driver : Driver( age < 18 )
+        $quote : Quote(  )
     then
-        Quote quote = new Quote();
-	    quote.setEligibility( "NO" );
-	    insertLogical( quote )
+	    $quote.setEligibility( "No" );
 end
 
 rule "DriverCityEligibilityRules"
@@ -23,9 +22,8 @@ dialect "mvel"
 salience 99
 ruleflow-group "EligibilityRule"
     when
-        $d : Driver( city == "Dallas" && zipCode == "54321" )
+        $driver : Driver( city == "Dallas" && zipCode == "54321" )
+        $quote : Quote(  )
     then
-        Quote quote = new Quote();
-	    quote.setEligibility( "NO" );
-	    insertLogical( quote )
+	    $quote.setEligibility( "No" );
 end
