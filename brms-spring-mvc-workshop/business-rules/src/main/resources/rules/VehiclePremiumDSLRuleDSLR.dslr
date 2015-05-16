@@ -11,9 +11,9 @@ rule "VehiclePremiumRule1"
 dialect "mvel"
 ruleflow-group "VehiclePremiumRule" 
     when
-        Driver is at least {age} years old and lives in "{city}"
+        Driver is at least 19 years old and lives in "Raleigh"
     then
-       //
+       Logically insert a class Premium with the amount field set to 500
 
 end
 
@@ -23,7 +23,7 @@ ruleflow-group "VehiclePremiumRule"
     when
         Driver is between {lower} and {upper} years old
     then
-       //
+        
 
 end
 
@@ -33,7 +33,7 @@ ruleflow-group "VehiclePremiumRule"
     when
         Driver is greater than {age} years old
     then
-       //
+       
 
 end
 
@@ -43,6 +43,6 @@ ruleflow-group "VehiclePremiumRule"
     when
         Driver is less than {age} years old
     then
-       //
+
 
 end
