@@ -23,7 +23,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<repositories>
-			
+
 				<repository>
 					<id>jboss-maven-repository</id>
 					<name>JBoss Maven Repository</name>
@@ -54,9 +54,9 @@
 						<updatePolicy>always</updatePolicy>
 					</snapshots>
 				</repository>
-				
+
 			</repositories>
-			
+
 			<pluginRepositories>
 				<pluginRepository>
 					<id>jboss-maven-repository</id>
@@ -76,7 +76,7 @@
 		</profile>
 	</profiles>
 
-	
+
 	<!-- These sections should be in a separate bill of material (BOM). It is here for simplicity when distributing the workshop -->
 
 	<build>
@@ -103,7 +103,7 @@
 		<!-- JBoss BPM Suite Support Documentation https://access.redhat.com/articles/704703 -->
 		<bpms.version>6.2.0.Final-redhat-4</bpms.version>
 		<!-- JBoss Spring Support Documentation https://access.redhat.com/articles/112543 -->
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>3.2.13.RELEASE</spring.version>
 		<apache.tiles.version>3.0.4</apache.tiles.version>
 		<javax.jstl.version>1.2</javax.jstl.version>
 	</properties>
@@ -153,6 +153,12 @@
 				<groupId>org.kie</groupId>
 				<artifactId>kie-ci</artifactId>
 				<version>${bpms.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<!-- Drools -->
@@ -221,11 +227,23 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
 				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -299,6 +317,12 @@
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
 				<version>1.8.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
