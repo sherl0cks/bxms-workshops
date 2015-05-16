@@ -1,29 +1,31 @@
 //created on: May 15, 2015
 package com.redhat.brms
 
-//list any import classes here.
+import com.redhat.brms.Driver;
+import com.redhat.brms.Quote;
 
 
 
-//declare any global variables here
-
-
-
-
-rule "Your First Rule"
-
+rule "DriverAgeEligibilityRules"
+dialect "mvel"
+salience 100
+ruleflow-group "EligibilityRule"
     when
-        //conditions
+        $d : Driver( age < 18 )
     then
-        //actions
-
+        Quote quote = new Quote();
+	    quote.setEligibility( "NO" );
+	    insertLogical( quote )
 end
 
-rule "Your Second Rule"
-    //include attributes such as "salience" here...
+rule "DriverCityEligibilityRules"
+dialect "mvel"
+salience 99
+ruleflow-group "EligibilityRule"
     when
-        //conditions
+        $d : Driver( city == "Dallas" && zipCode == "54321" )
     then
-        //actions
-
+        Quote quote = new Quote();
+	    quote.setEligibility( "NO" );
+	    insertLogical( quote )
 end
