@@ -3,13 +3,12 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Hello, Citi!</h1>
-        <p>This is a simple Spring MVC web application to introduce you to Red Hat JBoss BRMS. We hope you walk away from this experience feeling the following three things about the product:
+        <p>This is a simple Spring MVC web application to introduce you to Red Hat JBoss BRMS. We hope you walk away from this experience feeling the following three things about the product:</p>
   		<ol> 
   			<li>Authoring rules is simple in Business Central and Eclipse</li>
   			<li>Deploying rules can be done with a push of a button</li>
   			<li>Executing rules with Spring is simple and easy</li>
   		</ol>
-        </p>
         
       	<div class="accordion" id="accordion2">
 		  <div class="accordion-group">
@@ -52,3 +51,5 @@
           <p><a class="btn btn-default" href="${pageContext.request.contextPath}/execute" role="button">View details &raquo;</a></p>
         </div>
       </div>
+    </div>  
+      

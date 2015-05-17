@@ -30,20 +30,15 @@ body {
 <body data-spy="scroll" data-target="navbar">
 
 
-<tiles:insertAttribute name="header" />
+	<tiles:insertAttribute name="header" />
     
     <tiles:insertAttribute name="body" />
 
- 
+    <hr></hr>
 
-      <hr></hr>
-
-	<!-- Footer Page -->
-     	<div class="container" style="max-width: 467px">
-			<img src="${pageContext.request.contextPath}/resources/images/redhat.png" style="max-width: 100%;" />
-		</div>
+	<tiles:insertAttribute name="footer" />
 		
-    </div> 
+    
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
