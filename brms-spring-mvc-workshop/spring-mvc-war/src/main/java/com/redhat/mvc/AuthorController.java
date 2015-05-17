@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/index")
-public class WebController {
+@RequestMapping("/author")
+public class AuthorController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String printHello(ModelMap model) {
-		System.out.println( "index" );
-		return "index";
+		System.out.println( "author" );
+		return "author";
 	}
 }

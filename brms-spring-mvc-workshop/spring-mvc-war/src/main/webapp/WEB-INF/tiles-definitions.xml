@@ -18,8 +18,18 @@
 	</definition>
 
 	<!-- deployment pages -->
-	<definition name="deploymentList" extends="DefaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/deploymentList.jsp" />
+	<definition name="author" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/author.jsp" />
 	</definition>
+	<definition name="deploy" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/deploy.jsp" />
+	</definition>
+	<definition name="execute" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/execute.jsp" />
+	</definition>
+	<definition name="contact" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/contact.jsp" />
+	</definition>
+
 
 </tiles-definitions>
