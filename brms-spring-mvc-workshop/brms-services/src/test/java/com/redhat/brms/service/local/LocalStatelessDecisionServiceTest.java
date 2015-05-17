@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -35,6 +36,7 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 		decisionService.execute(null, "Ruleflow");
 	}
 
+	@Ignore
 	@Test
 	public void shouldLoadWorkshopRulesAndExecuteLocally() {
 		Collection<Object> facts = new ArrayList<Object>();

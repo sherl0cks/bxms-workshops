@@ -35,7 +35,7 @@ public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContext
 		Premium premium = new Premium();
 		facts.add(premium);
 
-		decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "1.1-SNAPSHOT");
+		decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "1.0-SNAPSHOT");
 		PremiumResponse response = decisionService.execute(facts, "InsurancePremiumRuleFlow", PremiumResponse.class);
 
 		Assert.assertEquals(1, response.getPremiums().size());

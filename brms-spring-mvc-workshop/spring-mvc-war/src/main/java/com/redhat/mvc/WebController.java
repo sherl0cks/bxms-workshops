@@ -11,7 +11,6 @@ public class WebController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String printHello(ModelMap model) {
-		System.out.println( "index" );
 		return "index";
 	}
 }
