@@ -1,4 +1,4 @@
-package com.redhat.brms.service.local;
+package com.redhat.brms;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,13 +10,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.redhat.brms.Driver;
-import com.redhat.brms.Premium;
 import com.redhat.brms.service.api.StatelessDecisionService;
 
 @ActiveProfiles(profiles = { "test-local" })
 @ContextConfiguration(locations = { "classpath:kie-context.xml" })
-public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringContextTests {
+public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContextTests {
 
 	@Autowired
 	private StatelessDecisionService decisionService;
@@ -24,15 +22,6 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 	@Test
 	public void shouldAutowireDecisionService() {
 		Assert.assertNotNull(decisionService);
-	}
-
-	@Test
-	public void shouldLoadRulesAndCreateAnAuditLog() {
-		decisionService.createOrUpgradeRulesWithVersion("com.rhc", "basic-business-rules", "1.0");
-		Assert.assertNotNull(decisionService);
-		decisionService.execute(null, "Ruleflow");
-		decisionService.createOrUpgradeRulesWithVersion("com.rhc", "basic-business-rules", "1.1");
-		decisionService.execute(null, "Ruleflow");
 	}
 
 	@Test
@@ -46,10 +35,10 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 		Premium premium = new Premium();
 		facts.add(premium);
 
-		decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "1.0-SNAPSHOT");
-		decisionService.execute(facts, "InsurancePremiumRuleFlow");
+		decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "1.1-SNAPSHOT");
+		PremiumResponse response = decisionService.execute(facts, "InsurancePremiumRuleFlow", PremiumResponse.class);
 
-		// assertEquals("Price is 300", new Integer(300), premium.getAmount());
+		Assert.assertEquals(1, response.getPremiums().size());
 	}
 
 }

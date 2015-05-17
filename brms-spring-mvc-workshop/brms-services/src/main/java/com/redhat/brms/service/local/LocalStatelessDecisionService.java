@@ -106,7 +106,7 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 		try {
 			results = kieContainer.updateToVersion(releaseId);
 		} catch (UnsupportedOperationException e) {
-			LOGGER.info("project started with classpath container, creating new container for" + releaseId.toString());
+			LOGGER.info("Upgrading to version " + releaseId.toString());
 			try {
 				kieContainer = KieServices.Factory.get().newKieContainer(releaseId);
 				results = kieContainer.updateToVersion(releaseId);
