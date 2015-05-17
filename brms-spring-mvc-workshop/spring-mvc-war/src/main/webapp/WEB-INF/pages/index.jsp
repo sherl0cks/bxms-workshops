@@ -1,27 +1,4 @@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-       	  <ul class="nav navbar-nav">
-	        <li class="active"><a href="${pageContext.request.contextPath}/index">Home<span class="sr-only">(current)</span></a></li>
-	        <li><a href="${pageContext.request.contextPath}/author">Author</a></li>
-	        <li><a href="${pageContext.request.contextPath}/deploy">Deploy</a></li>
-	        <li><a href="${pageContext.request.contextPath}/execute">Execute</a></li>
-     	  </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	      	<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BRMS/">Documentation</a></li>
-	        <li><a href="${pageContext.request.contextPath}/contact">Contact Us</a></li>
-	      </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+
    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -42,9 +19,10 @@
 		      </a>
 		    </div>
 		    <div id="collapseOne" class="accordion-body collapse">
-		    	<h1>Enterprise</h1>
-		    	<h2>Deploys</h2>
-		    	<h3>do things</h3>
+		    	<h2>Design Patterns Make Life Easier</h2>
+		    	<p>The Red Hat Consulting Business Automation Practice publishes the below set of design patterns for building enterprise grade applications with Red Hat BRMS. The goal is to provide simple conventions 
+		    	for building rules driven applications. The patterns highlighted in the diagram below are illustrated in this workshop. TODO make new graphic with highlights.
+		    	</p>
 		      <div class="accordion-inner">
              	<img src="${pageContext.request.contextPath}/resources/images/patterns.png" style="max-width: 100%;" />
 		      </div>
@@ -61,16 +39,16 @@
         <div class="col-md-4">
           <h2>Author Rules Your Way</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="${pageContext.request.contextPath}/author" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Deploy Rules Any Time</h2>
+          <h2>Deploy Rules Anytime</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="${pageContext.request.contextPath}/deploy" role="button">View details &raquo;</a></p>
        </div>
         <div class="col-md-4">
-          <h2>Execute Rules With Spring</h2>
+          <h2>Execute Rules in Spring</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="${pageContext.request.contextPath}/execute" role="button">View details &raquo;</a></p>
         </div>
       </div>

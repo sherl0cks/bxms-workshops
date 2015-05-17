@@ -27,10 +27,10 @@ body {
 </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="navbar">
 
 
-
+<tiles:insertAttribute name="header" />
     
     <tiles:insertAttribute name="body" />
 
@@ -50,6 +50,12 @@ body {
 		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+		
+	<script>
+    $(document).ready(function() {
+        $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+    });
+	</script>
 </body>
 </html>
