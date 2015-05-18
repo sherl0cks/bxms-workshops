@@ -31,15 +31,13 @@
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-							<pre>
-								<code class="java">package com.redhat.brms.service.api;
+							<pre><code class="java">package com.redhat.brms.service.api;
 
 public interface StatelessDecisionService {
 
  public &lt;T&gt; T execute(Collection&lt;Object&gt; facts, String processId, Class&lt;T&gt; responseClazz);
 
-}</code>
-							</pre>
+}</code></pre>
 						</div>
 					</div>
 				</div>
@@ -51,8 +49,7 @@ public interface StatelessDecisionService {
 					</div>
 					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
-							<pre>
-								<code class="java">package com.redhat.brms;
+							<pre><code class="java">package com.redhat.brms;
 
 @ActiveProfiles(profiles = { "test-local" })
 @ContextConfiguration(locations = { "classpath:kie-context.xml" })
@@ -77,8 +74,7 @@ public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContext
   
   Assert.assertEquals(1, r.getPremiums().size());
  }
-}</code>
-							</pre>
+}</code></pre>
 						</div>
 					</div>
 				</div>
@@ -93,8 +89,7 @@ public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContext
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
-							<pre>
-								<code class="java">package com.redhat.brms;
+							<pre><code class="java">package com.redhat.brms;
 
 public class PremiumResponse {
 
@@ -109,8 +104,7 @@ public class PremiumResponse {
   this.premiums = premiums;
  }
 	
-}</code>
-							</pre>
+}</code></pre>
 						</div>
 					</div>
 				</div>
@@ -132,9 +126,79 @@ public class PremiumResponse {
 					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#KieRepository">remote repositories</a>
 				</li>
 				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#sect-Debugging_Views_in_JBoss_Developer_Studio">Audit logs</a>
-					and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Event_Packages">console debugging</a> can be easily enable with configuration switches</li>
+					and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Event_Packages">console debugging</a> can be easily enable with
+					configuration switches</li>
 			</ol>
 			<p class="text-faded">Use this implementation as the basis of your local BRMS decision service to accelerate your next project.</p>
+			<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne1">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1"> Try it for yourself </a>
+						</h4>
+					</div>
+					<div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
+						<div class="panel-body">
+							<div class="col-md-6">
+								<div id="local-decision-form" class="">
+									<form>
+										<fieldset>
+
+											<legend>Car Insurance Request</legend>
+
+											<div class="form-group">
+												<label class="control-label" for="name">Driver's Name</label>
+												<div class="">
+													<input id="name-input" name="name" value="Jane Doe" class="form-control input-md" type="text">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label" for="age">Driver's Age</label>
+												<div class="">
+													<input id="age-input" name="age" value="25" class="form-control input-md" type="number">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label" for="make">Vehicle Make</label>
+												<div class="">
+													<select id="make" name="make" class="form-control">
+														<option value="BMW">BMW</option>
+														<option value="Honda">Honda</option>
+													</select>
+												</div>
+											</div>
+
+											<button type="submit" class="btn btn-primary btn-large" formmethod="post">Post Request</button>
+
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
+							<div class="col-md-6">${driver.name}${driver.age}${premium.amount}</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingTwo1">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1"> Sample applicationContext.xml </a>
+						</h4>
+					</div>
+					<div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
+						<div class="panel-body">
+							<pre>
+							<code class="xml">&lt;bean id="decisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService"&gt;
+ &lt;property name="auditLogName" value="brmsAudit" /&gt;
+ &lt;property name="debugConsoleLogging" value="true" /&gt;
+&lt;/bean&gt;</code>
+						</pre>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

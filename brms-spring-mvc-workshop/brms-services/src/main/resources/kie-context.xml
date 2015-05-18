@@ -6,7 +6,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService" />
+	<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
+		<property name="debugConsoleLogging" value="true" />
+	</bean>
 
 	<beans profile="test-local">
 		<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">

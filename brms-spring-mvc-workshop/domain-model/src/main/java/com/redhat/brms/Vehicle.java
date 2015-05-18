@@ -38,4 +38,9 @@ public class Vehicle {
 		this.make = make;
 	}
 
+	@Override
+	public String toString() {
+		return "Vehicle [vin=" + vin + ", model=" + model + ", year=" + year + ", make=" + make + "]";
+	}
+
 }

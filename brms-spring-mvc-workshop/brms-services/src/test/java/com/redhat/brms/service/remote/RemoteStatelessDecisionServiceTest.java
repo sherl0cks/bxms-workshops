@@ -5,9 +5,6 @@ import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.kie.server.api.model.KieContainerResource;
-import org.kie.server.api.model.KieContainerStatus;
-import org.kie.server.api.model.ReleaseId;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.api.model.ServiceResponse.ResponseType;
 import org.kie.server.client.KieServicesClient;
