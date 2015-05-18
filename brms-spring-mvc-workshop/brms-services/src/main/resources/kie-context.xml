@@ -11,12 +11,15 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 
 	<bean id="remoteDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
+		<!-- 
 		<property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" />
+		 -->
+		 <property name="httpUrl" value="http://localhost:8080/kie-server/services/rest/server"/>
 		<property name="containerId" value="test" />
 	</bean>
 
 	<beans profile="test-local">
-		<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
+		<bean id="localDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
 			<!-- 
 				Enables the audit log. Requires eclipse tooling to view file brmsAudit.log
 				https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#sect-Debugging_Views_in_JBoss_Developer_Studio 
@@ -31,8 +34,11 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</beans>
 	
 	<beans profile="test-remote">
-		<bean id="statelessKieDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
+		<bean id="remoteDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
+			<!--  
 			<property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" />
+			-->
+			<property name="httpUrl" value="http://localhost:8080/kie-server/services/rest/server"/>
 			<property name="containerId" value="test"/>
 		</bean>
 	</beans>

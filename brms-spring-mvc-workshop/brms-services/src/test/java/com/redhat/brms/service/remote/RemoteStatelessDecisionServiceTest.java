@@ -32,7 +32,6 @@ public class RemoteStatelessDecisionServiceTest extends AbstractJUnit4SpringCont
 	public void shouldCreateContainerAndUpgradeIt() {
 		Assert.assertNotNull(decisionService);
 		KieServicesClient client = decisionService.getClient();
-		decisionService.setContainerId("test");
 
 		boolean response = decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "2.1");
 		Assert.assertTrue(response);
