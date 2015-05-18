@@ -191,12 +191,10 @@ public class PremiumResponse {
 					</div>
 					<div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
 						<div class="panel-body">
-							<pre>
-							<code class="xml">&lt;bean id="decisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService"&gt;
- &lt;property name="auditLogName" value="brmsAudit" /&gt;
- &lt;property name="debugConsoleLogging" value="true" /&gt;
-&lt;/bean&gt;</code>
-						</pre>
+							<pre><code class="xml">&lt;bean id="decisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService"&gt;
+	&lt;property name="auditLogName" value="brmsAudit" /&gt;
+	&lt;property name="debugConsoleLogging" value="true" /&gt;
+&lt;/bean&gt;</code></pre>
 						</div>
 					</div>
 				</div>

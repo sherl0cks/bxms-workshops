@@ -46,12 +46,11 @@ public class ExecuteController {
 		facts.add(vehicle);
 
 		PremiumResponse response = localDecisionService.execute(facts, "InsurancePremiumRuleFlow", PremiumResponse.class);
-		if (response.getPremium() != null) {
+		if (response != null && response.getPremium() != null) {
 			model.put("premium", response.getPremium());
+			model.put("driver", driver);
+			model.put("vehicle", vehicle);
 		}
-		model.put("driver", driver);
-		model.put("vehicle", vehicle);
-
 		LOGGER.info(model.toString());
 
 		return "premium";
