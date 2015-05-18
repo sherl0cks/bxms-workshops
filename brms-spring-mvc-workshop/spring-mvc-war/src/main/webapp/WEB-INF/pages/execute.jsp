@@ -191,7 +191,8 @@ public class PremiumResponse {
 					</div>
 					<div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
 						<div class="panel-body">
-							<pre><code class="xml">&lt;bean id="decisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService"&gt;
+							<pre><code class="xml">&lt;bean id="localDecisionService" 
+  class="com.redhat.brms.service.local.LocalStatelessDecisionService"&gt;
 	&lt;property name="auditLogName" value="brmsAudit" /&gt;
 	&lt;property name="debugConsoleLogging" value="true" /&gt;
 &lt;/bean&gt;</code></pre>
@@ -278,12 +279,11 @@ public class PremiumResponse {
 					</div>
 					<div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
 						<div class="panel-body">
-							<pre><code class="xml">&lt;beans profile="test-remote"&gt;
-		&lt;bean id="statelessKieDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init"&gt;
-			&lt;property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" /&gt;
-			&lt;property name="containerId" value="test"/&gt;
-		&lt;/bean&gt;
-	&lt;/beans&gt;</code></pre>
+							<pre><code class="xml">&lt;bean id="remoteDecionService" 
+  class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init"&gt;
+	&lt;property name="httpUrl" value="http://localhost:8080/kie-server/services/rest/server" /&gt;
+	&lt;property name="containerId" value="test"/&gt;
+&lt;/bean&gt;</code></pre>
 						</div>
 					</div>
 				</div>
