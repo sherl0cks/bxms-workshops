@@ -2,16 +2,16 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container text-center">
-		<h1>The Decision Service</h1>
-		<p>Red Hat JBoss BRMS provides an easy, maintainable way to execute business decisions in Java applications. Use the following design patterns to integrate the BRMS execution engine into your
-			Spring application.</p>
+		<h1>The Stateless Decision Service</h1>
+		<p>Red Hat JBoss BRMS provides an easy, maintainable way to execute business decisions in Java applications. By enforcing stateless interaction with the BRMS runtime, developers can build easier
+			to maintain applications that scale horizontally. Use the following design patterns to integrate the BRMS execution engine into your Spring application.</p>
 	</div>
 </div>
 
 
 <div class="container">
 	<div class="row">
-		<div>
+		<div class="text-left">
 			<h2 class="section-heading">A Common API</h2>
 			<hr class="light">
 			<p class="text-faded">Provide one clean and simple interface to every application that needs to fire rules. With this pattern, developers invoking a decision services to execute rules only need
@@ -31,13 +31,15 @@
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-							<pre><code class="java">package com.redhat.brms.service.api;
+							<pre>
+								<code class="java">package com.redhat.brms.service.api;
 
 public interface StatelessDecisionService {
 
  public &lt;T&gt; T execute(Collection&lt;Object&gt; facts, String processId, Class&lt;T&gt; responseClazz);
 
-}</code></pre>
+}</code>
+							</pre>
 						</div>
 					</div>
 				</div>
@@ -49,7 +51,8 @@ public interface StatelessDecisionService {
 					</div>
 					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
-							<pre><code class="java">package com.redhat.brms;
+							<pre>
+								<code class="java">package com.redhat.brms;
 
 @ActiveProfiles(profiles = { "test-local" })
 @ContextConfiguration(locations = { "classpath:kie-context.xml" })
@@ -74,13 +77,14 @@ public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContext
   
   Assert.assertEquals(1, r.getPremiums().size());
  }
-}</code></pre>
+}</code>
+							</pre>
 						</div>
 					</div>
 				</div>
-				
-				
-				
+
+
+
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="headingThree">
 						<h4 class="panel-title">
@@ -89,7 +93,8 @@ public class LocalPremiumDecisionServiceTest extends AbstractJUnit4SpringContext
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
-							<pre><code class="java">package com.redhat.brms;
+							<pre>
+								<code class="java">package com.redhat.brms;
 
 public class PremiumResponse {
 
@@ -104,7 +109,8 @@ public class PremiumResponse {
   this.premiums = premiums;
  }
 	
-}</code></pre>
+}</code>
+							</pre>
 						</div>
 					</div>
 				</div>
@@ -113,21 +119,39 @@ public class PremiumResponse {
 	</div>
 
 	<div class="row">
-		<div class="text-center">
-			<h2 class="section-heading">Remote Execution</h2>
-			<hr class="light">
-			<p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to
-				download, and easy to use. No strings attached!</p>
-			<a href="#" class="btn btn-default btn-xl">Get Started!</a>
-		</div>
-	</div>
-	<div class="row">
-		<div class="text-center">
+		<div class="text-left">
 			<h2 class="section-heading">Local Execution</h2>
 			<hr class="light">
-			<p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to
-				download, and easy to use. No strings attached!</p>
+			<p class="text-faded">The simplest way to configure the BRMS runtime engine is to embed the execution libraries inside your application and deploy it to the same JVM. We've provided a reference
+				implementation of this pattern that enables the following recommended practices:</p>
+			<ol>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#StatelessKieSession">StatelessKieSessions</a> by default make
+					it easy to support highly concurrent interaction with the engine</li>
+				<li>Sensible defaults make it easy to build KieContainers from the <a
+					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Creating_a_KIE_Container">classpath</a> or dynamically from <a
+					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#KieRepository">remote repositories</a>
+				</li>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#sect-Debugging_Views_in_JBoss_Developer_Studio">Audit logs</a>
+					and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Event_Packages">console debugging</a> can be easily enable with configuration switches</li>
+			</ol>
+			<p class="text-faded">Use this implementation as the basis of your local BRMS decision service to accelerate your next project.</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-left">
+			<h2 class="section-heading">Remote Execution</h2>
+			<hr class="light">
+			<p class="text-faded">
+				The most flexible way to configure the BRMS runtime engine is to stand up the out of the box <a
+					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BRMS/6.1/html-single/User_Guide/index.html#chap-The_Realtime_Decision_Server">Realtime Decision Server</a> and then communicate
+				with it over REST and JMS. We've provided a reference implementation of the Java client that simplifies interaction with the following APIs:
+			</p>
+			<ol>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#CommandExecutor_Interface">BatchExecutorCommand</a></li>
+			</ol>
 			<a href="#" class="btn btn-default btn-xl">Get Started!</a>
 		</div>
 	</div>
+
 </div>
