@@ -41,7 +41,7 @@
 			</div>
 
 		</div>
-		<div class="col-md-6">${driver.name} ${driver.age} ${premium.amount}</div>
+		<div class="col-md-6"></div>
 	</div>
 
 </div>

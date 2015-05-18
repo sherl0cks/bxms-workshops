@@ -3,6 +3,8 @@ package com.redhat.mvc;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,8 @@ import com.redhat.brms.service.api.StatelessDecisionService;
 @RequestMapping("/execute")
 public class ExecuteController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExecuteController.class);
+
 	@Autowired
 	private StatelessDecisionService localDecisionService;
 	private boolean serviceInit;
@@ -30,9 +34,8 @@ public class ExecuteController {
 		return "execute";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String postRequest(@RequestBody String body, @ModelAttribute Driver driver, @ModelAttribute Vehicle vehicle, ModelMap model) {
-
+	@RequestMapping(value = "/premium", method = RequestMethod.GET)
+	public String printFoo(@RequestBody String body, @ModelAttribute Driver driver, @ModelAttribute Vehicle vehicle, ModelMap model) {
 		if (serviceInit == false) {
 			localDecisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "1.0-SNAPSHOT");
 			serviceInit = true;
@@ -48,8 +51,9 @@ public class ExecuteController {
 		}
 		model.put("driver", driver);
 		model.put("vehicle", vehicle);
-		System.out.println(model);
 
-		return "deploy";
+		LOGGER.info(model.toString());
+
+		return "premium";
 	}
 }

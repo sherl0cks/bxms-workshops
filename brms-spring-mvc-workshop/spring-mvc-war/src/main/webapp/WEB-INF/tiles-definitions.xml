@@ -27,9 +27,13 @@
 	<definition name="execute" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/execute.jsp" />
 	</definition>
+
 	<definition name="contact" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/contact.jsp" />
 	</definition>
 
 
+	<!-- Supporting Ajax -->
+	<definition name="premium" template="/WEB-INF/pages/premium.jsp">
+	</definition>
 </tiles-definitions>

@@ -140,8 +140,8 @@ public class PremiumResponse {
 					<div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
 						<div class="panel-body">
 							<div class="col-md-6">
-								<div id="local-decision-form" class="">
-									<form>
+								<div  class="">
+									<form id="local-form">
 										<fieldset>
 
 											<legend>Car Insurance Request</legend>
@@ -177,7 +177,9 @@ public class PremiumResponse {
 								</div>
 
 							</div>
-							<div class="col-md-6">${driver.name}${driver.age}${premium.amount}</div>
+							<div id="local-response" class="col-md-6">
+								<h1>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h1>
+							</div>
 						</div>
 					</div>
 				</div>
