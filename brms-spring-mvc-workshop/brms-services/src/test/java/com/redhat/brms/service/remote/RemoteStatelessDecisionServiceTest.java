@@ -3,6 +3,7 @@ package com.redhat.brms.service.remote;
 import javax.annotation.Resource;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.api.model.ServiceResponse.ResponseType;
@@ -22,7 +23,11 @@ public class RemoteStatelessDecisionServiceTest extends AbstractJUnit4SpringCont
 	public void shouldAutowireDecisionService() {
 		Assert.assertNotNull(decisionService);
 	}
-
+	
+	/*
+	 * This test is ignored because it needs a network and we don't know if you local environment can access that network
+	 */
+	@Ignore
 	@Test
 	public void shouldCreateContainerAndUpgradeIt() {
 		Assert.assertNotNull(decisionService);

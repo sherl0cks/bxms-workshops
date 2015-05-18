@@ -29,6 +29,10 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 		Assert.assertNotNull(decisionService);
 	}
 
+	/*
+	 * This test is ignored because it needs a network and we don't know if you local environment can access that network
+	 */
+	@Ignore
 	@Test
 	public void shouldLoadWorkshopRulesAndExecuteLocally() {
 		Collection<Object> facts = new ArrayList<Object>();
