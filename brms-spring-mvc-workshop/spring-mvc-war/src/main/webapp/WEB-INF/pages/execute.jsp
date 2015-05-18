@@ -148,9 +148,11 @@ public class PremiumResponse {
 				with it over REST and JMS. We've provided a reference implementation of the Java client that simplifies interaction with the following APIs:
 			</p>
 			<ol>
-				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#CommandExecutor_Interface">BatchExecutorCommand</a></li>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#CommandExecutor_Interface">Batch Execution Interface</a></li>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BRMS/6.1/html-single/User_Guide/index.html#The_REST_API_for_Managing_the_Realtime_Decision_Server">Remote REST Interface</a></li>
+				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Available_API">XStream Marshaling</a></li>
 			</ol>
-			<a href="#" class="btn btn-default btn-xl">Get Started!</a>
+			<p class="text-faded">Use this implementation as the basis of your remote BRMS decision service to accelerate your next project.</p>
 		</div>
 	</div>
 
