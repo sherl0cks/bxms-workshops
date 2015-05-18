@@ -82,7 +82,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 
 		String payload = getPayload(facts, processId, responseClazz);
 
-		LOGGER.debug(String.format("Remote BRMS request to %s/%s with below payload: \n %s", httpUrl, containerId, payload));
+		LOGGER.info(String.format("Remote BRMS request to %s/%s with below payload: \n %s", httpUrl, containerId, payload));
 
 		ServiceResponse<String> reply = client.executeCommands(containerId, payload);
 		if (reply.getType().equals(ResponseType.FAILURE)) {
@@ -90,7 +90,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			throw new RuntimeException(reply.getMsg());
 		}
 
-		LOGGER.debug(String.format("Response from decision server:\n %s", reply.getResult()));
+		LOGGER.info(String.format("Response from decision server:\n %s", reply.getResult()));
 
 		ExecutionResults results = (ExecutionResults) xstream.fromXML(reply.getResult());
 
@@ -121,13 +121,21 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			BatchExecutionCommand command = createBatchExecutionCommand(facts, responseClazz);
 			payload = xstream.toXML(command);
 		} else {
-			String payloadTemplate = "<batch-execution lookup=\"defaultStatelessKieSession\">\n" + "  <start-process processId=\"%s\"/>\n" + "%s\n" + "  <fire-all-rules/>\n" + "</batch-execution>\n";
+			String payloadTemplate = "<batch-execution lookup=\"defaultStatelessKieSession\">\n" + "  <start-process processId=\"%s\"/>\n" + "%s\n" + "  <fire-all-rules/>\n" + "%s\n" + "</batch-execution>\n";
 			String insertElements = "";
 			if (facts != null && facts.size() > 0) {
 				Command command = commandFactory.newInsertElements(facts);
 				insertElements = xstream.toXML(command);
 			}
-			payload = String.format(payloadTemplate, processId, insertElements);
+			List<Command<?>> queryCommands = QueryUtils.buildQueryCommands(responseClazz);
+			String queryElements = "";
+			if ( queryCommands.size() > 0){
+				for (Command c : queryCommands){
+					queryElements = queryElements.concat( xstream.toXML(c) );
+				}
+				LOGGER.error(queryElements);
+			}
+			payload = String.format(payloadTemplate, processId, insertElements, queryElements);
 		}
 
 		return payload;
@@ -155,7 +163,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			if (response.getMsg().contains("is not instantiated")) {
 				LOGGER.info(response.getMsg());
 				LOGGER.info(String.format("Instantiating container %s now...", containerId));
-				ServiceResponse<KieContainerResource> response2 = client.createContainer("test100", new KieContainerResource(containerId, new ReleaseId(group, artifact, version), KieContainerStatus.STARTED));
+				ServiceResponse<KieContainerResource> response2 = client.createContainer(containerId, new KieContainerResource(containerId, new ReleaseId(group, artifact, version), KieContainerStatus.STARTED));
 				if (response2.getType().equals(ResponseType.SUCCESS)) {
 					LOGGER.info(response2.getMsg());
 					return true;

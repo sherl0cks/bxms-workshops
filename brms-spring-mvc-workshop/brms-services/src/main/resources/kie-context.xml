@@ -6,8 +6,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<bean id="statelessKieDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
+	<bean id="localDecisionService" class="com.redhat.brms.service.local.LocalStatelessDecisionService">
 		<property name="debugConsoleLogging" value="true" />
+	</bean>
+
+	<bean id="remoteDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
+		<property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" />
+		<property name="containerId" value="test" />
 	</bean>
 
 	<beans profile="test-local">

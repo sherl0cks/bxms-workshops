@@ -170,7 +170,7 @@ public class PremiumResponse {
 												</div>
 											</div>
 
-											<button type="submit" class="btn btn-primary btn-large" formmethod="post">Post Request</button>
+											<button type="submit" class="btn btn-primary btn-large">Post Request</button>
 
 										</fieldset>
 									</form>
@@ -217,6 +217,77 @@ public class PremiumResponse {
 				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Available_API">XStream Marshaling</a></li>
 			</ol>
 			<p class="text-faded">Use this implementation as the basis of your remote BRMS decision service to accelerate your next project.</p>
+			<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne1">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2"> Try it for yourself </a>
+						</h4>
+					</div>
+					<div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+						<div class="panel-body">
+							<div class="col-md-6">
+								<div  class="">
+									<form id="remote-form">
+										<fieldset>
+
+											<legend>Car Insurance Request</legend>
+
+											<div class="form-group">
+												<label class="control-label" for="name">Driver's Name</label>
+												<div class="">
+													<input id="name-input" name="name" value="Jane Doe" class="form-control input-md" type="text">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label" for="age">Driver's Age</label>
+												<div class="">
+													<input id="age-input" name="age" value="25" class="form-control input-md" type="number">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label" for="make">Vehicle Make</label>
+												<div class="">
+													<select id="make" name="make" class="form-control">
+														<option value="BMW">BMW</option>
+														<option value="Honda">Honda</option>
+													</select>
+												</div>
+											</div>
+
+											<button type="submit" class="btn btn-primary btn-large">Post Request</button>
+
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
+							<div id="remote-response" class="col-md-6">
+								<h1>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingTwo1">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo2"> Sample applicationContext.xml </a>
+						</h4>
+					</div>
+					<div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+						<div class="panel-body">
+							<pre><code class="xml">&lt;beans profile="test-remote"&gt;
+		&lt;bean id="statelessKieDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init"&gt;
+			&lt;property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" /&gt;
+			&lt;property name="containerId" value="test"/&gt;
+		&lt;/bean&gt;
+	&lt;/beans&gt;</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

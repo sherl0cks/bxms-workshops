@@ -45,13 +45,36 @@
 	$(document).ready(function() {
 		$('#local-form').submit(function() {
 
-			var url = "${pageContext.request.contextPath}/execute/premium"; // the script where you handle the form input.
+			var url = "${pageContext.request.contextPath}/execute/premium/local"; // the script where you handle the form input.
 			$.ajax({
 				type : "GET",
 				url : url,
 				data :  $(this).serialize(),
 				success : function(data) {
 					$("#local-response").html(data);
+				},
+				 error: function (data) {
+					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+				 }
+				
+			});
+
+			return false; // avoid to execute the actual submit of the form.
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$('#remote-form').submit(function() {
+
+			var url = "${pageContext.request.contextPath}/execute/premium/remote"; // the script where you handle the form input.
+			$.ajax({
+				type : "GET",
+				url : url,
+				data :  $(this).serialize(),
+				success : function(data) {
+					$("#remote-response").html(data);
 				},
 				 error: function (data) {
 					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
