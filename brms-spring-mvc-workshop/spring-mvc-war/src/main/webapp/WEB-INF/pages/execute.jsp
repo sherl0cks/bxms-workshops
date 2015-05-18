@@ -1,7 +1,7 @@
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-	<div class="container text-center">
+	<div class="container">
 		<h1>The Stateless Decision Service</h1>
 		<p>Red Hat JBoss BRMS provides an easy, maintainable way to execute business decisions in Java applications. By enforcing stateless interaction with the BRMS runtime, developers can build easier
 			to maintain applications that scale horizontally. Use the following design patterns to integrate the BRMS execution engine into your Spring application.</p>
