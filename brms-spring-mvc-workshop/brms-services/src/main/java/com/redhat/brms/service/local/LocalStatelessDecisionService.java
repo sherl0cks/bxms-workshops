@@ -117,6 +117,15 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 
 		return results.getMessages().size() == 0;
 	}
+	
+	@Override
+	public String getCurrentVersion() {
+		ReleaseId version = this.kieContainer.getReleaseId();
+		if ( version == null){
+			return "container is empty";
+		}
+		return version.toString();
+	}
 
 	public KieContainer getKieContainer() {
 		return kieContainer;
@@ -152,5 +161,7 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 	public void setAuditLogName(String auditLogName) {
 		this.auditLogName = auditLogName;
 	}
+
+
 
 }

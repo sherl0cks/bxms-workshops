@@ -4,7 +4,7 @@
 	<div class="container">
 		<h1>The Stateless Decision Service</h1>
 		<p>Red Hat JBoss BRMS provides an easy, maintainable way to execute business decisions in Java applications. By enforcing stateless interaction with the BRMS runtime, developers can build easier
-			to maintain applications that scale horizontally. Use the following design patterns to integrate the BRMS execution engine into your Spring application.</p>
+			to maintain applications that scale horizontally. Use the below design patterns to integrate the BRMS execution engine into your Spring application.</p>
 	</div>
 </div>
 
@@ -14,7 +14,7 @@
 		<div class="text-left">
 			<h2 class="section-heading">A Common API</h2>
 			<hr class="light">
-			<p class="text-faded">Provide one clean and simple interface to every application that needs to fire rules. With this pattern, developers invoking a decision services to execute rules only need
+			<p class="text-faded">Provide one clean and simple interface to every application that needs to fire rules. With this pattern, developers invoking a decision service to execute rules only need
 				to know three things.</p>
 			<ol>
 				<li>The name of the process that will orchestrate the rules</li>
@@ -126,7 +126,7 @@ public class PremiumResponse {
 					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#KieRepository">remote repositories</a>
 				</li>
 				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#sect-Debugging_Views_in_JBoss_Developer_Studio">Audit logs</a>
-					and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Event_Packages">console debugging</a> can be easily enable with
+					and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Event_Packages">console debugging</a> can be easily enabled with
 					configuration switches</li>
 			</ol>
 			<p class="text-faded">Use this implementation as the basis of your local BRMS decision service to accelerate your next project.</p>
@@ -210,7 +210,7 @@ public class PremiumResponse {
 			<p class="text-faded">
 				The most flexible way to configure the BRMS runtime engine is to stand up the out of the box <a
 					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BRMS/6.1/html-single/User_Guide/index.html#chap-The_Realtime_Decision_Server">Realtime Decision Server</a> and then communicate
-				with it over REST and JMS. We've provided a reference implementation of the Java client that simplifies interaction with the following APIs:
+				with it over REST and JMS. We've provided a reference implementation of the Java client that simplifies interactions with the following APIs:
 			</p>
 			<ol>
 				<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#CommandExecutor_Interface">Batch Execution Interface</a></li>

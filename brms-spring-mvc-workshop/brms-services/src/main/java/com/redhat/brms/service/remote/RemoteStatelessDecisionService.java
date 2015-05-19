@@ -177,6 +177,11 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			return true;
 		}
 	}
+	
+	@Override
+	public String getCurrentVersion() {
+		return "version";
+	}
 
 	public String getHttpUrl() {
 		return httpUrl;
@@ -225,5 +230,7 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 	public void setClient(KieServicesClient client) {
 		this.client = client;
 	}
+
+
 
 }

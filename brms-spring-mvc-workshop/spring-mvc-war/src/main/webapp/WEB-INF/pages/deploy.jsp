@@ -2,9 +2,9 @@
 <div class="jumbotron">
 	<div class="container">
 		<h1>Dynamically Deploy Rules</h1>
-		<p>With Red Hat BRMS, it is simple to package, version and hot deploy new business rules to your application without downtime. At the time, BRMS provides the auditing and governance needs to
+		<p>With Red Hat BRMS, it is simple to package, version and hot deploy new business rules to your application without downtime. BRMS also provides the auditing and governance to
 			ensure compliance in highly regulated environments. This section will explain the mechanics used by Red Hat BRMS to deploy business rules. Then we'll step though a reference implementation of the
-			Admistrator Push design pattern so you can see the theory in practice.</p>
+			Administrator Push design pattern so you can see the theory in practice.</p>
 	</div>
 </div>
 
@@ -21,18 +21,18 @@
 			</p>
 			<ol>
 				<li>The <a href=https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#The_kmodule>KieModule</a> and the <a
-					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Creating_a_KIE_Project">KieProject</a> which are used to provide a simple, convention
-					driven approach to business rules projects.
+					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Creating_a_KIE_Project">KieProject</a> which are used to provide a simple,
+					convention driven approach to business rules projects.
 				</li>
-				<li>The <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html/Development_Guide/sect-Building_with_Maven.html#KIE_Plugin">Maven Kie Plugin</a> which is used to
-					catch bugs at compile time, making it safer to hot deploy rules as KJARs's at runtime.
+				<li>The <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html/Development_Guide/sect-Building_with_Maven.html#KIE_Plugin">Maven Kie Plugin</a> which is used
+					to catch bugs at compile time, making it safer to hot deploy rules as KJARs's at runtime.
 				</li>
 				<li>The <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#KieRepository">KieRepository</a> which loads KJAR's at
 					runtime into an isolated classpath container known as a <a
 					href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_BPM_Suite/6.1/html-single/Development_Guide/index.html#Creating_a_KIE_Container">KieContainer</a></li>
 			</ol>
-			<p>Understanding these foundational elements of the product's architecture will help you make better application design decisions. As you will in the next two sections, using some common design
-				patterns can help you abstract away the details of Maven and allow you to focus on writing rules.</p>
+			<p>Understanding these foundational elements of the product's architecture will help you make better application design decisions. In the next section, we'll take an example to show how easy it is
+				easy to black box these mechanics and provide simple abstractions for developers and administrators to use alike.</p>
 		</div>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			
@@ -134,11 +134,6 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 				</div>
 			</div>
 			
-			
-
-			
-
-			
 		</div>
 	</div>
 
@@ -147,14 +142,107 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 		<div class="text-left">
 			<h2 class="section-heading">The Administrator Push Pattern</h2>
 			<hr class="light">
-			<p class="text-faded">Provide one clean and simple interface to every application that needs to fire rules. With this pattern, developers invoking a decision services to execute rules only need
-				to know three things.</p>
+			<p class="text-faded">Harnessing the power of the BRMS deployment architecture is surprisingly easy. The reference implementation of the Administrator Push pattern in this workshop is less than
+				50 lines of code. Let's get hands on with the implementation to see how easy it really is. </p>
 			<ol>
 				<li>The name of the process that will orchestrate the rules</li>
 				<li>The facts required for the rules to make a decision</li>
 				<li>The type of response required from the rules</li>
 			</ol>
 			<p>Everything else, including how and where the BRMS APIs will create sessions, insert facts and fire rules is an implementation detail that can be injected via the Spring context.</p>
+		</div>
+	</div>
+	<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne1">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2"> Dynamically Deploy Rules Locally </a>
+				</h4>
+			</div>
+			<div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+				<div class="panel-body">
+	
+					<div class="col-md-3">	
+						<form id="local2-deploy-form">
+							<fieldset>
+								<legend>Rule Deploy Request</legend>
+
+								<div class="form-group">
+									<label class="control-label" for="group">Group</label>
+									<div class="">
+										<input id="group-input" name="group" value="com.redhat.workshops" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label" for="artifact">Artifact</label>
+									<div class="">
+										<input id="artifact-input" name="artifact" value="business-rules" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label" for="version">Version</label>
+									<div class="">
+										<input id="version-input" name="version" value="2.1" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<button type="submit" class="btn btn-primary btn-large">Post Request</button>
+
+							</fieldset>
+						</form>
+					</div>
+									
+					<div class="col-md-3">
+						<div id="local-deploy-response">
+							<p>Current Rule Version: ${releaseid}</p>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="">
+							<form id="local2-form">
+								<fieldset>
+
+									<legend>Car Insurance Request</legend>
+
+									<div class="form-group">
+										<label class="control-label" for="name">Driver's Name</label>
+										<div class="">
+											<input id="name-input" name="name" value="Jane Doe" class="form-control input-md" type="text">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for="age">Driver's Age</label>
+										<div class="">
+											<input id="age-input" name="age" value="25" class="form-control input-md" type="number">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for="make">Vehicle Make</label>
+										<div class="">
+											<select id="make" name="make" class="form-control">
+												<option value="BMW">BMW</option>
+												<option value="Honda">Honda</option>
+											</select>
+										</div>
+									</div>
+
+									<button type="submit" class="btn btn-primary btn-large">Post Request</button>
+
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					
+					<div id="local2-response" class="col-md-3">
+						<h3>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h3>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

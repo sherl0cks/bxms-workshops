@@ -87,6 +87,52 @@
 	});
 </script>
 
+<script>
+	$(document).ready(function() {
+		$('#local2-deploy-form').submit(function() {
+
+			var url = "${pageContext.request.contextPath}/deploy/local"; // the script where you handle the form input.
+			$.ajax({
+				type : "GET",
+				url : url,
+				data :  $(this).serialize(),
+				success : function(data) {
+					$("#local-deploy-response").html(data);
+				},
+				 error: function (data) {
+					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+				 }
+				
+			});
+
+			return false; // avoid to execute the actual submit of the form.
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$('#local2-form').submit(function() {
+
+			var url = "${pageContext.request.contextPath}/execute/premium/local"; // the script where you handle the form input.
+			$.ajax({
+				type : "GET",
+				url : url,
+				data :  $(this).serialize(),
+				success : function(data) {
+					$("#local2-response").html(data);
+				},
+				 error: function (data) {
+					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+				 }
+				
+			});
+
+			return false; // avoid to execute the actual submit of the form.
+		});
+	});
+</script>
+
 <style>
 body {
 	margin-top: 20px;

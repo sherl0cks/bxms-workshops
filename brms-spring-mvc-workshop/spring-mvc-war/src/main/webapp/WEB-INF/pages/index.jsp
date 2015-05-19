@@ -29,23 +29,23 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container text-center">
 	<!-- Example row of columns -->
-	<div class="row text-center">
+	<div class="row ">
 		<div class="col-md-4">
-			<h2>Execute Rules in Spring</h2>
+			<h2>Execute in Spring</h2>
 			<img src="${pageContext.request.contextPath}/resources/images/app_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/execute" role="button"> Learn more
 				&raquo;</a>
 
 		</div>
 		<div class="col-md-4">
-			<h2>Deploy Rules Anytime</h2>
+			<h2>Deploy Anytime</h2>
 			<img src="${pageContext.request.contextPath}/resources/images/box_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href=" ${pageContext.request.contextPath}/deploy" role="button"> Learn more
 				&raquo;</a>
 
 		</div>
 		<div class="col-md-4">
-			<h2>Author Rules Your Way</h2>
+			<h2>Author Your Way</h2>
 			<img src="${pageContext.request.contextPath}/resources/images/list_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/author" role="button"> Learn more
 				&raquo;</a>
 

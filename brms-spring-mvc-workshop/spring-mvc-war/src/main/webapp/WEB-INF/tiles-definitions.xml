@@ -36,4 +36,6 @@
 	<!-- Supporting Ajax -->
 	<definition name="premium" template="/WEB-INF/pages/premium.jsp">
 	</definition>
+	<definition name="ruledeploy" template="/WEB-INF/pages/ruledeploy.jsp">
+	</definition>
 </tiles-definitions>
