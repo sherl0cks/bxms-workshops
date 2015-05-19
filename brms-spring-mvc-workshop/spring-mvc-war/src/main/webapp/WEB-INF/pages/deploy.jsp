@@ -4,7 +4,7 @@
 		<h1>Dynamically Deploy Rules</h1>
 		<p>With Red Hat BRMS, it is simple to package, version and hot deploy new business rules to your application without downtime. At the time, BRMS provides the auditing and governance needs to
 			ensure compliance in highly regulated environments. This section will explain the mechanics used by Red Hat BRMS to deploy business rules. Then we'll step though a reference implementation of the
-			Admistrator Push design pattern so you can see the theory in practice. Finally, we'll consider the implications of Citi's infrastructure on the Red Hat BRMS deployment model.</p>
+			Admistrator Push design pattern so you can see the theory in practice.</p>
 	</div>
 </div>
 
@@ -155,19 +155,4 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 		</div>
 	</div>
 
-	<!-- Business Rules Administrator -->
-	<div class="row">
-		<div class="text-left">
-			<h2 class="section-heading">Considerations for Citi's Network Partitions</h2>
-			<hr class="light">
-			<p class="text-faded">Provide one clean and simple interface to every application that needs to fire rules. With this pattern, developers invoking a decision services to execute rules only need
-				to know three things.</p>
-			<ol>
-				<li>The name of the process that will orchestrate the rules</li>
-				<li>The facts required for the rules to make a decision</li>
-				<li>The type of response required from the rules</li>
-			</ol>
-			<p>Everything else, including how and where the BRMS APIs will create sessions, insert facts and fire rules is an implementation detail that can be injected via the Spring context.</p>
-		</div>
-	</div>
 </div>

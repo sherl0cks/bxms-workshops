@@ -9,7 +9,7 @@
 			<li><h3>Deploying rules can be done with a push of a button</h3></li>
 			<li><h3>Authoring rules is simple in Business Central and Eclipse</h3></li>
 		</ul>
-
+		<h2></h2>
 		<div class="accordion" id="accordion2">
 			<div class="accordion-group">
 				<div class="accordion-heading">
@@ -18,9 +18,9 @@
 				<div id="collapseOne" class="accordion-body collapse">
 					<h2>Design Patterns Make Life Easier</h2>
 					<p>The Red Hat Consulting Business Automation Practice publishes the below set of design patterns for building enterprise grade applications with Red Hat BRMS. The goal is to provide simple
-						conventions for building rules driven applications. The patterns highlighted in the diagram below are illustrated in this workshop. TODO make new graphic with highlights.</p>
+						conventions for building rules driven applications. The patterns highlighted in the diagram below are illustrated in this workshop.</p>
 					<div class="accordion-inner">
-						<img src="${pageContext.request.contextPath}/resources/images/patterns.png" style="max-width: 100%;" />
+						<img src="${pageContext.request.contextPath}/resources/images/patterns2.png" style="max-width: 100%;" />
 					</div>
 				</div>
 			</div>
@@ -31,30 +31,24 @@
 
 <div class="container">
 	<!-- Example row of columns -->
-	<div class="row">
+	<div class="row text-center">
 		<div class="col-md-4">
 			<h2>Execute Rules in Spring</h2>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-			<p>
-				<a class="btn btn-default" href="${pageContext.request.contextPath}/execute" role="button">View details &raquo;</a>
-			</p>
+			<img src="${pageContext.request.contextPath}/resources/images/app_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/execute" role="button"> Learn more
+				&raquo;</a>
+
 		</div>
 		<div class="col-md-4">
 			<h2>Deploy Rules Anytime</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-				magna mollis euismod. Donec sed odio dui.</p>
-			<p>
-				<a class="btn btn-default" href="${pageContext.request.contextPath}/deploy" role="button">View details &raquo;</a>
-			</p>
+			<img src="${pageContext.request.contextPath}/resources/images/box_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href=" ${pageContext.request.contextPath}/deploy" role="button"> Learn more
+				&raquo;</a>
+
 		</div>
 		<div class="col-md-4">
 			<h2>Author Rules Your Way</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-				magna mollis euismod. Donec sed odio dui.</p>
-			<p>
-				<a class="btn btn-default" href="${pageContext.request.contextPath}/author" role="button">View details &raquo;</a>
-			</p>
+			<img src="${pageContext.request.contextPath}/resources/images/list_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/author" role="button"> Learn more
+				&raquo;</a>
+
 		</div>
 	</div>
 </div>
