@@ -137,19 +137,13 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 		</div>
 	</div>
 
-	<!-- Business Rules Administrator -->
+	<!-- Rules Administrator -->
 	<div class="row">
 		<div class="text-left">
 			<h2 class="section-heading">The Administrator Push Pattern</h2>
 			<hr class="light">
 			<p class="text-faded">Harnessing the power of the BRMS deployment architecture is surprisingly easy. The reference implementation of the Administrator Push pattern in this workshop is less than
 				50 lines of code. Let's get hands on with the implementation to see how easy it really is. </p>
-			<ol>
-				<li>The name of the process that will orchestrate the rules</li>
-				<li>The facts required for the rules to make a decision</li>
-				<li>The type of response required from the rules</li>
-			</ol>
-			<p>Everything else, including how and where the BRMS APIs will create sessions, insert facts and fire rules is an implementation detail that can be injected via the Spring context.</p>
 		</div>
 	</div>
 	<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">

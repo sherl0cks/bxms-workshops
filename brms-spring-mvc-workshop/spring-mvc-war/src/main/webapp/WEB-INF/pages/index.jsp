@@ -20,7 +20,7 @@
 					<p>The Red Hat Consulting Business Automation Practice publishes the below set of design patterns for building enterprise grade applications with Red Hat BRMS. The goal is to provide simple
 						conventions for building rules driven applications. The patterns highlighted in the diagram below are illustrated in this workshop.</p>
 					<div class="accordion-inner">
-						<img src="${pageContext.request.contextPath}/resources/images/patterns2.png" style="max-width: 100%;" />
+						<img src="${pageContext.request.contextPath}/resources/images/patterns3.png" style="max-width: 100%;" />
 					</div>
 				</div>
 			</div>
