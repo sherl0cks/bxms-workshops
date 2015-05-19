@@ -36,6 +36,30 @@
 		</div>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			
+			<!-- panel 3 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading-one-three">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapase-one-three" aria-expanded="true" aria-controls="collapse-one-three"> The KieRepository and the KieContainer in action </a>
+					</h4>
+				</div>
+				<div id="collapase-one-three" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-one-three">
+					<div class="panel-body"><pre><code class="java">import org.kie.api.KieServices;
+import org.kie.api.builder.ReleaseId;
+import org.kie.api.runtime.KieContainer;
+
+KieServices kieServices = KieServices.Factory.get();
+ReleaseId oldReleaseId = kieServices.newReleaseId( "org.acme", "myartifact", "1.0" );
+KieContainer kieContainer = kieServices.newKieContainer( releaseId );
+
+// Hot deploy new KJAR at runtime
+ReleaseId newReleaseId = kieServices.newReleaseId( "org.acme", "myartifact", "2.0" );
+kieContainer.updateToVersion( newReleaseId );</code></pre>			
+					</div>
+				</div>
+			</div>
+			
+			
 			<!-- panel 1 -->
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="heading-one-one">
@@ -43,7 +67,7 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapase-one-one" aria-expanded="true" aria-controls="collapse-one-one"> An Example KieProject Structure </a>
 					</h4>
 				</div>
-				<div id="collapase-one-one" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-one-one">
+				<div id="collapase-one-one" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-one-one">
 					<div class="panel-body">
 <pre>.
 |__ pom.xml
@@ -111,28 +135,7 @@
 			</div>
 			
 			
-			<!-- panel 3 -->
-			<div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="heading-one-three">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapase-one-three" aria-expanded="true" aria-controls="collapse-one-three"> The KieRepository and the KieContainer in action </a>
-					</h4>
-				</div>
-				<div id="collapase-one-three" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-one-three">
-					<div class="panel-body"><pre><code class="java">import org.kie.api.KieServices;
-import org.kie.api.builder.ReleaseId;
-import org.kie.api.runtime.KieContainer;
 
-KieServices kieServices = KieServices.Factory.get();
-ReleaseId oldReleaseId = kieServices.newReleaseId( "org.acme", "myartifact", "1.0" );
-KieContainer kieContainer = kieServices.newKieContainer( releaseId );
-
-// Hot deploy new KJAR at runtime
-ReleaseId newReleaseId = kieServices.newReleaseId( "org.acme", "myartifact", "2.0" );
-kieContainer.updateToVersion( newReleaseId );</code></pre>			
-					</div>
-				</div>
-			</div>
 			
 
 			
