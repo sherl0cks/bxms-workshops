@@ -153,7 +153,7 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 		</div>
 	</div>
 	<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
-		
+
 		<!-- Deploy local -->
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="headingOne1">
@@ -163,7 +163,7 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 			</div>
 			<div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
 				<div class="panel-body">
-					<div class="col-md-3">	
+					<div class="col-md-3">
 						<form id="local-deploy-form">
 							<fieldset>
 								<legend>Rule Deploy Request</legend>
@@ -194,13 +194,13 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 							</fieldset>
 						</form>
 					</div>
-									
+
 					<div class="col-md-3">
 						<div id="local-deploy-response">
 							<p>Current Rule Version: ${releaseidLocal}</p>
 						</div>
 					</div>
-					
+
 					<div class="col-md-3">
 						<div class="">
 							<form id="local2-form">
@@ -238,18 +238,18 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 							</form>
 						</div>
 					</div>
-					
+
 					<div id="local2-response" class="col-md-3">
 						<h3>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h3>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Deploy remote -->
 		<div class="panel panel-default">
-			
+
 			<div class="panel-heading" role="tab" id="headingOne2">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion3" href="#collapseRemoteDeploy" aria-expanded="true" aria-controls="collapseRemoteDeploy"> Dynamically Deploy Rules Remotely </a>
@@ -257,7 +257,7 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 			</div>
 			<div id="collapseRemoteDeploy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
 				<div class="panel-body">
-					<div class="col-md-3">	
+					<div class="col-md-3">
 						<form id="remote-deploy-form">
 							<fieldset>
 								<legend>Rule Deploy Request</legend>
@@ -288,13 +288,13 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 							</fieldset>
 						</form>
 					</div>
-									
+
 					<div class="col-md-3">
 						<div id="remote-deploy-response">
 							<p>Current Rule Version: ${releaseidRemote}</p>
 						</div>
 					</div>
-					
+
 					<div class="col-md-3">
 						<div class="">
 							<form id="remote2-form">
@@ -332,16 +332,82 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 							</form>
 						</div>
 					</div>
-					
+
 					<div id="remote2-response" class="col-md-3">
 						<h3>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h3>
 					</div>
-					
+
 				</div>
 			</div>
-		
-		</div>
-		
-	</div>
 
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingThree">
+				<h4 class="panel-title">
+					<a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> See the Spring MVC Deploy Controller </a>
+				</h4>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+				<div class="panel-body">
+					<pre><code class="java">@RequestMapping(value = "/{type}", method = RequestMethod.GET)
+public String deployRules(
+	@PathVariable String type, 
+	@RequestParam String group, 
+	@RequestParam String artifact, 
+	@RequestParam String version, 
+	ModelMap model
+) {
+
+ boolean success = false;
+ if (type.equals("local")){
+  success = localDecisionService.createOrUpgradeRulesWithVersion(group, artifact, version);
+ } else{
+  success = remoteDecisionService.createOrUpgradeRulesWithVersion(group, artifact, version);
+ }	
+ String releaseid = "";
+ if ( success){
+  releaseid = String.format("successfully upgraded to %s %s %s", group, artifact, version);
+ } else {
+  releaseid = "deployment failed, check your logs";
+ }
+ LOGGER.info(releaseid);
+ model.put("releaseid", releaseid);
+
+ return "ruledeploy";
+}</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingThree4">
+				<h4 class="panel-title">
+					<a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> See the LocalStatelesDecisionService Code </a>
+				</h4>
+			</div>
+			<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+				<div class="panel-body">
+					<pre><code class="java">@Override
+public boolean createOrUpgradeRulesWithVersion(String group, String artifact, String version) {
+ ReleaseId releaseId = KieServices.Factory.get().newReleaseId(group, artifact, version);
+ Results results = null;
+ 
+ try {
+  results = kieContainer.updateToVersion(releaseId);
+ } catch (UnsupportedOperationException e) {
+   LOGGER.info("Upgrading to version " + releaseId.toString());
+   try {
+    kieContainer = KieServices.Factory.get().newKieContainer(releaseId);
+    results = kieContainer.updateToVersion(releaseId);
+   } catch (Exception e2) {
+     return false;
+    }
+   }
+  return results.getMessages().size() == 0;
+ }</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
