@@ -153,6 +153,8 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 		</div>
 	</div>
 	<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+		
+		<!-- Deploy local -->
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="headingOne1">
 				<h4 class="panel-title">
@@ -161,9 +163,8 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 			</div>
 			<div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
 				<div class="panel-body">
-	
 					<div class="col-md-3">	
-						<form id="local2-deploy-form">
+						<form id="local-deploy-form">
 							<fieldset>
 								<legend>Rule Deploy Request</legend>
 
@@ -196,7 +197,7 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 									
 					<div class="col-md-3">
 						<div id="local-deploy-response">
-							<p>Current Rule Version: ${releaseid}</p>
+							<p>Current Rule Version: ${releaseidLocal}</p>
 						</div>
 					</div>
 					
@@ -241,9 +242,106 @@ kieContainer.updateToVersion( newReleaseId );</code></pre>
 					<div id="local2-response" class="col-md-3">
 						<h3>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h3>
 					</div>
+					
 				</div>
 			</div>
 		</div>
+		
+		<!-- Deploy remote -->
+		<div class="panel panel-default">
+			
+			<div class="panel-heading" role="tab" id="headingOne2">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion3" href="#collapseRemoteDeploy" aria-expanded="true" aria-controls="collapseRemoteDeploy"> Dynamically Deploy Rules Remotely </a>
+				</h4>
+			</div>
+			<div id="collapseRemoteDeploy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
+				<div class="panel-body">
+					<div class="col-md-3">	
+						<form id="remote-deploy-form">
+							<fieldset>
+								<legend>Rule Deploy Request</legend>
+
+								<div class="form-group">
+									<label class="control-label" for="group">Group</label>
+									<div class="">
+										<input id="group-input" name="group" value="com.redhat.workshops" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label" for="artifact">Artifact</label>
+									<div class="">
+										<input id="artifact-input" name="artifact" value="business-rules" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label" for="version">Version</label>
+									<div class="">
+										<input id="version-input" name="version" value="2.1" class="form-control input-md" type="text">
+									</div>
+								</div>
+
+								<button type="submit" class="btn btn-primary btn-large">Post Request</button>
+
+							</fieldset>
+						</form>
+					</div>
+									
+					<div class="col-md-3">
+						<div id="remote-deploy-response">
+							<p>Current Rule Version: ${releaseidRemote}</p>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="">
+							<form id="remote2-form">
+								<fieldset>
+
+									<legend>Car Insurance Request</legend>
+
+									<div class="form-group">
+										<label class="control-label" for="name">Driver's Name</label>
+										<div class="">
+											<input id="name-input" name="name" value="Jane Doe" class="form-control input-md" type="text">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for="age">Driver's Age</label>
+										<div class="">
+											<input id="age-input" name="age" value="25" class="form-control input-md" type="number">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for="make">Vehicle Make</label>
+										<div class="">
+											<select id="make" name="make" class="form-control">
+												<option value="BMW">BMW</option>
+												<option value="Honda">Honda</option>
+											</select>
+										</div>
+									</div>
+
+									<button type="submit" class="btn btn-primary btn-large">Post Request</button>
+
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					
+					<div id="remote2-response" class="col-md-3">
+						<h3>Note: Rules are being loaded dynamically, so the first request will take a few seconds.</h3>
+					</div>
+					
+				</div>
+			</div>
+		
+		</div>
+		
 	</div>
 
 </div>

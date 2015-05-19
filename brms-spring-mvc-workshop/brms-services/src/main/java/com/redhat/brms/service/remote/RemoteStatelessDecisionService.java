@@ -180,7 +180,11 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 	
 	@Override
 	public String getCurrentVersion() {
-		return "version";
+		ServiceResponse<KieContainerResource> response = client.getContainerInfo(containerId);
+		if ( response.getResult().getReleaseId() == null ){
+			return "container is empty";
+		}
+		return response.getResult().getReleaseId().toString();
 	}
 
 	public String getHttpUrl() {

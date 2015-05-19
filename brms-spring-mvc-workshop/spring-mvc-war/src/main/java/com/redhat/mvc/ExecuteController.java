@@ -30,7 +30,6 @@ public class ExecuteController {
 	private StatelessDecisionService localDecisionService;
 	@Resource(name = "remoteDecisionService")
 	private StatelessDecisionService remoteDecisionService;
-	private boolean serviceInit;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String printHello(ModelMap model) {
@@ -40,11 +39,6 @@ public class ExecuteController {
 
 	@RequestMapping(value = "/premium/{type}", method = RequestMethod.GET)
 	public String printFoo(@PathVariable String type, @ModelAttribute Driver driver, @ModelAttribute Vehicle vehicle, ModelMap model) {
-		if (serviceInit == false) {
-			localDecisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", RULE_VERSION);
-			remoteDecisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", RULE_VERSION);
-			serviceInit = true;
-		}
 
 		Collection<Object> facts = new ArrayList<Object>();
 		facts.add(driver);
@@ -52,8 +46,14 @@ public class ExecuteController {
 
 		PremiumResponse response = null;
 		if (type.equals("local")) {
+			if ( localDecisionService.getCurrentVersion().contains("empty") ){
+				localDecisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", RULE_VERSION);
+			}
 			response = localDecisionService.execute(facts, "InsurancePremiumRuleFlow", PremiumResponse.class);
 		} else if (type.equals("remote")) {
+			if ( remoteDecisionService.getCurrentVersion().contains("empty")){
+				remoteDecisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", RULE_VERSION);
+			}
 			response = remoteDecisionService.execute(facts, "InsurancePremiumRuleFlow", PremiumResponse.class);
 		} else {
 			LOGGER.error(String.format("No decision service of type %s", type));
