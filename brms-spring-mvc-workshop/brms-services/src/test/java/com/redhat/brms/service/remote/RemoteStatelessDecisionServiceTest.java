@@ -5,6 +5,10 @@ import javax.annotation.Resource;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.kie.api.KieServices;
+import org.kie.server.api.model.KieContainerResource;
+import org.kie.server.api.model.KieContainerStatus;
+import org.kie.server.api.model.ReleaseId;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.api.model.ServiceResponse.ResponseType;
 import org.kie.server.client.KieServicesClient;
@@ -33,6 +37,8 @@ public class RemoteStatelessDecisionServiceTest extends AbstractJUnit4SpringCont
 		Assert.assertNotNull(decisionService);
 		KieServicesClient client = decisionService.getClient();
 
+		client.createContainer("test", new KieContainerResource("test", new ReleaseId("com.redhat.workshops", "business-rules", "2.1"), KieContainerStatus.STARTED));
+		
 		boolean response = decisionService.createOrUpgradeRulesWithVersion("com.redhat.workshops", "business-rules", "2.1");
 		Assert.assertTrue(response);
 

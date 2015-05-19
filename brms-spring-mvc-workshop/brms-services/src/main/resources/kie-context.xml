@@ -35,10 +35,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	
 	<beans profile="test-remote">
 		<bean id="remoteDecisionService" class="com.redhat.brms.service.remote.RemoteStatelessDecisionService" init-method="init">
-			<!--  
+			  
 			<property name="httpUrl" value="http://decisionserver1-jholmes.rhcloud.com/kie-server/services/rest/server" />
-			-->
+			
+			<!--
 			<property name="httpUrl" value="http://localhost:8080/kie-server/services/rest/server"/>
+			-->
 			<property name="containerId" value="test"/>
 		</bean>
 	</beans>
