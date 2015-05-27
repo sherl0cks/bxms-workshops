@@ -122,7 +122,7 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 	public String getCurrentVersion() {
 		ReleaseId version = this.kieContainer.getReleaseId();
 		if ( version == null){
-			return "container is empty";
+			return "local container is empty";
 		}
 		return version.toString();
 	}

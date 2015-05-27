@@ -17,6 +17,7 @@ import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.api.model.ServiceResponse.ResponseType;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
+import org.kie.server.client.KieServicesException;
 import org.kie.server.client.KieServicesFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,9 +130,9 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			}
 			List<Command<?>> queryCommands = QueryUtils.buildQueryCommands(responseClazz);
 			String queryElements = "";
-			if ( queryCommands.size() > 0){
-				for (Command c : queryCommands){
-					queryElements = queryElements.concat( xstream.toXML(c) );
+			if (queryCommands.size() > 0) {
+				for (Command c : queryCommands) {
+					queryElements = queryElements.concat(xstream.toXML(c));
 				}
 				LOGGER.error(queryElements);
 			}
@@ -173,18 +174,23 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 			LOGGER.error(response.getMsg());
 			return false;
 		} else {
-			LOGGER.info(String.format("%sd to %s", response.getMsg().substring(0, response.getMsg().length()-2), response.getResult()));
+			LOGGER.info(String.format("%sd to %s", response.getMsg().substring(0, response.getMsg().length() - 2), response.getResult()));
 			return true;
 		}
 	}
-	
+
 	@Override
 	public String getCurrentVersion() {
-		ServiceResponse<KieContainerResource> response = client.getContainerInfo(containerId);
-		if ( response == null || response.getResult() == null || response.getResult().getReleaseId() == null ){
-			return "container is empty";
+		try {
+			ServiceResponse<KieContainerResource> response = client.getContainerInfo(containerId);
+			if (response == null || response.getResult() == null || response.getResult().getReleaseId() == null) {
+				return String.format("remote container %s is empty", containerId);
+			}
+			return response.getResult().getReleaseId().toString();
+		} catch (KieServicesException e) {
+			return String.format("Kie Server at %s is not deployed", httpUrl);
 		}
-		return response.getResult().getReleaseId().toString();
+
 	}
 
 	public String getHttpUrl() {
@@ -234,7 +240,5 @@ public class RemoteStatelessDecisionService implements StatelessDecisionService 
 	public void setClient(KieServicesClient client) {
 		this.client = client;
 	}
-
-
 
 }

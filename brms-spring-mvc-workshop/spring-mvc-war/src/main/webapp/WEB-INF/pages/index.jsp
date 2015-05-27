@@ -34,19 +34,19 @@
 	<div class="row ">
 		<div class="col-md-4">
 			<h2>Execute in Spring</h2>
-			<img src="${pageContext.request.contextPath}/resources/images/app_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/execute" role="button"> Learn more
+			<img src="${pageContext.request.contextPath}/resources/images/app_shiny1.svg" height="400px" width="400px" class="img-responsive center-block"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/execute" role="button"> Learn more
 				&raquo;</a>
 
 		</div>
 		<div class="col-md-4">
 			<h2>Deploy Anytime</h2>
-			<img src="${pageContext.request.contextPath}/resources/images/box_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href=" ${pageContext.request.contextPath}/deploy" role="button"> Learn more
+			<img src="${pageContext.request.contextPath}/resources/images/box_shiny1.svg" height="400px" width="400px" class="img-responsive center-block"> <a class="btn btn-primary btn-lg center-block" href=" ${pageContext.request.contextPath}/deploy" role="button"> Learn more
 				&raquo;</a>
 
 		</div>
 		<div class="col-md-4">
 			<h2>Author Your Way</h2>
-			<img src="${pageContext.request.contextPath}/resources/images/list_shiny1.svg" height="400px" width="400px"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/author" role="button"> Learn more
+			<img src="${pageContext.request.contextPath}/resources/images/list_shiny1.svg" height="400px" width="400px" class="img-responsive center-block"> <a class="btn btn-primary btn-lg center-block" href="${pageContext.request.contextPath}/author" role="button"> Learn more
 				&raquo;</a>
 
 		</div>

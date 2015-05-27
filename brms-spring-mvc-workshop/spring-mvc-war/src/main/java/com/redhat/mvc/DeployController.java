@@ -16,14 +16,14 @@ import com.redhat.brms.service.api.StatelessDecisionService;
 @Controller
 @RequestMapping("/deploy")
 public class DeployController {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(DeployController.class);
 
 	@Resource(name = "localDecisionService")
 	private StatelessDecisionService localDecisionService;
 	@Resource(name = "remoteDecisionService")
 	private StatelessDecisionService remoteDecisionService;
-	
+
 	private boolean serviceInit;
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -37,14 +37,14 @@ public class DeployController {
 	public String deployRules(@PathVariable String type, @RequestParam String group, @RequestParam String artifact, @RequestParam String version, ModelMap model) {
 
 		boolean success = false;
-		if (type.equals("local")){
+		if (type.equals("local")) {
 			success = localDecisionService.createOrUpgradeRulesWithVersion(group, artifact, version);
-		} else{
+		} else {
 			success = remoteDecisionService.createOrUpgradeRulesWithVersion(group, artifact, version);
 		}
-		
+
 		String releaseid = "";
-		if ( success){
+		if (success) {
 			releaseid = String.format("successfully upgraded to %s %s %s", group, artifact, version);
 		} else {
 			releaseid = "deployment failed, check your logs";
