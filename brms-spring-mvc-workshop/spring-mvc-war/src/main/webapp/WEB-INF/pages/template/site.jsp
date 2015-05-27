@@ -77,7 +77,7 @@
 					$("#remote-response").html(data);
 				},
 				 error: function (data) {
-					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+					 alert("the OpenShift rule server has idled. give it a minute to wake back up and then retry. if that does not work, go to the contact us section and send us a bug!"); // show response from the php script.
 				 }
 				
 			});
@@ -146,7 +146,7 @@
 					$("#remote-deploy-response").html(data);
 				},
 				 error: function (data) {
-					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+					 alert("the OpenShift rule server has idled. give it a minute to wake back up and then retry. if that does not work, go to the contact us section and send us a bug!"); // show response from the php script.
 				 }
 				
 			});
@@ -169,7 +169,7 @@
 					$("#remote2-response").html(data);
 				},
 				 error: function (data) {
-					 alert("something broke in the ajax. go to the contact us section and send us a bug!"); // show response from the php script.
+					 alert("the OpenShift rule server has idled. give it a minute to wake back up and then retry. if that does not work, go to the contact us section and send us a bug!"); // show response from the php script.
 				 }
 				
 			});

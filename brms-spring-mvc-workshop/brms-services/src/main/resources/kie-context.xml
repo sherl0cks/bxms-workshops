@@ -16,6 +16,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		 -->
 		 <property name="httpUrl" value="http://localhost:8080/kie-server/services/rest/server"/>
 		<property name="containerId" value="test" />
+		<property name="timeout" value="15" />
 	</bean>
 
 	<beans profile="test-local">
