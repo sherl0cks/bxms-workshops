@@ -7,7 +7,9 @@
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
+	<import resource="classpath:camel-context.xml"/>
 	<context:component-scan base-package="com.rhc.services" />
+	
 	
 	<bean id="foo" class="com.rhc.services.Foo">
 		<property name="name" value="hi this is cool thank you!" />
