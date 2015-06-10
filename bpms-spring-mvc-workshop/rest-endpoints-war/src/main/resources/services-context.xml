@@ -7,16 +7,23 @@
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
-	<import resource="classpath:camel-context.xml"/>
+	<import resource="classpath:camel-context.xml" />
 	<context:component-scan base-package="com.rhc.services" />
-	
-	
-	<bean id="foo" class="com.rhc.services.Foo">
-		<property name="name" value="hi this is cool thank you!" />
+
+
+	<bean id="url" class="java.net.URL">
+		<constructor-arg
+			value="http://localhost:8080/soap-endpoints-war/SOAPService?wsdl" />
 	</bean>
 
+	<bean id="soapService" class="org.apache.hello_world_soap_http.SOAPService">
+		<constructor-arg ref="url" />
+	</bean>
 
+	<bean id="greeter" class="org.apache.hello_world_soap_http.Greeter"
+		factory-bean="soapService" factory-method="getSoapPort">
 
+	</bean>
 
 
 </beans>

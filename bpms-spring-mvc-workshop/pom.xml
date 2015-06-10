@@ -8,7 +8,8 @@
 	<description>aggregator, bill of material and repository configurations for the workshop</description>
 	<modules>
 		<module>bpm-services</module>
-		<module>services-endpoints-war</module>
+		<module>rest-endpoints-war</module>
+		<module>soap-endpoints-war</module>
 	</modules>
 	<properties>
 		<version.junit>4.11</version.junit>
@@ -19,7 +20,7 @@
 		<bpms.version>6.2.0.Final-redhat-6</bpms.version>
 		<version.arquillian_core>1.1.8.Final</version.arquillian_core>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 

@@ -9,10 +9,10 @@
 
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<route id="test">
-			<from uri="direct:in" />
-			<log message="${body}" loggingLevel="INFO" />
-		</route>
-	</camelContext>
+  <route id="test">
+    <from uri="direct:in"/>
+    <log message="${body}" loggingLevel="INFO"/>
+  </route>
+</camelContext>
 
 </beans>

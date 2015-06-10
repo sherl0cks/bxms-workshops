@@ -5,39 +5,24 @@ import javax.ws.rs.Path;
 
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
+import org.apache.hello_world_soap_http.Greeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 @Path("/hello")
-public class HelloWorld {
+public class RestEndpoint {
+
+	@Produce
+	private ProducerTemplate template;
 
 	@Autowired
-	private Foo foo;
-
-	@Produce(uri = "direct:out")
-	private ProducerTemplate template;
+	private Greeter greeter;
 
 	@GET
 	public String getRooms() {
-		if (template == null) {
-			System.err.println("error");
-		} else {
-			String response = template.requestBody("direct:in", "fooooo", String.class);
-			System.err.println(response);
+		return (String) template.requestBody("direct:in", "foo");
 
-		}
-		System.err.println("test3");
-		return "hello world";
-
-	}
-
-	public Foo getFoo() {
-		return foo;
-	}
-
-	public void setFoo(Foo foo) {
-		this.foo = foo;
 	}
 
 	public ProducerTemplate getTemplate() {
