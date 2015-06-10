@@ -8,16 +8,18 @@
 	<description>aggregator, bill of material and repository configurations for the workshop</description>
 	<modules>
 		<module>bpm-services</module>
+		<module>services-endpoints-war</module>
 	</modules>
 	<properties>
 		<version.junit>4.11</version.junit>
 		<apache.tiles.version>3.0.4</apache.tiles.version>
 		<javax.jstl.version>1.2</javax.jstl.version>
-		<spring.version>3.2.13.RELEASE</spring.version>
+		<spring.version>3.0.3.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<bpms.version>6.2.0.Final-redhat-6</bpms.version>
 		<version.arquillian_core>1.1.8.Final</version.arquillian_core>
 	</properties>
+	
 	<dependencyManagement>
 		<dependencies>
 

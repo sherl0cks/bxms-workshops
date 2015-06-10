@@ -18,7 +18,7 @@
 	<container qualifier="jboss" default="true">
 		<!-- By default, arquillian will use the JBOSS_HOME environment variable. Alternatively, the configuration below can be uncommented. -->
 		<configuration>
-			<property name="jbossHome">/home/jholmes/Servers/eap-6.4-decision-server/jboss-eap-6.4</property>
+			<property name="jbossHome">/home/jholmes/Servers/eap-6.4-devel/jboss-eap-6.4</property>
 		</configuration>
 	</container>
 </arquillian>
