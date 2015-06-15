@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>bpm-services</module>
+		<module>bpm-inbox-war</module>
 	</modules>
-	
+
 </project>
