@@ -1,0 +1,14 @@
+//created on: Jun 8, 2015
+package com.rhc;
+
+
+
+rule "Your First Rule"
+	ruleflow-group "test"
+
+    when
+       
+    then
+        System.out.println( "Hello, World!" );
+
+end
