@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-spring</artifactId>
-			
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
