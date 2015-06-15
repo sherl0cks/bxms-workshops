@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $OPENSHIFT_REPO_DIR/bpms-spring-workshop
+
+mvn clean install -P openshift
