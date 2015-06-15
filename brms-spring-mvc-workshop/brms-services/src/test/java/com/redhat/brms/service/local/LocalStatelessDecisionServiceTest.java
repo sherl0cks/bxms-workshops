@@ -6,15 +6,11 @@ import java.util.Collection;
 import javax.annotation.Resource;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.redhat.brms.Driver;
-import com.redhat.brms.Premium;
-import com.redhat.brms.Vehicle;
 import com.redhat.brms.service.api.StatelessDecisionService;
 
 @ActiveProfiles(profiles = { "test-local" })
@@ -32,7 +28,7 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 	/*
 	 * This test is ignored because it needs a network and we don't know if you local environment can access that network
 	 */
-	@Ignore
+	//@Ignore
 	@Test
 	public void shouldLoadWorkshopRulesAndExecuteLocally() {
 		Collection<Object> facts = new ArrayList<Object>();
