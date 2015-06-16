@@ -56,8 +56,7 @@ public class InboxEndpoint {
 			@QueryParam("start") final Integer startPosition,
 			@QueryParam("max") final Integer maxResult) {
 
-		System.err.println("it's alive!  wooohoo");
-		System.err.println("it's alive!  wooohoo");
+		System.err.println("it's alive and connected!");
 		if (inboxes.isEmpty()) {
 			Inbox inbox = new Inbox(CURRENT_ID++);
 			inboxes.add(inbox);
