@@ -9,6 +9,13 @@ public class Inbox {
 
 	private Collection<Task> tasks;
 
+	public Inbox() {
+	}
+
+	public Inbox(Long id) {
+		this.id = id;
+	}
+
 	public Collection<Task> getTasks() {
 		return tasks;
 	}

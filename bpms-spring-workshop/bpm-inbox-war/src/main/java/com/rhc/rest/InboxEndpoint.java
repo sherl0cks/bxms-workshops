@@ -1,8 +1,8 @@
 package com.rhc.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,18 +18,19 @@ import javax.ws.rs.core.UriBuilder;
 
 import com.rhc.inbox.Inbox;
 
-@RequestScoped
 @Path("/inboxes")
 public class InboxEndpoint {
 
 	private static Long CURRENT_ID = 0l;
 
-	private List<Inbox> inboxes;
+	private static List<Inbox> inboxes = new ArrayList<Inbox>();
 
 	@POST
 	@Consumes("application/json")
 	public Response create(final Inbox inbox) {
+
 		inbox.setId(CURRENT_ID++);
+		inboxes.add(inbox);
 
 		return Response.created(
 				UriBuilder.fromResource(InboxEndpoint.class)
@@ -40,6 +41,7 @@ public class InboxEndpoint {
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
 	public Response findById(@PathParam("id") final Long id) {
+		System.err.println("hssi");
 		try {
 			Inbox inbox = inboxes.get(id.intValue());
 			return Response.ok(inbox).build();
@@ -53,6 +55,12 @@ public class InboxEndpoint {
 	public List<Inbox> listAll(
 			@QueryParam("start") final Integer startPosition,
 			@QueryParam("max") final Integer maxResult) {
+
+		System.err.println("it's alive!");
+		if (inboxes.isEmpty()) {
+			Inbox inbox = new Inbox(CURRENT_ID++);
+			inboxes.add(inbox);
+		}
 
 		return inboxes;
 	}

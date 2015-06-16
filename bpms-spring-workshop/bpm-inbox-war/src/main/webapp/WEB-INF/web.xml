@@ -14,10 +14,6 @@
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:services-context.xml</param-value>
+		<param-value>classpath:application-context.xml</param-value>
 	</context-param>
-	<servlet-mapping>
-		<servlet-name>javax.ws.rs.core.Application</servlet-name>
-		<url-pattern>/rest</url-pattern>
-	</servlet-mapping>
 </web-app>

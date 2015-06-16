@@ -20,10 +20,12 @@
 	<dependencies>
 
 		<!-- internal application dependencies -->
+		<!-- 
 		<dependency>
 			<groupId>com.redhat.workshops</groupId>
 			<artifactId>bpm-services</artifactId>
 		</dependency>
+		 -->
 
 		<!-- RestEast -->
 		<dependency>
