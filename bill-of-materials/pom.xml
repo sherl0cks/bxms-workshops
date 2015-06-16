@@ -264,7 +264,7 @@
 			</build>
 		</profile>
 		<profile>
-			<!-- An optional Arquillian testing profile that executes tests in a remote
+			<!-- An optional Arquillian testing profile that executes tests in a remote 
 				JBoss EAP instance -->
 			<!-- Run with: mvn clean test -Parq-jbossas-remote -->
 			<id>arq-jbossas-remote</id>
@@ -279,7 +279,8 @@
 	</profiles>
 
 
-	<!-- This is here to increase portability of the codebase, no settings.xml needed -->
+	<!-- This is here to increase portability of the codebase, no settings.xml 
+		needed -->
 	<repositories>
 		<repository>
 			<id>jboss-maven-repository</id>
@@ -343,4 +344,16 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>rhcbap-nexus</id>
+			<url>http://nexus-rhcbap.rhcloud.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>rhcbap-nexus</id>
+			<url>http://nexus-rhcbap.rhcloud.com/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+
 </project>
