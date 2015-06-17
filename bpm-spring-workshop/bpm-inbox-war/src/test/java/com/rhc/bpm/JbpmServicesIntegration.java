@@ -1,11 +1,14 @@
 package com.rhc.bpm;
 
+import java.io.File;
+
 import javax.persistence.Persistence;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,8 +28,7 @@ public class JbpmServicesIntegration {
 	@Deployment
 	public static Archive<?> createTestArchive() {
 
-		return ShrinkWrap.create(WebArchive.class, "test.war")
-				.addAsResource("META-INF/persistence.xml").addAsResource("Rule.drl").addAsResource("Ruleflow.bpmn");
+		return ShrinkWrap.create(ZipImporter.class, "bpm-inbox-war.war").importFrom(new File("target/bpm-inbox-war.war")).as(WebArchive.class);
 	}
 
 	@Test
@@ -34,7 +36,8 @@ public class JbpmServicesIntegration {
 		System.err.println("hello world");
 
 		RuntimeEnvironment environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder("com.redhat.workshops", "approval-knowledge", "1.0.0-SNAPSHOT")
-				.entityManagerFactory(Persistence.createEntityManagerFactory("org.jbpm.domain")).get();
+				.entityManagerFactory(Persistence.createEntityManagerFactory("org.jbpm.persistence.jpa")).get();
+
 
 		// next create RuntimeManager - in this case singleton strategy is
 		// chosen

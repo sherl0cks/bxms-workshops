@@ -20,8 +20,10 @@
 	<dependencies>
 
 		<!-- internal application dependencies -->
-		<!-- <dependency> <groupId>com.redhat.workshops</groupId> <artifactId>bpm-services</artifactId> 
-			</dependency> -->
+		<dependency>
+			<groupId>com.redhat.workshops</groupId>
+			<artifactId>bpm-services</artifactId>
+		</dependency>
 
 		<!-- RestEast -->
 		<dependency>
@@ -112,7 +114,27 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+		<!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) 
+			JPA from JUnit/TestNG -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Arquillian Servlet 3.0 protocol -->
+		<dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
+
+
+
 
 
 </project>
