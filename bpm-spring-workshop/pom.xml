@@ -16,6 +16,7 @@
 	<modules>
 		<module>bpm-services</module>
 		<module>bpm-inbox-war</module>
+		<module>approval-domain-model</module>
 	</modules>
 
 </project>

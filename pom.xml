@@ -14,11 +14,9 @@
 	<description>workshops aggregator</description>
 
 	<modules>
-		<module>insurance-knowledge</module>
 		<module>bill-of-materials</module>
 		<module>bpm-spring-workshop</module>
 		<module>brms-spring-mvc-workshop</module>
-		<module>common</module>
 		<module>knowledge</module>
 	</modules>
 

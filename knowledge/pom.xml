@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>insurance-knowledge</module>
+		<module>approval-knowledge</module>
 	</modules>
 
 </project>

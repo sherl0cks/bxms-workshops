@@ -7,15 +7,14 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../../bill-of-materials</relativePath>
 	</parent>
-	<artifactId>insurance-knowledge</artifactId>
-	<version>2.3</version>
-	<name>externalized insurance knowledge</name>
+	<artifactId>approval-knowledge</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>externalized approval knowledge</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.redhat.workshops</groupId>
-			<artifactId>insurance-domain-model</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<artifactId>approval-domain-model</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
@@ -31,5 +30,3 @@
 		</plugins>
 	</build>
 </project>
-
-

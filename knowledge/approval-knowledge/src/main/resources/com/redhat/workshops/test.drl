@@ -1,0 +1,21 @@
+//created on: Jun 17, 2015
+package com.redhat.workshops
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "Your First Rule"
+	ruleflow-group "test"
+
+    when
+        //conditions
+    then
+        System.out.println( "hello" );
+
+end

@@ -7,11 +7,9 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kie.api.KieServices;
-import org.kie.api.io.ResourceType;
 import org.kie.api.logger.KieRuntimeLogger;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
@@ -19,7 +17,6 @@ import org.kie.api.runtime.manager.RuntimeEnvironment;
 import org.kie.api.runtime.manager.RuntimeEnvironmentBuilder;
 import org.kie.api.runtime.manager.RuntimeManager;
 import org.kie.api.runtime.manager.RuntimeManagerFactory;
-import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.manager.context.EmptyContext;
 
 @RunWith(Arquillian.class)
@@ -28,19 +25,16 @@ public class JbpmServicesIntegration {
 	@Deployment
 	public static Archive<?> createTestArchive() {
 
-		return ShrinkWrap.create(WebArchive.class, "test.war").addAsLibraries(Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile())
-				.addAsResource("META-INF/persistence.xml")
-				.addAsResource("Rule.drl")
-				.addAsResource("Ruleflow.bpmn");
-
+		return ShrinkWrap.create(WebArchive.class, "test.war")
+				.addAsResource("META-INF/persistence.xml").addAsResource("Rule.drl").addAsResource("Ruleflow.bpmn");
 	}
 
 	@Test
 	public void shouldCreateLocalRuntimeWithoutErrors() {
 		System.err.println("hello world");
 
-		RuntimeEnvironment environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder().entityManagerFactory(Persistence.createEntityManagerFactory("org.jbpm.domain"))
-				.addAsset(ResourceFactory.newClassPathResource("Ruleflow.bpmn"), ResourceType.BPMN2).addAsset(ResourceFactory.newClassPathResource("Rule.drl"), ResourceType.DRL).get();
+		RuntimeEnvironment environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder("com.redhat.workshops", "approval-knowledge", "1.0.0-SNAPSHOT")
+				.entityManagerFactory(Persistence.createEntityManagerFactory("org.jbpm.domain")).get();
 
 		// next create RuntimeManager - in this case singleton strategy is
 		// chosen
@@ -63,7 +57,7 @@ public class JbpmServicesIntegration {
 		KieSession ksession = runtime.getKieSession();
 
 		KieRuntimeLogger auditLogger = KieServices.Factory.get().getLoggers().newFileLogger(ksession, "jbpm-audit");
-		ksession.startProcess("Ruleflow");
+		ksession.startProcess("com.redhat.workshops.VacationApproval");
 		ksession.fireAllRules();
 		ksession.dispose();
 		auditLogger.close();
