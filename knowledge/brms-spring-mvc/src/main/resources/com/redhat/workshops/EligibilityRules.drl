@@ -1,0 +1,39 @@
+//created on: May 15, 2015
+package com.redhat.brms
+
+import com.redhat.brms.Driver;
+import com.redhat.brms.Quote;
+
+
+
+rule "DriverAgeEligibilityRules"
+dialect "mvel"
+salience 100
+ruleflow-group "EligibilityRules"
+    when
+        $driver : Driver( age < 18 )
+        $quote : Quote(  )
+    then
+    
+end
+
+rule "DriverAgeEligibilityRules2"
+dialect "mvel"
+salience 100
+ruleflow-group "EligibilityRules" extends "DriverAgeEligibilityRules"
+    when
+        $driver : Driver( name == "jeff")
+    then
+    	//do something;
+end
+
+rule "DriverCityEligibilityRules"
+dialect "mvel"
+salience 99
+ruleflow-group "EligibilityRules"
+    when
+        $driver : Driver( city == "Dallas" && zipCode == "54321" )
+        $quote : Quote(  )
+    then
+	    $quote.setEligibility( "No" );
+end

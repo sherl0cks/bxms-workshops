@@ -1,0 +1,19 @@
+package com.redhat.brms.dsl
+
+import com.redhat.brms.Driver;
+import com.redhat.brms.Premium;
+import com.redhat.brms.Quote;
+
+expander VehiclePremiumDSLRule.dsl
+
+
+
+rule "VehiclePremiumRule1"
+dialect "mvel"
+ruleflow-group "VehiclePremiumRules" 
+    when
+        Driver is at least 19 years old and lives in "Raleigh"
+    then
+       Logically insert a class Premium with the amount field set to 500
+
+end

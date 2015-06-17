@@ -1,0 +1,12 @@
+//created on: May 15, 2015
+package com.redhat.brms
+
+import com.redhat.brms.Driver;
+import com.redhat.brms.Quote;
+import com.redhat.brms.Premium;
+
+query "Get All Premiums"
+	
+	//$premium : Premium( name == "foo" )
+	
+end

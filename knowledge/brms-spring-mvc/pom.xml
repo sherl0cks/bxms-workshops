@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.redhat.workshops</groupId>
+	<artifactId>business-rules</artifactId>
+	<version>2.3</version>
+	<name>externalized business rules</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.redhat.workshops</groupId>
+			<artifactId>domain-model</artifactId>
+			<version>2.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>6.2.0.Final-redhat-4</version>
+				<goals>
+					<goal>build</goal>
+				</goals>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>jboss</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+
+				<repository>
+					<id>jboss-maven-repository</id>
+					<name>JBoss Maven Repository</name>
+					<url>http://maven.repository.redhat.com/techpreview/all/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+				</repository>
+
+				<!-- TODO: Disable before distribution -->
+				<repository>
+					<id>holmes</id>
+					<name>Holmes</name>
+					<url>bpmpaas-jholmes.rhcloud.com/business-central/maven2/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+
+			</repositories>
+
+			<pluginRepositories>
+				<pluginRepository>
+					<id>jboss-maven-repository</id>
+					<name>JBoss Maven Repository</name>
+					<url>http://maven.repository.redhat.com/techpreview/all/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+</project>
+
+
