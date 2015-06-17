@@ -23,7 +23,7 @@ import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.manager.context.EmptyContext;
 
 @RunWith(Arquillian.class)
-public class JbpmServicesTest {
+public class JbpmServicesIntegration {
 
 	@Deployment
 	public static Archive<?> createTestArchive() {

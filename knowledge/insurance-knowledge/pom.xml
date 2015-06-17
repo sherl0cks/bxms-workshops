@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.redhat.workshops</groupId>
-	<artifactId>business-rules</artifactId>
+	<parent>
+		<groupId>com.redhat.workshops</groupId>
+		<artifactId>bill-of-materials</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../bill-of-materials</relativePath>
+	</parent>
+	<artifactId>insurance-knowledge</artifactId>
 	<version>2.3</version>
-	<name>externalized business rules</name>
+	<name>externalized insurance knowledge</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.redhat.workshops</groupId>
-			<artifactId>domain-model</artifactId>
-			<version>2.0</version>
+			<artifactId>insurance-domain-model</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>

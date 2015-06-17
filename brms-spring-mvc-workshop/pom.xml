@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.redhat.workshops</groupId>
-	<artifactId>brms-spring-mvc</artifactId>
-	<version>1.0.0</version>
+	<parent>
+		<groupId>com.redhat.workshops</groupId>
+		<artifactId>bill-of-materials</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../bill-of-materials</relativePath>
+	</parent>
+	<artifactId>brms-spring-mvc-aggregator</artifactId>
 	<packaging>pom</packaging>
-	<description>aggregator, bill of material and repository configurations for the workshop</description>
+	<description>aggregator for the brms workshop</description>
 
-	<!-- Ideally, modules would be the only section in this pom -->
 	<modules>
 		<module>insurance-domain-model</module>
 		<module>brms-services</module>
-		<module>spring-mvc-war</module>
+		<module>brms-spring-mvc-war</module>
 	</modules>
 
 </project>

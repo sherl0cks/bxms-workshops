@@ -54,7 +54,7 @@ public class LocalStatelessDecisionService implements StatelessDecisionService {
 		try {
 			session = kieContainer.newStatelessKieSession();
 		} catch (Exception e) {
-			LOGGER.error("The KieContainer is empty; Upgrade the KieContainer to a valid KieModule to fire rules");
+			LOGGER.error( e.getLocalizedMessage() );
 			return null;
 		}
 
