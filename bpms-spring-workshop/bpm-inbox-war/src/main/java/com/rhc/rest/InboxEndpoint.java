@@ -18,7 +18,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import com.rhc.inbox.Inbox;
 
-@Path("/inboxes")
+@Path("/rest/inboxes")
 public class InboxEndpoint {
 
 	private static Long CURRENT_ID = 0l;
@@ -36,6 +36,8 @@ public class InboxEndpoint {
 				UriBuilder.fromResource(InboxEndpoint.class)
 						.path(String.valueOf(inbox.getId())).build()).build();
 	}
+	
+
 
 	@GET
 	@Path("/{id:[0-9][0-9]*}")

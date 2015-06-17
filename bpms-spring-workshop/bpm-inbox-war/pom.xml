@@ -20,12 +20,8 @@
 	<dependencies>
 
 		<!-- internal application dependencies -->
-		<!-- 
-		<dependency>
-			<groupId>com.redhat.workshops</groupId>
-			<artifactId>bpm-services</artifactId>
-		</dependency>
-		 -->
+		<!-- <dependency> <groupId>com.redhat.workshops</groupId> <artifactId>bpm-services</artifactId> 
+			</dependency> -->
 
 		<!-- RestEast -->
 		<dependency>
@@ -38,6 +34,13 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-spring</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- MarkDown -->
+		<dependency>
+			<groupId>com.github.rjeschke</groupId>
+			<artifactId>txtmark</artifactId>
+			<version>0.13</version>
 		</dependency>
 
 		<!-- Spring -->
