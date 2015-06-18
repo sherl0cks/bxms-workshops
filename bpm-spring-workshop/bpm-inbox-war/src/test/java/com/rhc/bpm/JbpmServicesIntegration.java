@@ -2,8 +2,6 @@ package com.rhc.bpm;
 
 import java.io.File;
 
-import javax.persistence.Persistence;
-
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -35,9 +33,7 @@ public class JbpmServicesIntegration {
 	public void shouldCreateLocalRuntimeWithoutErrors() {
 		System.err.println("hello world");
 
-		RuntimeEnvironment environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder("com.redhat.workshops", "approval-knowledge", "1.0.0-SNAPSHOT")
-				.entityManagerFactory(Persistence.createEntityManagerFactory("org.jbpm.persistence.jpa")).get();
-
+		RuntimeEnvironment environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder("com.redhat.workshops", "approval-knowledge", "1.0.0-SNAPSHOT").get();
 
 		// next create RuntimeManager - in this case singleton strategy is
 		// chosen

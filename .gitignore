@@ -4,5 +4,6 @@ target
 .classpath
 test-output
 *.log
+*.tlog
 .settings/*
 !.settings/.jsdtscope

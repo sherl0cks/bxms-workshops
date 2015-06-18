@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.redhat.workshops</groupId>
 	<artifactId>bill-of-materials</artifactId>
@@ -25,7 +23,7 @@
 			<dependency>
 				<groupId>org.jboss.bom</groupId>
 				<artifactId>eap6-supported-artifacts</artifactId>
-				<version>6.4.0.GA</version>
+				<version>6.4.1.GA</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -33,7 +31,7 @@
 			<dependency>
 				<groupId>org.jboss.bom.eap</groupId>
 				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
-				<version>6.4.0.GA</version>
+				<version>6.4.1.GA</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -43,11 +41,14 @@
 				<artifactId>bpm-services</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>2.3</version>
 			</dependency>
+
+			<!-- Kie -->
 			<dependency>
 				<groupId>org.kie</groupId>
 				<artifactId>kie-api</artifactId>
@@ -85,24 +86,9 @@
 				<version>${bpms.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.jdt.core.compiler</groupId>
-				<artifactId>ecj</artifactId>
-				<version>3.5.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mvel</groupId>
-				<artifactId>mvel2</artifactId>
-				<version>2.2.4.Final-redhat-1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.antlr</groupId>
-				<artifactId>antlr</artifactId>
-				<version>3.5</version>
-			</dependency>
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>1.4.7</version>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-spring</artifactId>
+				<version>${bpms.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jbpm</groupId>
@@ -134,6 +120,32 @@
 				<artifactId>kie-server-client</artifactId>
 				<version>${bpms.version}</version>
 			</dependency>
+
+
+			<!-- Kie Transitives -->
+			<dependency>
+				<groupId>org.eclipse.jdt.core.compiler</groupId>
+				<artifactId>ecj</artifactId>
+				<version>3.5.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mvel</groupId>
+				<artifactId>mvel2</artifactId>
+				<version>2.2.4.Final-redhat-1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr</artifactId>
+				<version>3.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.7</version>
+			</dependency>
+
+
+			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
@@ -178,9 +190,26 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+
 			<dependency>
 				<groupId>org.apache.tiles</groupId>
 				<artifactId>tiles-core</artifactId>
@@ -227,6 +256,15 @@
 						<groupId>commons-logging</groupId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+
+
+
+			<!-- Bitronix -->
+			<dependency>
+				<groupId>org.codehaus.btm</groupId>
+				<artifactId>btm</artifactId>
+				<version>2.1.4</version>
 			</dependency>
 
 
@@ -319,8 +357,7 @@
 	</profiles>
 
 
-	<!-- This is here to increase portability of the codebase, no settings.xml 
-		needed -->
+	<!-- This is here to increase portability of the codebase, no settings.xml needed -->
 	<repositories>
 		<repository>
 			<id>jboss-maven-repository</id>
