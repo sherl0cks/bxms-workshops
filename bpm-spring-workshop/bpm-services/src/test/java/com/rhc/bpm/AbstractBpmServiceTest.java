@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 import org.jbpm.kie.services.impl.KModuleDeploymentUnit;
+import org.jbpm.services.api.DeploymentService;
+import org.jbpm.services.api.ProcessService;
+import org.jbpm.services.api.RuntimeDataService;
+import org.jbpm.services.api.UserTaskService;
 import org.jbpm.services.api.model.DeploymentUnit;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,6 +16,7 @@ import org.kie.api.builder.helper.FluentKieModuleDeploymentHelper;
 import org.kie.api.builder.helper.KieModuleDeploymentHelper;
 import org.kie.api.builder.model.KieBaseModel;
 import org.kie.api.builder.model.KieSessionModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -20,20 +25,20 @@ import bitronix.tm.resource.jdbc.PoolingDataSource;
 @ContextConfiguration(locations = { "classpath:bpm-services-context.xml" })
 public abstract class AbstractBpmServiceTest extends AbstractJUnit4SpringContextTests {
 
-	protected static final String GROUP_ID = "com.redhat.workshops";
-	protected static final String ARTIFACT_ID = "test-knowledge";
-	protected static final String VERSION = "1.0.0";
-	protected static final DeploymentUnit DEPLOYMENT_UNIT = new KModuleDeploymentUnit(GROUP_ID, ARTIFACT_ID, VERSION);
-	protected static final String PROCESS_ID = "Ruleflow";
+	@Autowired
+	protected ProcessService processService;
+	@Autowired
+	protected RuntimeDataService runtimeDataService;
+	@Autowired
+	protected DeploymentService deploymentService;
+	@Autowired
+	protected UserTaskService userTaskService;
+	
+
 	protected static PoolingDataSource pds;
 
 	@BeforeClass
 	public static void generalSetup() {
-		FluentKieModuleDeploymentHelper helper1 = KieModuleDeploymentHelper.newFluentInstance();
-		createDefaultKieBase(helper1);
-		helper1.setGroupId(GROUP_ID).setArtifactId(ARTIFACT_ID).setVersion(VERSION).addResourceFilePath("Rule.drl").addResourceFilePath("Ruleflow.bpmn")
-				.createKieJarAndDeployToMaven();
-
 		System.setProperty("java.naming.factory.initial", "bitronix.tm.jndi.BitronixInitialContextFactory");
 		pds = setupPoolingDataSource();
 	}
