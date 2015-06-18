@@ -11,9 +11,9 @@
 		<appender-ref ref="STDOUT" />
 	</root>
 
-	<logger name="org.kie" level="DEBUG" />
-	<logger name="org.drools" level="DEBUG" />
-	<logger name="org.jbpm" level="DEBUG" />
+	<logger name="org.kie" level="INFO" />
+	<logger name="org.drools" level="INFO" />
+	<logger name="org.jbpm" level="INFO" />
 	<logger name="com.redhat.bpm" level="DEBUG" />
 
 </configuration>
