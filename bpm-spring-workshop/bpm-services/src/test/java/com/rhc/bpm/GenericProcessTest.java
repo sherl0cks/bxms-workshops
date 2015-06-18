@@ -8,6 +8,7 @@ import org.jbpm.services.api.RuntimeDataService;
 import org.jbpm.services.api.UserTaskService;
 import org.jbpm.services.api.model.DeployedUnit;
 import org.jbpm.services.api.model.NodeInstanceDesc;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.runtime.process.ProcessInstance;
@@ -36,8 +37,6 @@ public class GenericProcessTest extends AbstractBpmServiceTest {
 
 		// then
 		Assert.assertEquals(1, deployedUnits.size());
-		deploymentService.undeploy(DEPLOYMENT_UNIT);
-		Assert.assertEquals(0, deployedUnits.size());
 	}
 
 	@Test
@@ -57,6 +56,12 @@ public class GenericProcessTest extends AbstractBpmServiceTest {
 		// so lets check audit data
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
 		Assert.assertEquals(3, auditData.size());
+	}
+	
+	
+	@After
+	public void cleanupDeployments(){
+		deploymentService.undeploy( DEPLOYMENT_UNIT );
 	}
 
 }
