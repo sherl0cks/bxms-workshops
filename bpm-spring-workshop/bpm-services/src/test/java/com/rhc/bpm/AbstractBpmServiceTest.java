@@ -33,14 +33,16 @@ public abstract class AbstractBpmServiceTest extends AbstractJUnit4SpringContext
 	protected DeploymentService deploymentService;
 	@Autowired
 	protected UserTaskService userTaskService;
-	
 
 	protected static PoolingDataSource pds;
 
 	@BeforeClass
 	public static void generalSetup() {
 		System.setProperty("java.naming.factory.initial", "bitronix.tm.jndi.BitronixInitialContextFactory");
-		pds = setupPoolingDataSource();
+		if (pds == null) {
+			pds = setupPoolingDataSource();
+		}
+
 	}
 
 	@Before
@@ -51,10 +53,11 @@ public abstract class AbstractBpmServiceTest extends AbstractJUnit4SpringContext
 
 	@AfterClass
 	public static void generalCleanup() {
-		System.clearProperty("java.naming.factory.initial");
-		if (pds != null) {
-			pds.close();
-		}
+//		System.clearProperty("java.naming.factory.initial");
+//		if (pds != null) {
+//			pds.close();
+//
+//		}
 	}
 
 	protected static PoolingDataSource setupPoolingDataSource() {

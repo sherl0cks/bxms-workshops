@@ -11,7 +11,13 @@
 	<name>generic bpm services</name>
 	<dependencies>
 
-
+		<!-- project dependencies -->
+		<dependency>
+			<groupId>com.redhat.workshops</groupId>
+			<artifactId>approval-knowledge</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		
 		<!-- Kie -->
 		<dependency>
 			<groupId>org.kie</groupId>
