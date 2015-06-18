@@ -14,7 +14,6 @@
 	<description>aggregator for the workshop</description>
 
 	<modules>
-		<module>../knowledge/approval-knowledge</module>
 		<module>bpm-services</module>
 		<module>bpm-inbox-war</module>
 		<module>approval-domain-model</module>
