@@ -39,7 +39,7 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	}
 	
 	@Test
-	public void shouldStartandCompleteProcesses(){
+	public void shouldStartandCompleteProcesses() throws InterruptedException{
 		// Given
 		deploymentService.deploy(DEPLOYMENT_UNIT);
 		
@@ -48,13 +48,13 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 
 		// then
 		ProcessInstance instance = processService.getProcessInstance(id);
-
+		
 		// completed processes comeback null
 		Assert.assertNull(instance);
 
 		// so lets check audit data
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
-		Assert.assertEquals(6, auditData.size());
+		Assert.assertEquals(7, auditData.size());
 	}
 
 	@After
