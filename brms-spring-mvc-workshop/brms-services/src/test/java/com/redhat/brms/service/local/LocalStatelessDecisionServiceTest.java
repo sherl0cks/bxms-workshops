@@ -35,13 +35,13 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 	public static void buildTestKJars() {
 		FluentKieModuleDeploymentHelper helper1 = KieModuleDeploymentHelper.newFluentInstance();
 		createDefaultKieBase(helper1);
-		helper1.setGroupId("com.redhat.workshops").setArtifactId("test-knowledge").setVersion("2.0").addResourceFilePath("Rule.drl")
-				.addResourceFilePath("Ruleflow.bpmn").createKieJarAndDeployToMaven();
-				
+		helper1.setGroupId("com.redhat.workshops").setArtifactId("test-knowledge").setVersion("2.0").addResourceFilePath("Rule.drl").addResourceFilePath("Ruleflow.bpmn")
+				.createKieJarAndDeployToMaven();
+
 		FluentKieModuleDeploymentHelper helper2 = KieModuleDeploymentHelper.newFluentInstance();
 		createDefaultKieBase(helper2);
-		helper2.setGroupId("com.redhat.workshops").setArtifactId("test-knowledge").setVersion("2.1").addResourceFilePath("Rule.drl")
-				.addResourceFilePath("Ruleflow.bpmn").createKieJarAndDeployToMaven();
+		helper2.setGroupId("com.redhat.workshops").setArtifactId("test-knowledge").setVersion("2.1").addResourceFilePath("Rule.drl").addResourceFilePath("Ruleflow.bpmn")
+				.createKieJarAndDeployToMaven();
 	}
 
 	@Test
@@ -56,11 +56,10 @@ public class LocalStatelessDecisionServiceTest extends AbstractJUnit4SpringConte
 		Assert.assertTrue(result);
 		decisionService.execute(facts, "Ruleflow");
 	}
-	
-	
-    private static void createDefaultKieBase(FluentKieModuleDeploymentHelper helper) {
-        KieBaseModel kieBaseModel = helper.getKieModuleModel().newKieBaseModel("defaultKieBase").addPackage("*").setDefault(true);
-        kieBaseModel.newKieSessionModel("defaultKieSession").setDefault(true);
-        kieBaseModel.newKieSessionModel("defaultStatelessKieSession").setType(KieSessionModel.KieSessionType.STATELESS).setDefault(true);
- }
+
+	private static void createDefaultKieBase(FluentKieModuleDeploymentHelper helper) {
+		KieBaseModel kieBaseModel = helper.getKieModuleModel().newKieBaseModel("defaultKieBase").addPackage("*").setDefault(true);
+		kieBaseModel.newKieSessionModel("defaultKieSession").setDefault(true);
+		kieBaseModel.newKieSessionModel("defaultStatelessKieSession").setType(KieSessionModel.KieSessionType.STATELESS).setDefault(true);
+	}
 }
