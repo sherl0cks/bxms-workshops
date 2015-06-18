@@ -16,6 +16,5 @@
 	<logger name="org.jbpm" level="INFO" />
 	<logger name="com.redhat" level="DEBUG" />
 	<logger name="bitronix" level="ERROR" />
-	<logger name="java.sql" level="WARN" />
 	<logger name="org.eclipse.aether.internal" level="ERROR" />
 </configuration>

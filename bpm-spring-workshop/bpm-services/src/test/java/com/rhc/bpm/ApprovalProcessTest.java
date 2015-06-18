@@ -54,7 +54,7 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 
 		// so lets check audit data
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
-		Assert.assertEquals(5, auditData.size());
+		Assert.assertEquals(6, auditData.size());
 	}
 
 	@After
