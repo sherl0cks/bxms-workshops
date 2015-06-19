@@ -1,12 +1,10 @@
 package com.redhat.approval.entities;
 
 import java.io.Serializable;
-import java.time.Period;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.kie.api.definition.type.PropertyReactive;
-import org.omg.CORBA.Request;
 
 import com.redhat.approval.value.RequestStatus;
 
