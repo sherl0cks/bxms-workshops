@@ -10,9 +10,12 @@ public class TestDataUtil {
 	private static Employee mary = new Employee("msmith", "Mary", "Smith", null);
 	private static Employee tom = new Employee("tbrown", "Thomas", "Brown", mary);
 	private static LocalDate startDate = new LocalDate(2015, 7, 6);
-	private static LocalDate endDate = new LocalDate(2015, 7, 10);
-	private static VacationRequest vacationRequest = new VacationRequest(tom, startDate, endDate);
+	private static LocalDate shortEndDate = new LocalDate(2015, 7, 7);
+	private static LocalDate longEndDate = new LocalDate(2015, 7, 10);
+	private static VacationRequest shortVacationRequest = new VacationRequest(tom, startDate, shortEndDate);
+	private static VacationRequest longVacationRequest = new VacationRequest(tom, startDate, longEndDate);
 
+	
 	public static Employee getMary() {
 		return mary;
 	}
@@ -21,16 +24,25 @@ public class TestDataUtil {
 		return tom;
 	}
 
-	public static VacationRequest getVacationRequest() {
-		return vacationRequest;
-	}
-
 	public static LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public static LocalDate getEndDate() {
-		return endDate;
+	public static LocalDate getShortEndDate() {
+		return shortEndDate;
 	}
+
+	public static LocalDate getLongEndDate() {
+		return longEndDate;
+	}
+
+	public static VacationRequest getShortVacationRequest() {
+		return shortVacationRequest;
+	}
+
+	public static VacationRequest getLongVacationRequest() {
+		return longVacationRequest;
+	}
+
 
 }

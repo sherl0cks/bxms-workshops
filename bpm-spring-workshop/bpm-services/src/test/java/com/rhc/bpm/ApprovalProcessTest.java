@@ -46,11 +46,32 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	}
 	
 	@Test
-	public void shouldStartAndCompleteProcesses() throws InterruptedException{
+	public void shouldStartAndCompleteProcessesForLongRequest() throws InterruptedException{
 		// Given
 		deploymentService.deploy(DEPLOYMENT_UNIT);
 		Map<String, Object> processData = new HashMap<>();
-		processData.put("vacationRequest", TestDataUtil.getVacationRequest() );
+		processData.put("vacationRequest", TestDataUtil.getLongVacationRequest() );
+		
+		// when
+		Long id = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
+
+		// then
+		ProcessInstance instance = processService.getProcessInstance(id);
+		
+		// completed processes comeback null
+		Assert.assertNull(instance);
+
+		// so lets check audit data
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
+		Assert.assertEquals(10, auditData.size());
+	}
+	
+	@Test
+	public void shouldStartAndCompleteProcessesForShortRequest() throws InterruptedException{
+		// Given
+		deploymentService.deploy(DEPLOYMENT_UNIT);
+		Map<String, Object> processData = new HashMap<>();
+		processData.put("vacationRequest", TestDataUtil.getShortVacationRequest() );
 		
 		// when
 		Long id = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
