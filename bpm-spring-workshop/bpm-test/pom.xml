@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.redhat.workshops</groupId>
@@ -13,7 +11,11 @@
 	<name>generic bpm service tests</name>
 	<dependencies>
 
-	
+		<!-- Project -->
+		<dependency>
+			<groupId>com.redhat.workshops</groupId>
+			<artifactId>approval-domain-model</artifactId>
+		</dependency>
 
 		<!-- Tests -->
 		<dependency>
@@ -25,17 +27,23 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 
+		<!-- Joda -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		
 		<!-- Cucumber -->
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-spring</artifactId>

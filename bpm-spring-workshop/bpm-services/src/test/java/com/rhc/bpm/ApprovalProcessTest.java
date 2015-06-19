@@ -16,7 +16,7 @@ import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.query.QueryContext;
 import org.kie.internal.runtime.KnowledgeContext;
 
-import com.rhc.test.TestDataUtil;
+import com.redhat.utils.TestDataUtil;
 
 /**
  * 

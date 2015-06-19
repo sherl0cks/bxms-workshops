@@ -1,9 +1,10 @@
 package com.redhat.approval.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.Period;
 
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 import org.kie.api.definition.type.PropertyReactive;
 import org.omg.CORBA.Request;
 
@@ -56,7 +57,7 @@ public class VacationRequest implements Serializable {
 	}
 
 	public int lengthInDays() {
-		return Period.between(startDate, endDate).getDays();
+		return Days.daysBetween(startDate, endDate).getDays();
 	}
 
 	public RequestStatus getStatus() {

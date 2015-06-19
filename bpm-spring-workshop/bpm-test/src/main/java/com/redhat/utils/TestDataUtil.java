@@ -1,6 +1,6 @@
-package com.rhc.test;
+package com.redhat.utils;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 
 import com.redhat.approval.entities.Employee;
 import com.redhat.approval.entities.VacationRequest;
@@ -9,8 +9,8 @@ public class TestDataUtil {
 
 	private static Employee mary = new Employee("msmith", "Mary", "Smith", null);
 	private static Employee tom = new Employee("tbrown", "Thomas", "Brown", mary);
-	private static LocalDate startDate = LocalDate.of(2015, 7, 6);
-	private static LocalDate endDate = LocalDate.of(2015, 7, 10);
+	private static LocalDate startDate = new LocalDate(2015, 7, 6);
+	private static LocalDate endDate = new LocalDate(2015, 7, 10);
 	private static VacationRequest vacationRequest = new VacationRequest(tom, startDate, endDate);
 
 	public static Employee getMary() {

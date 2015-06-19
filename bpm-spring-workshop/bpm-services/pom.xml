@@ -22,7 +22,12 @@
 			<artifactId>bpm-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.redhat.workshops</groupId>
+			<artifactId>approval-domain-model</artifactId>
+		</dependency>
+
 		<!-- Kie -->
 		<dependency>
 			<groupId>org.kie</groupId>
