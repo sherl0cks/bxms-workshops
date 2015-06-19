@@ -47,7 +47,7 @@
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="BusinessRuleTask_1" targetRef="ExclusiveGateway_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_5" tns:priority="1" name="Yes" sourceRef="ExclusiveGateway_1" targetRef="ExclusiveGateway_3">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1" language="http://www.mvel.org/2.0">return kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ).getStatus() == RequestStatus.APPROVED;</bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1" language="http://www.mvel.org/2.0">return kcontext.getVariable( &quot;vacationRequest&quot; ).getStatus() == RequestStatus.APPROVED;</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:scriptTask id="ScriptTask_3" name="Manager Review" scriptFormat="http://www.java.com/java">
       <bpmn2:incoming>SequenceFlow_20</bpmn2:incoming>
@@ -65,7 +65,7 @@
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_13" tns:priority="1" sourceRef="ScriptTask_3" targetRef="ExclusiveGateway_2"/>
     <bpmn2:sequenceFlow id="SequenceFlow_14" tns:priority="1" name="Approve or Reject" sourceRef="ExclusiveGateway_2" targetRef="ExclusiveGateway_3">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_31" language="http://www.java.com/java">return kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ).getStatus() != RequestStatus.NEED_MORE_INFO;</bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_31" language="http://www.mvel.org/2.0">return kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ).getStatus() != RequestStatus.NEED_MORE_INFO;</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="SequenceFlow_15" tns:priority="1" name="Need More Information" sourceRef="ExclusiveGateway_2" targetRef="ScriptTask_5">
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_32" language="http://www.mvel.org/2.0">return kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ).getStatus() == RequestStatus.NEED_MORE_INFO;</bpmn2:conditionExpression>
