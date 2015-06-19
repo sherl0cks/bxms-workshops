@@ -13,7 +13,11 @@
 
 
 	<!-- Do not add production dependencies outside of joda-time and sl4j!!! -->
-
-
-
+	<dependencies>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>

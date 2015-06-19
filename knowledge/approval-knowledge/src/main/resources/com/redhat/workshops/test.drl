@@ -2,20 +2,37 @@
 package com.redhat.workshops
 
 //list any import classes here.
-
+import com.redhat.approval.entities.*;
+import com.redhat.approval.value.*;
 
 
 //declare any global variables here
 
 
-
-
-rule "Your First Rule"
-	ruleflow-group "test"
+rule "Automatically Approve Requests Less Than 2 Days or Less"
+	ruleflow-group "Automated Approval Checks"
+	dialect "mvel"
 
     when
-        //conditions
+        $request : VacationRequest( lengthInDays <= 2 )
     then
-        System.out.println( "hello" );
+        modify( $request ){
+        	status = RequestStatus.APPROVED
+        };
+end
 
+
+
+rule "Automatically Approve Requests More Than 2 Days"
+	ruleflow-group "Automated Approval Checks"
+	dialect "mvel"
+
+    when
+        $request : VacationRequest( lengthInDays > 2 )
+        
+    then
+        modify( $request ){
+        	status = RequestStatus.PENDING_REVIEW
+        };
+		
 end
