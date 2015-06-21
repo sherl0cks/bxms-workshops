@@ -1,0 +1,47 @@
+<!-- camel-context.xml Spring camel context for the London weather proxy 
+	Copyright (c)2014 Kevin Boone -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.0.0.xsd">
+
+
+
+	<cxf:rsServer id="rsServer" address="/rest"
+		serviceClass="com.rh.MockServices" loggingFeatureEnabled="true"
+		loggingSizeLimit="20" />
+
+	<bean id="mockBean" class="com.rh.MockBean" />
+
+
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+		<route id="PersonServiceRoute">
+			<from uri="cxfrs:bean:rsServer?bindingStyle=SimpleConsumer" />
+			<recipientList>
+				<simple>direct-vm:${header.operationName}</simple>
+			</recipientList>
+		</route>
+
+		<route id="iAmAlive">
+			<from uri="direct-vm:iAmAlive" />
+			<to uri="bean:mockBean?method=iAmAlive" />
+		</route>
+		
+		<route id="createRequest">
+			<from uri="direct-vm:createRequest" />
+			<to uri="bean:mockBean?method=catchAll" />
+		</route>
+		
+		<route id="updateStatus">
+			<from uri="direct-vm:updateStatus" />
+			<to uri="bean:mockBean?method=catchAll" />
+		</route>
+
+	</camelContext>
+</beans>
+
