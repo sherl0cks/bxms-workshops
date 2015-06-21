@@ -18,9 +18,7 @@
         <tns:onEntry-script scriptFormat="http://www.mvel.org/2.0">
           <tns:script>kcontext.getKnowledgeRuntime().insert( kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ) );</tns:script>
         </tns:onEntry-script>
-        <tns:onExit-script scriptFormat="http://www.mvel.org/2.0">
-          <tns:script>System.out.println( kcontext.getProcessInstance().getVariable( &quot;vacationRequest&quot; ) );</tns:script>
-        </tns:onExit-script>
+        <tns:onExit-script scriptFormat="http://www.mvel.org/2.0"/>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>

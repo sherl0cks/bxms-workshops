@@ -1,5 +1,8 @@
 package com.redhat.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.joda.time.LocalDate;
 
 import com.redhat.approval.entities.Employee;
@@ -44,5 +47,16 @@ public class TestDataUtil {
 		return longVacationRequest;
 	}
 
+	public static Map<String,Object> getShortVacationRequestInMap() {
+		Map<String,Object> map = new HashMap<>();
+		map.put("vacationRequest", shortVacationRequest);
+		return map;
+	}
+
+	public static Map<String,Object> getLongVacationRequestInMap() {
+		Map<String,Object> map = new HashMap<>();
+		map.put("vacationRequest", longVacationRequest);
+		return map;
+	}
 
 }
