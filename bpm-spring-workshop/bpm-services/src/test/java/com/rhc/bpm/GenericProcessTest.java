@@ -15,6 +15,8 @@ import org.kie.api.builder.helper.KieModuleDeploymentHelper;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.query.QueryContext;
 
+import com.rhc.utiils.TestUtils;
+
 public class GenericProcessTest extends AbstractBpmServiceTest {
 
 	protected static final String GROUP_ID = "com.redhat.workshops";
@@ -26,9 +28,9 @@ public class GenericProcessTest extends AbstractBpmServiceTest {
 	@BeforeClass
 	public static void buildTestRules() {
 		FluentKieModuleDeploymentHelper helper1 = KieModuleDeploymentHelper.newFluentInstance();
-		createDefaultKieBase(helper1);
-		helper1.setGroupId(GROUP_ID).setArtifactId(ARTIFACT_ID).setVersion(VERSION).addResourceFilePath("Rule.drl").addResourceFilePath("Ruleflow.bpmn")
-				.createKieJarAndDeployToMaven();
+		TestUtils.createDefaultKieBase(helper1);
+		helper1.setGroupId(GROUP_ID).setArtifactId(ARTIFACT_ID).setVersion(VERSION).addResourceFilePath("Rule.drl")
+				.addResourceFilePath("Ruleflow.bpmn").createKieJarAndDeployToMaven();
 	}
 
 	@Test
@@ -59,7 +61,8 @@ public class GenericProcessTest extends AbstractBpmServiceTest {
 		Assert.assertNull(instance);
 
 		// so lets check audit data
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id,
+				new QueryContext());
 		Assert.assertEquals(3, auditData.size());
 	}
 

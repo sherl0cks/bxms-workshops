@@ -8,7 +8,7 @@
 	<groupId>com.redhat.workshops</groupId>
 	<artifactId>fuse-mock-services</artifactId>
 	<name>fuse mock services</name>
-	<version>0.0.0.5</version>
+	<version>0.0.0.17</version>
 	<packaging>bundle</packaging>
 
 	<dependencies>
@@ -42,6 +42,8 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		
+
 	</dependencies>
 
 	<build>
@@ -65,7 +67,7 @@
 
 		</plugins>
 
-		
+
 	</build>
 
 	<distributionManagement>
