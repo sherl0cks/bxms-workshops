@@ -1,9 +1,6 @@
 package com.rhc.bpm;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.jbpm.kie.services.impl.KModuleDeploymentUnit;
 import org.jbpm.services.api.model.DeployedUnit;
@@ -13,12 +10,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.api.task.model.TaskSummary;
 import org.kie.internal.query.QueryContext;
-import org.kie.internal.query.QueryFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.redhat.approval.entities.VacationRequest;
 import com.redhat.bpm.approval.VacationRequestService;
 import com.redhat.utils.TestDataUtil;
 
@@ -58,6 +52,7 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	@Test
 	public void shouldStartApproveAndCompleteProcessesForLongRequest() throws InterruptedException {
 		// Given
+
 		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getLongVacationRequest());
 
 		// when
@@ -66,26 +61,32 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		// then
 		QueryContext context = new QueryContext();
 		context.setCount(new Integer(100));
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
+				processInstanceId, context);
+
 		Assert.assertEquals(10, auditData.size());
 	}
 
 	@Test
 	public void shouldStartRequestMoreInfoAndCompleteProcessesForLongRequest() throws InterruptedException {
 		// Given
+
 		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getLongVacationRequest());
 
 		// when
-		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID, "There is a big meeting during this time, why is this important?");
+		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID,
+				"There is a big meeting during this time, why is this important?");
 
-		vacationRequestService.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
+		vacationRequestService
+				.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
 
 		vacationRequestService.approveTheRequest(MANAGER_ID);
 
 		// then
 		QueryContext context = new QueryContext();
 		context.setCount(new Integer(100));
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
+				processInstanceId, context);
 		Assert.assertEquals(14, auditData.size());
 	}
 
@@ -100,7 +101,8 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		// then
 		ProcessInstance instance = processService.getProcessInstance(processInstanceId);
 		Assert.assertNull(instance);
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, new QueryContext());
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
+				processInstanceId, new QueryContext());
 		Assert.assertEquals(7, auditData.size());
 	}
 

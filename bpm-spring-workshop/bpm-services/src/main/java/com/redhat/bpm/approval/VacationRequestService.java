@@ -33,7 +33,7 @@ public class VacationRequestService {
 
 	public Long startProcess(VacationRequest request) {
 		ensureKJarDeployed();
-		
+
 		Map<String, Object> processData = request.toProcessDataMap();
 		return processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
 	}
@@ -76,10 +76,10 @@ public class VacationRequestService {
 
 		userTaskService.complete(taskId, managerId, outVars);
 	}
-	
-	public void ensureKJarDeployed(){
+
+	public void ensureKJarDeployed() {
 		Collection<DeployedUnit> deployedUnits = deploymentService.getDeployedUnits();
-		if ( deployedUnits.size() == 0 ){
+		if (deployedUnits.size() == 0) {
 			deploymentService.deploy(DEPLOYMENT_UNIT);
 		}
 	}
