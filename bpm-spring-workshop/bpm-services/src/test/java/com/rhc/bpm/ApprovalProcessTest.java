@@ -58,23 +58,14 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	@Test
 	public void shouldStartApproveAndCompleteProcessesForLongRequest() throws InterruptedException {
 		// Given
-		deploymentService.deploy(DEPLOYMENT_UNIT);
-		Map<String, Object> processData = TestDataUtil.getLongVacationRequest().toProcessDataMap();
+		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getLongVacationRequest());
 
 		// when
-		Long processInstanceId = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
-
-		// then
-		ProcessInstance instance = processService.getProcessInstance(processInstanceId);
-
-		// completed processes comeback null
-		Assert.assertNotNull(instance);
-
 		vacationRequestService.approveTheRequest(MANAGER_ID);
 
-		// so lets check audit data
+		// then
 		QueryContext context = new QueryContext();
-		context.setCount( new Integer(100) );
+		context.setCount(new Integer(100));
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
 		Assert.assertEquals(10, auditData.size());
 	}
@@ -82,29 +73,18 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	@Test
 	public void shouldStartRequestMoreInfoAndCompleteProcessesForLongRequest() throws InterruptedException {
 		// Given
-		deploymentService.deploy(DEPLOYMENT_UNIT);
-		Map<String, Object> processData = TestDataUtil.getLongVacationRequest().toProcessDataMap();
-
-		
-		Long processInstanceId = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
-
-
-		ProcessInstance instance = processService.getProcessInstance(processInstanceId);
-
-		// process is incomplete, will not be null
-		Assert.assertNotNull(instance);
+		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getLongVacationRequest());
 
 		// when
-		// let's do some stuff on the process
 		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID, "There is a big meeting during this time, why is this important?");
-		
+
 		vacationRequestService.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
-		
+
 		vacationRequestService.approveTheRequest(MANAGER_ID);
-		
-		// and then check that we hit all the elements
+
+		// then
 		QueryContext context = new QueryContext();
-		context.setCount( new Integer(100) );
+		context.setCount(new Integer(100));
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
 		Assert.assertEquals(14, auditData.size());
 	}
@@ -112,20 +92,15 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	@Test
 	public void shouldStartAndCompleteProcessesForShortRequest() throws InterruptedException {
 		// Given
-		deploymentService.deploy(DEPLOYMENT_UNIT);
-		Map<String, Object> processData = TestDataUtil.getShortVacationRequest().toProcessDataMap();
+		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getShortVacationRequest());
 
 		// when
-		Long id = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
+		// should auto approve and complete without human intervention
 
 		// then
-		ProcessInstance instance = processService.getProcessInstance(id);
-
-		// completed processes comeback null
+		ProcessInstance instance = processService.getProcessInstance(processInstanceId);
 		Assert.assertNull(instance);
-
-		// so lets check audit data
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, new QueryContext());
 		Assert.assertEquals(7, auditData.size());
 	}
 
