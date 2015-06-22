@@ -22,6 +22,7 @@ public class VacationRequest implements Serializable {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private RequestStatus status = RequestStatus.CREATED;
+	private String comment;
 
 	public VacationRequest() {
 	}
@@ -67,18 +68,26 @@ public class VacationRequest implements Serializable {
 	public void setStatus(RequestStatus status) {
 		this.status = status;
 	}
-	
-	public Map<String,Object> toProcessDataMap(){
-		Map<String,Object> map = new HashMap<>();
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comments) {
+		this.comment = comments;
+	}
+
+	public Map<String, Object> toProcessDataMap() {
+		Map<String, Object> map = new HashMap<>();
 		map.put("vacationRequest", this);
-		map.put("managerId", this.getEmployee().getManager().getUserId() );
-		map.put("employeeId", this.getEmployee().getUserId() );
+		map.put("managerId", this.getEmployee().getManager().getUserId());
+		map.put("employeeId", this.getEmployee().getUserId());
 		return map;
 	}
 
 	@Override
 	public String toString() {
-		return "VacationRequest [employee=" + employee + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + "]";
+		return "VacationRequest [employee=" + employee + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + ", comment=" + comment + "]";
 	}
 
 }
