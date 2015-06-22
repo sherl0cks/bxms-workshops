@@ -5,23 +5,24 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 // This could be an interface if CAMEL-6014 is fixed.
 
 @Path("/")
 public class MockServices {
 
-	@POST
-	@Path("employees/{id}/requests")
+	@GET
+	@Path("employees/{id}")
 	@Produces("application/json")
-	public String createRequest(@PathParam("id") String id) {
+	public String getEmployeeInfo(@PathParam("id") String id, @QueryParam("fields") String fields) {
 		return null;
 	}
 
 	@POST
-	@Path("requests/{id}/status")
+	@Path("employees/{id}/requests")
 	@Produces("application/json")
-	public String updateStatus(@PathParam("id") String id) {
+	public String createRequest(@PathParam("id") String id) {
 		return null;
 	}
 

@@ -10,11 +10,11 @@
        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.0.0.xsd">
 
+	
 
-
-	<cxf:rsServer id="rsServer" address="/rest"
-		serviceClass="com.rh.MockServices" loggingFeatureEnabled="true"
-		loggingSizeLimit="20" />
+	<cxf:rsServer id="rsServer" address="/rest" serviceClass="com.rh.MockServices"
+		loggingFeatureEnabled="true" loggingSizeLimit="20"/>
+		
 
 	<bean id="mockBean" class="com.rh.MockBean" />
 
@@ -31,15 +31,15 @@
 			<from uri="direct-vm:iAmAlive" />
 			<to uri="bean:mockBean?method=iAmAlive" />
 		</route>
-		
+
 		<route id="createRequest">
 			<from uri="direct-vm:createRequest" />
-			<to uri="bean:mockBean?method=catchAll" />
+			<to uri="bean:mockBean?method=createRequest" />
 		</route>
-		
-		<route id="updateStatus">
-			<from uri="direct-vm:updateStatus" />
-			<to uri="bean:mockBean?method=catchAll" />
+
+		<route id="getEmployeeInfo">
+			<from uri="direct-vm:getEmployeeInfo" />
+			<to uri="bean:mockBean?method=getEmployeeInfo" />
 		</route>
 
 	</camelContext>
