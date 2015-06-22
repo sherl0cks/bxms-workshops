@@ -18,7 +18,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import com.rhc.inbox.Inbox;
 
-@Path("/rest/inboxes")
+@Path("/inboxes")
 public class InboxEndpoint {
 
 	private static Long CURRENT_ID = 0l;
