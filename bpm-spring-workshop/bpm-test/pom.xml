@@ -50,13 +50,7 @@
 		</dependency>
 
 
-		<!-- jmockit -->
-		<dependency>
-			<groupId>org.jmockit</groupId>
-			<artifactId>jmockit</artifactId>
-			<version>1.17</version>
-		</dependency>
-
+		
 
 
 	</dependencies>
