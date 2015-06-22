@@ -67,43 +67,7 @@ a,
  * Typography
 /* ---------------------------------------------- */
 
-h1, h2, h3, h4, h5, h6 {
-	font: 700 64px Overpass, sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 5px;
-	margin: 5px 0 5px;
-	color: #222;
-	margin-bottom:200px;
-}
 
-h2 {
-	font-size: 30px;
-	text-transform: initial;
-	margin: 0 0 30px;
-}
-
-h3 {
-	font-size: 13px;
-	letter-spacing: 1px;
-	margin: 0 0 5px;
-}
-
-h4 {
-	font-size: 12px;
-	letter-spacing: 1px;
-}
-
-h5 {
-	font-size: 12px;
-	letter-spacing: 1px;
-	font-weight: 400;
-}
-
-h6 {
-	font-size: 11px;
-	letter-spacing: 1px;
-	font-weight: 400;
-}
 
 /* ---------------------------------------------- /*
  * Reset border-radius
