@@ -2,6 +2,7 @@ package com.rhc.bpm;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.jbpm.kie.services.impl.KModuleDeploymentUnit;
@@ -13,7 +14,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.runtime.KieContext;
 import org.kie.api.runtime.process.ProcessInstance;
+import org.kie.api.task.model.TaskSummary;
 import org.kie.internal.query.QueryContext;
+import org.kie.internal.query.QueryFilter;
 import org.kie.internal.runtime.KnowledgeContext;
 
 import com.redhat.utils.TestDataUtil;
@@ -30,7 +33,9 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	protected static final String VERSION = "1.0.0-SNAPSHOT";
 	protected static final DeploymentUnit DEPLOYMENT_UNIT = new KModuleDeploymentUnit(GROUP_ID, ARTIFACT_ID, VERSION);
 	protected static final String PROCESS_ID = "com.redhat.workshops.VacationApproval";
-
+	
+	protected static final String MANAGER_ID = "msmith";
+	
 	@Test
 	public void shouldDeployApprovalProcess() {
 		// given
@@ -49,8 +54,8 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	public void shouldStartAndCompleteProcessesForLongRequest() throws InterruptedException{
 		// Given
 		deploymentService.deploy(DEPLOYMENT_UNIT);
-		Map<String, Object> processData = new HashMap<>();
-		processData.put("vacationRequest", TestDataUtil.getLongVacationRequest() );
+		Map<String, Object> processData = TestDataUtil.getLongVacationRequestInMap();
+		processData.put("managerId", MANAGER_ID);
 		
 		// when
 		Long id = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
@@ -59,7 +64,14 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		ProcessInstance instance = processService.getProcessInstance(id);
 		
 		// completed processes comeback null
-		Assert.assertNull(instance);
+		Assert.assertNotNull(instance);
+		
+		List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner(MANAGER_ID, new QueryFilter());
+		Assert.assertEquals( 1, tasks.size() );
+		
+		long taskId = tasks.get(0).getId();
+		userTaskService.start(taskId, MANAGER_ID);
+		userTaskService.complete(taskId, MANAGER_ID, null);
 
 		// so lets check audit data
 		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
@@ -70,8 +82,7 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 	public void shouldStartAndCompleteProcessesForShortRequest() throws InterruptedException{
 		// Given
 		deploymentService.deploy(DEPLOYMENT_UNIT);
-		Map<String, Object> processData = new HashMap<>();
-		processData.put("vacationRequest", TestDataUtil.getShortVacationRequest() );
+		Map<String, Object> processData = TestDataUtil.getShortVacationRequestInMap();
 		
 		// when
 		Long id = processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
