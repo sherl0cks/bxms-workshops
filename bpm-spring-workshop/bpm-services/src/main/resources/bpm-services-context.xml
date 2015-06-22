@@ -12,9 +12,20 @@
 	<import resource="classpath:jpa-context.xml" />
 	<import resource="classpath:jbpm-context.xml" />
 
+
+	<bean id="vacationRequestService" class="com.redhat.bpm.approval.VacationRequestService">
+		<property name="userTaskService" ref="userTaskService" />
+		<property name="runtimeDataService" ref="runtimeDataService" />
+		<property name="deploymentService" ref="deploymentService" />
+		<property name="processService" ref="processService" />
+	</bean>
+
+
 	<beans profile="test">
 		<bean id="btmConfig" factory-method="getConfiguration" class="bitronix.tm.TransactionManagerServices" />
 		<bean id="bitronixTransactionManager" factory-method="getTransactionManager" class="bitronix.tm.TransactionManagerServices" depends-on="btmConfig" destroy-method="shutdown" />
 	</beans>
-	
+
+
+
 </beans>

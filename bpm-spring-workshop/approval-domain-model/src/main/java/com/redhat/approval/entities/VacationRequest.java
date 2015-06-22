@@ -1,6 +1,8 @@
 package com.redhat.approval.entities;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -64,6 +66,14 @@ public class VacationRequest implements Serializable {
 
 	public void setStatus(RequestStatus status) {
 		this.status = status;
+	}
+	
+	public Map<String,Object> toProcessDataMap(){
+		Map<String,Object> map = new HashMap<>();
+		map.put("vacationRequest", this);
+		map.put("managerId", this.getEmployee().getManager().getUserId() );
+		map.put("employeeId", this.getEmployee().getUserId() );
+		return map;
 	}
 
 	@Override
