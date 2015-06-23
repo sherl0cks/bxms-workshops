@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
@@ -88,6 +89,26 @@ public class VacationRequestEndpoint {
 			String managerId = (String) vacationRequestService.getProcessService().getProcessInstanceVariable(id,
 					"managerId");
 			vacationRequestService.approveTheRequest(managerId);
+			return Response.ok().build();
+		}
+	}
+
+	@PUT
+	@Path("/{id}/comment")
+	public Response comment(@PathParam("id") final Long id, @QueryParam("user") String user, String comment) {
+		ProcessInstanceDesc instance = vacationRequestService.getRuntimeDataService().getProcessInstanceById(id);
+		if (instance == null) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		} else {
+			if (user.equals("manager")) {
+				String managerId = (String) vacationRequestService.getProcessService().getProcessInstanceVariable(id,
+						"managerId");
+				vacationRequestService.needMoreInfoOnTheRequest(managerId, comment);
+			} else {
+				String employeeId = (String) vacationRequestService.getProcessService().getProcessInstanceVariable(id,
+						"employeeId");
+				vacationRequestService.provideMoreInformation(employeeId, comment);
+			}
 			return Response.ok().build();
 		}
 	}
