@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -66,7 +67,7 @@ public class VacationRequestEndpoint {
 	}
 
 	@GET
-	@Path("/{id:[0-9][0-9]*}")
+	@Path("/{id}")
 	@Produces({ "application/json" })
 	public Response getProcess(@PathParam("id") final Long id) {
 		ProcessInstanceDesc instance = vacationRequestService.getRuntimeDataService().getProcessInstanceById(id);
@@ -77,4 +78,17 @@ public class VacationRequestEndpoint {
 		}
 	}
 
+	@PUT
+	@Path("/{id}/approve")
+	public Response approveRequest(@PathParam("id") final Long id) {
+		ProcessInstanceDesc instance = vacationRequestService.getRuntimeDataService().getProcessInstanceById(id);
+		if (instance == null) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		} else {
+			String managerId = (String) vacationRequestService.getProcessService().getProcessInstanceVariable(id,
+					"managerId");
+			vacationRequestService.approveTheRequest(managerId);
+			return Response.ok().build();
+		}
+	}
 }
