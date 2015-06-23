@@ -80,7 +80,9 @@ public class VacationRequest implements Serializable {
 	public Map<String, Object> toProcessDataMap() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("vacationRequest", this);
-		map.put("managerId", this.getEmployee().getManager().getUserId());
+		if ( this.getEmployee().getManager() != null ){
+			map.put("managerId", this.getEmployee().getManager().getUserId());
+		}
 		map.put("employeeId", this.getEmployee().getUserId());
 		return map;
 	}

@@ -52,4 +52,9 @@ public class Tasks {
 		this.total = total;
 	}
 
+	@Override
+	public String toString() {
+		return "Tasks [current=" + current + ", rowCount=" + rowCount + ", rows=" + rows + ", total=" + total + "]";
+	}
+
 }
