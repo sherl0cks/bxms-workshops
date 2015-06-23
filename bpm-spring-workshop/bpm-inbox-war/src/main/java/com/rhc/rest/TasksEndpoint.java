@@ -54,7 +54,7 @@ public class TasksEndpoint {
 		List<TaskSummary> tasks = new ArrayList<>();
 
 		TaskSummaryImpl t = new TaskSummaryImpl();
-		t.setName("foo");
+		t.setName("fooooooooooo");
 		t.setId(0l);
 		t.setStatus(Status.Ready);
 		tasks.add(t);
