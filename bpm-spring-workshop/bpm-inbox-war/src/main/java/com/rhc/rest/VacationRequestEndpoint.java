@@ -1,7 +1,6 @@
 package com.rhc.rest;
 
 import java.net.URI;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -16,7 +15,6 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import org.jbpm.services.api.model.ProcessInstanceDesc;
-import org.jbpm.services.api.model.UserTaskInstanceDesc;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,23 +39,26 @@ public class VacationRequestEndpoint {
 
 	@POST
 	@Consumes({ "application/x-www-form-urlencoded" })
-	public Response create(@FormParam("first-name") String firstName, @FormParam("last-name") String lastName, @FormParam("userid") String userId,
-			@FormParam("start-date") String startDate, @FormParam("end-date") String endDate) {
+	public Response create(@FormParam("first-name") String firstName, @FormParam("last-name") String lastName,
+			@FormParam("userid") String userId, @FormParam("start-date") String startDate,
+			@FormParam("end-date") String endDate) {
 
 		VacationRequest vacationRequest = new VacationRequest();
 
 		String[] start = startDate.split("-");
-		vacationRequest.setStartDate(new LocalDate(Integer.valueOf(start[0]), Integer.valueOf(start[1]), Integer.valueOf(start[2])));
+		vacationRequest.setStartDate(new LocalDate(Integer.valueOf(start[0]), Integer.valueOf(start[1]), Integer
+				.valueOf(start[2])));
 
 		String[] end = endDate.split("-");
-		vacationRequest.setEndDate(new LocalDate(Integer.valueOf(end[0]), Integer.valueOf(end[1]), Integer.valueOf(end[2])));
+		vacationRequest.setEndDate(new LocalDate(Integer.valueOf(end[0]), Integer.valueOf(end[1]), Integer
+				.valueOf(end[2])));
 
 		Employee employee = new Employee(userId, firstName, lastName);
 		vacationRequest.setEmployee(employee);
 
 		Long processInstanceId = vacationRequestService.startProcess(vacationRequest);
 
-		URI uri = UriBuilder.fromPath(uriInfo.getBaseUri() + "reqests/" + processInstanceId.toString()).build();
+		URI uri = UriBuilder.fromPath(uriInfo.getBaseUri() + "requests/" + processInstanceId.toString()).build();
 
 		LOGGER.info(uri.toString());
 
