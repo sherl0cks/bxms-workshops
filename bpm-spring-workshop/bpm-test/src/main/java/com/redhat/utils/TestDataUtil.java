@@ -7,8 +7,8 @@ import com.redhat.approval.entities.VacationRequest;
 
 public class TestDataUtil {
 
-	private static Employee mary = new Employee("msmith", "Mary", "Smith", null);
-	private static Employee tom = new Employee("tbrown", "Thomas", "Brown", mary);
+	private static Employee mary = new Employee("msmith", "Mary", "Smith");
+	private static Employee tom = new Employee("tbrown", "Thomas", "Brown");
 	private static LocalDate startDate = new LocalDate(2015, 7, 6);
 	private static LocalDate shortEndDate = new LocalDate(2015, 7, 7);
 	private static LocalDate longEndDate = new LocalDate(2015, 7, 10);
