@@ -62,6 +62,8 @@ public class VacationRequestService {
 		List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner(managerId, new QueryFilter());
 
 		long taskId = tasks.get(0).getId();
+
+		System.err.println(processService.getProcessInstanceVariables(tasks.get(0).getProcessInstanceId()));
 		userTaskService.start(taskId, managerId);
 
 		Map<String, Object> taskVar = userTaskService.getTaskInputContentByTaskId(taskId);
