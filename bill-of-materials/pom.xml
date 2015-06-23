@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.redhat.workshops</groupId>
 	<artifactId>bill-of-materials</artifactId>
@@ -111,6 +109,11 @@
 			<dependency>
 				<groupId>org.jbpm</groupId>
 				<artifactId>jbpm-services-api</artifactId>
+				<version>${bpms.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbpm</groupId>
+				<artifactId>jbpm-workitems</artifactId>
 				<version>${bpms.version}</version>
 			</dependency>
 			<dependency>
@@ -276,13 +279,13 @@
 				<artifactId>cucumber-java</artifactId>
 				<version>${cucumber.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>info.cukes</groupId>
 				<artifactId>cucumber-spring</artifactId>
 				<version>${cucumber.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>info.cukes</groupId>
 				<artifactId>cucumber-junit</artifactId>
@@ -309,7 +312,7 @@
 				<artifactId>bpm-test</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 
 		</dependencies>
 	</dependencyManagement>
@@ -369,8 +372,7 @@
 	</profiles>
 
 
-	<!-- This is here to increase portability of the codebase, no settings.xml 
-		needed -->
+	<!-- This is here to increase portability of the codebase, no settings.xml needed -->
 	<repositories>
 		<repository>
 			<id>jboss-maven-repository</id>
