@@ -16,6 +16,9 @@
 <link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
 <link href="assets/css/animate.css" rel="stylesheet">
 
+<!-- Bootgrid -->
+<link href="assets/css/jquery.bootgrid.min.css" rel="stylesheet">
+
 <!-- Custom styles CSS -->
 <link href="assets/css/style.css" rel="stylesheet" media="screen">
 
@@ -87,7 +90,7 @@
 
 	<!-- Navigation end -->
 
-	<!-- Services start -->
+	<!-- Overview start -->
 
 	<section id="overview" class="pfblock pfblock-gray">
 		<div class="container">
@@ -130,7 +133,7 @@
 						</div>
 						<div class="iconbox-text">
 							<h3 class="iconbox-title">CI/CD</h3>
-							<div class="iconbox-desc">Build a simple deployment pipeline with Red Hat JBoss EAP and Openshift</div>
+							<div class="iconbox-desc">Build a simple deployment pipeline with Red Hat JBoss EAP and Openshift Online</div>
 						</div>
 					</div>
 
@@ -169,9 +172,32 @@
 		<!-- .container -->
 	</section>
 
-	<!-- Services end -->
+	<!-- Overview end -->
 
-	<section id="portfolio" class="pfblock"></section>
+	<section id="portfolio" class="pfblock">
+
+		<div class="container">
+			<h1>Human Task Inbox</h1>
+			<table id="grid-data" class="table table-condensed table-hover table-striped">
+				<thead>
+					<tr>
+						<th data-column-id="id" data-type="numeric">ID</th>
+						<th data-column-id="name">Name</th>
+						<th data-column-id="status" data-order="desc">Status</th>
+						<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>10238</td>
+						<td>eduardo@pingpong.com</td>
+						<td>14.10.2013</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- .container -->
+	</section>
 
 
 	<!-- Javascript files -->
@@ -188,5 +214,27 @@
 	<script src="assets/js/jquery.cbpQTRotator.js"></script>
 	<script src="assets/js/custom.js"></script>
 
+	<script src="assets/js/jquery.bootgrid.fa.min.js"></script>
+	<script src="assets/js/jquery.bootgrid.min.js"></script>
+	<script>
+	$("#grid-data").bootgrid({
+	    ajax: true,
+	    post: function ()
+	    {
+	        /* To accumulate custom parameter with the request object */
+	        return {
+	            id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+	        };
+	    },
+	    url: "http://bpmworkshop-rhcbap.rhcloud.com/rest/tasks",
+	    formatters: {
+	        "link": function(column, row)
+	        {
+	            return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+	        }
+	    }
+	});
+	
+    </script>
 </body>
 </html>
