@@ -15,7 +15,7 @@ public class CucumberProfileRunner extends Cucumber {
 	private static PoolingDataSource pds;
 
 	static {
-		// System.getProperties().setProperty("spring.active.profiles", "test");
+		System.getProperties().setProperty("spring.profiles.active", "test");
 		TestUtils.setupPoolingDataSource();
 
 	}
