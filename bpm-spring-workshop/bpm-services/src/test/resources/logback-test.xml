@@ -14,6 +14,7 @@
 	<logger name="org.kie" level="INFO" />
 	<logger name="org.drools" level="INFO" />
 	<logger name="org.jbpm" level="INFO" />
+	<logger name="org.drools.core.xml" level="OFF" />
 	<logger name="com.redhat" level="DEBUG" />
 	<logger name="bitronix" level="ERROR" />
 	<logger name="java.sql" level="WARN" />
