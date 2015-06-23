@@ -76,6 +76,14 @@ public class VacationRequest implements Serializable {
 	public void setComment(String comments) {
 		this.comment = comments;
 	}
+	
+	/*
+	 * This is a hack for expediency
+	 */
+	public String parseResponse(String json){
+		
+		return json.substring(14, 20);
+	}
 
 	public Map<String, Object> toProcessDataMap() {
 		Map<String, Object> map = new HashMap<>();

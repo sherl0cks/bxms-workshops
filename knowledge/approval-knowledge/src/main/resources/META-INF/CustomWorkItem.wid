@@ -3,11 +3,13 @@ import org.drools.process.core.datatype.impl.type.StringDataType;
 
 [
   [
-    "name" : "Rest",
+    "name" : "REST",
      "parameters" : [
          "Url" : new StringDataType()
       ],
-     
+     "results" : [
+        "Result" : new ObjectDataType(),
+      ],
      "icon" : "icons/icon.jpg",
     "displayName" : "REST"
   ]

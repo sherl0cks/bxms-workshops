@@ -22,4 +22,4 @@ Feature: Vacation Approvals
     And my manager asks for more information
     And I reply with a acceptable answer
     And my manager approves the request
-    Then the request is approved
+	Then the request is approved

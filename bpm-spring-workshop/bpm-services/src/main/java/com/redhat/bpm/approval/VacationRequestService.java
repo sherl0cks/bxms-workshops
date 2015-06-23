@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.jbpm.kie.services.impl.KModuleDeploymentUnit;
+import org.jbpm.runtime.manager.impl.deploy.DeploymentDescriptorImpl;
 import org.jbpm.services.api.DeploymentService;
 import org.jbpm.services.api.ProcessService;
 import org.jbpm.services.api.RuntimeDataService;
@@ -14,6 +15,8 @@ import org.jbpm.services.api.model.DeployedUnit;
 import org.jbpm.services.api.model.DeploymentUnit;
 import org.kie.api.task.model.TaskSummary;
 import org.kie.internal.query.QueryFilter;
+import org.kie.internal.runtime.conf.DeploymentDescriptor;
+import org.kie.internal.runtime.conf.NamedObjectModel;
 
 import com.redhat.approval.entities.VacationRequest;
 import com.redhat.approval.value.RequestStatus;
@@ -23,7 +26,7 @@ public class VacationRequestService {
 	protected static final String GROUP_ID = "com.redhat.workshops";
 	protected static final String ARTIFACT_ID = "approval-knowledge";
 	protected static final String VERSION = "1.0.0-SNAPSHOT";
-	protected static final DeploymentUnit DEPLOYMENT_UNIT = new KModuleDeploymentUnit(GROUP_ID, ARTIFACT_ID, VERSION);
+	protected static final DeploymentUnit DEPLOYMENT_UNIT = getDeploymentUnit();
 	protected static final String PROCESS_ID = "com.redhat.workshops.VacationApproval";
 
 	protected ProcessService processService;
@@ -84,6 +87,15 @@ public class VacationRequestService {
 		if (deployedUnits.size() == 0) {
 			deploymentService.deploy(DEPLOYMENT_UNIT);
 		}
+	}
+	
+	private static DeploymentUnit getDeploymentUnit(){
+		KModuleDeploymentUnit deploymentUnit = new KModuleDeploymentUnit(GROUP_ID, ARTIFACT_ID, VERSION);
+		DeploymentDescriptor baseDescriptor = new DeploymentDescriptorImpl("org.jbpm.persistence.jpa");
+		DeploymentDescriptor deploymentDescriptor = baseDescriptor.getBuilder().addWorkItemHandler( new NamedObjectModel("REST", "org.jbpm.process.workitem.rest.RESTWorkItemHandler") ).get();
+		deploymentUnit.setDeploymentDescriptor(deploymentDescriptor);
+		
+		return deploymentUnit;
 	}
 
 	public ProcessService getProcessService() {

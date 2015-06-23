@@ -6,6 +6,7 @@
   <bpmn2:itemDefinition id="ItemDefinition_3" isCollection="false" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="ItemDefinition_428" isCollection="false" structureRef="com.redhat.approval.entities.Employee"/>
   <bpmn2:itemDefinition id="ItemDefinition_429" isCollection="false" structureRef="com.redhat.approval.entities.VacationRequest"/>
+  <bpmn2:itemDefinition id="ItemDefinition_4" isCollection="false" structureRef="java.lang.String"/>
   <bpmn2:process id="com.redhat.workshops.VacationApproval" tns:packageName="com.redhat.workshops" name="VacationApproval" isExecutable="true" processType="Private">
     <bpmn2:extensionElements>
       <tns:import name="com.redhat.approval.entities.Employee"/>
@@ -27,7 +28,6 @@
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
     </bpmn2:businessRuleTask>
-    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ScriptTask_2" targetRef="BusinessRuleTask_1"/>
     <bpmn2:endEvent id="EndEvent_3" name="End">
       <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
     </bpmn2:endEvent>
@@ -36,11 +36,6 @@
       <bpmn2:incoming>SequenceFlow_12</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
       <bpmn2:script>System.out.println( &quot;Complete Vacation Request&quot; );</bpmn2:script>
-    </bpmn2:scriptTask>
-    <bpmn2:scriptTask id="ScriptTask_2" name="Create Vacation Request" scriptFormat="http://www.mvel.org/2.0">
-      <bpmn2:incoming>SequenceFlow_23</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
-      <bpmn2:script>kcontext.getProcessInstance().setVariable( &quot;managerId&quot;, &quot;msmith&quot; )</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_1" name="Is Auto Approved?" gatewayDirection="Diverging">
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
@@ -77,9 +72,8 @@
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:startEvent id="StartEvent_2" name="Start">
-      <bpmn2:outgoing>SequenceFlow_23</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_23" tns:priority="1" sourceRef="StartEvent_2" targetRef="ScriptTask_2"/>
     <bpmn2:userTask id="UserTask_3" name="Manager Review">
       <bpmn2:extensionElements>
         <tns:onEntry-script scriptFormat="http://www.mvel.org/2.0">
@@ -262,6 +256,39 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
       </bpmn2:potentialOwner>
     </bpmn2:userTask>
     <bpmn2:sequenceFlow id="SequenceFlow_11" tns:priority="1" sourceRef="UserTask_4" targetRef="ExclusiveGateway_4"/>
+    <bpmn2:task id="Task_1" tns:taskName="REST" tns:displayName="REST" tns:icon="icons/icon.jpg" name="Get Manager ID">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.mvel.org/2.0"/>
+        <tns:onExit-script scriptFormat="http://www.mvel.org/2.0">
+          <tns:script>kcontext.getProcessInstance().setVariable( &quot;managerId&quot;, vacationRequest.parseResponse(managerId) );</tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_1">
+        <bpmn2:dataInput id="DataInput_3" itemSubjectRef="ItemDefinition_4" name="Url"/>
+        <bpmn2:dataOutput id="DataOutput_4" itemSubjectRef="ItemDefinition_1" name="Result"/>
+        <bpmn2:inputSet id="_InputSet_7">
+          <bpmn2:dataInputRefs>DataInput_3</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_1" name="Output Set 1">
+          <bpmn2:dataOutputRefs>DataOutput_4</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_2">
+        <bpmn2:targetRef>DataInput_3</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_1">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_4">http://fuseapp2-rhcbap.rhcloud.com/cxf/rest/employees/tedwards</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_3">DataInput_3</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_4">
+        <bpmn2:sourceRef>DataOutput_4</bpmn2:sourceRef>
+        <bpmn2:targetRef>managerId</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="Task_1" targetRef="BusinessRuleTask_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" sourceRef="StartEvent_2" targetRef="Task_1"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.redhat.workshops.VacationApproval">
@@ -281,12 +308,6 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
         <dc:Bounds height="50.0" width="110.0" x="909.0" y="160.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4">
           <dc:Bounds height="28.0" width="107.0" x="910.0" y="171.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="ScriptTask_2">
-        <dc:Bounds height="50.0" width="110.0" x="189.0" y="160.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_5">
-          <dc:Bounds height="28.0" width="90.0" x="199.0" y="171.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_1" bpmnElement="ExclusiveGateway_1" isMarkerVisible="true">
@@ -327,11 +348,12 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
           <dc:Bounds height="14.0" width="98.0" x="655.0" y="438.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ScriptTask_2" targetElement="BPMNShape_BusinessRuleTask_1">
-        <di:waypoint xsi:type="dc:Point" x="299.0" y="185.0"/>
-        <di:waypoint xsi:type="dc:Point" x="377.0" y="185.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_1111111"/>
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1">
+        <dc:Bounds height="50.0" width="110.0" x="189.0" y="160.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_12">
+          <dc:Bounds height="14.0" width="85.0" x="201.0" y="178.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ScriptTask_1" targetElement="BPMNShape_EndEvent_3">
         <di:waypoint xsi:type="dc:Point" x="1019.0" y="185.0"/>
         <di:waypoint xsi:type="dc:Point" x="1049.0" y="185.0"/>
@@ -380,12 +402,6 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
           <dc:Bounds height="28.0" width="63.0" x="791.0" y="424.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_23" bpmnElement="SequenceFlow_23" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_ScriptTask_2">
-        <di:waypoint xsi:type="dc:Point" x="127.0" y="185.0"/>
-        <di:waypoint xsi:type="dc:Point" x="158.0" y="185.0"/>
-        <di:waypoint xsi:type="dc:Point" x="189.0" y="185.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_21"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ExclusiveGateway_4" targetElement="BPMNShape_UserTask_3">
         <di:waypoint xsi:type="dc:Point" x="606.0" y="312.0"/>
         <di:waypoint xsi:type="dc:Point" x="627.0" y="312.0"/>
@@ -402,6 +418,17 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
         <di:waypoint xsi:type="dc:Point" x="581.0" y="445.0"/>
         <di:waypoint xsi:type="dc:Point" x="581.0" y="337.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_20"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_BusinessRuleTask_1">
+        <di:waypoint xsi:type="dc:Point" x="299.0" y="185.0"/>
+        <di:waypoint xsi:type="dc:Point" x="377.0" y="185.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_23"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="127.0" y="185.0"/>
+        <di:waypoint xsi:type="dc:Point" x="158.0" y="185.0"/>
+        <di:waypoint xsi:type="dc:Point" x="189.0" y="185.0"/>
+        <bpmndi:BPMNLabel/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
