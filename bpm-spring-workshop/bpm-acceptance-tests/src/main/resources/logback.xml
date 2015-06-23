@@ -1,0 +1,20 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+	<logger name="org.kie" level="INFO" />
+	<logger name="org.drools" level="INFO" />
+	<logger name="org.jbpm" level="INFO" />
+	<logger name="com.redhat" level="DEBUG" />
+	<logger name="bitronix" level="ERROR" />
+	<logger name="org.eclipse.aether.internal" level="ERROR" />
+</configuration>

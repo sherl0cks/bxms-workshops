@@ -107,9 +107,7 @@ public class VacationRequestEndpoint {
 			} else {
 				String employeeId = (String) vacationRequestService.getProcessService().getProcessInstanceVariable(id,
 						"employeeId");
-				LOGGER.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: " + employeeId);
-				LOGGER.info(instance.toString());
-				LOGGER.info(vacationRequestService.getProcessService().getProcessInstanceVariables(id).toString());
+
 				vacationRequestService.provideMoreInformation(employeeId, comment);
 			}
 			return Response.ok().build();
