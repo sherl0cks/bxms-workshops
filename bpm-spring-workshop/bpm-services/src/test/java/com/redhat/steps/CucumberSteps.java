@@ -60,7 +60,12 @@ public class CucumberSteps {
 	}
 
 	@After
-	public void cleanupDeployments() {
+	public void cleanupDeployments() throws Throwable {
+		// complete any remaining tasks so we can undeploy
+		if (vacationRequestService.getRuntimeDataService().getProcessInstanceById(processInstanceId).getState() != ProcessInstance.STATE_COMPLETED) {
+			my_manager_approves_the_request();
+		}
+
 		deploymentService.undeploy(DEPLOYMENT_UNIT);
 	}
 
@@ -110,8 +115,6 @@ public class CucumberSteps {
 	public void the_request_is_not_approved() throws Throwable {
 		Assert.assertTrue(vacationRequestService.getRuntimeDataService().getProcessInstanceById(processInstanceId)
 				.getState() == ProcessInstance.STATE_ACTIVE);
-		// complete task so deployment unit can be undeployed
-		my_manager_approves_the_request();
 	}
 
 }
