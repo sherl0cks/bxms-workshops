@@ -14,7 +14,7 @@ rule "Automatically Approve Requests Less Than 2 Days or Less"
 	dialect "mvel"
 
     when
-        $request : VacationRequest( lengthInDays <= 2 )
+        $request : VacationRequest( lengthInDays < 1 )
     then
         modify( $request ){
         	status = RequestStatus.APPROVED
