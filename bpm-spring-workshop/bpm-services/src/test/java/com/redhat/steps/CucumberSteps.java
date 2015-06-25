@@ -28,7 +28,8 @@ public class CucumberSteps {
 	protected static final String GROUP_ID = "com.redhat.workshops";
 	protected static final String ARTIFACT_ID = "approval-knowledge";
 	protected static final String VERSION = "1.0.0-SNAPSHOT";
-	protected static final DeploymentUnit DEPLOYMENT_UNIT = new KModuleDeploymentUnit(GROUP_ID, ARTIFACT_ID, VERSION);
+	protected static final DeploymentUnit DEPLOYMENT_UNIT = new KModuleDeploymentUnit(
+			GROUP_ID, ARTIFACT_ID, VERSION);
 	protected static final String PROCESS_ID = "com.redhat.workshops.VacationApproval";
 
 	protected static final String MANAGER_ID = "msmith";
@@ -62,7 +63,8 @@ public class CucumberSteps {
 	@After
 	public void cleanupDeployments() throws Throwable {
 		// complete any remaining tasks so we can undeploy
-		if (vacationRequestService.getRuntimeDataService().getProcessInstanceById(processInstanceId).getState() != ProcessInstance.STATE_COMPLETED) {
+		if (vacationRequestService.getRuntimeDataService()
+				.getProcessInstanceById(processInstanceId).getState() != ProcessInstance.STATE_COMPLETED) {
 			my_manager_approves_the_request();
 		}
 
@@ -98,28 +100,29 @@ public class CucumberSteps {
 
 	@When("^my manager asks for more information$")
 	public void my_manager_asks_for_more_information() throws Throwable {
-		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID,
-				"There is a big meeting during this time, why is this important?");
+		vacationRequestService
+				.needMoreInfoOnTheRequest(MANAGER_ID,
+						"There is a big meeting during this time, why is this important?");
 
 	}
 
 	@When("^I reply with a acceptable answer$")
 	public void i_reply_with_a_acceptable_answer() throws Throwable {
-		vacationRequestService
-				.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
+		vacationRequestService.provideMoreInformation(EMPLOYEE_ID,
+				"I need to take my daughter to college orientation.");
 
 	}
 
 	@Then("^the request is approved$")
 	public void the_request_is_approved() throws Throwable {
-		Assert.assertTrue(vacationRequestService.getRuntimeDataService().getProcessInstanceById(processInstanceId)
-				.getState() == ProcessInstance.STATE_COMPLETED);
+		Assert.assertTrue(vacationRequestService.getRuntimeDataService()
+				.getProcessInstanceById(processInstanceId).getState() == ProcessInstance.STATE_COMPLETED);
 	}
 
 	@Then("^the request is not approved$")
 	public void the_request_is_not_approved() throws Throwable {
-		Assert.assertTrue(vacationRequestService.getRuntimeDataService().getProcessInstanceById(processInstanceId)
-				.getState() == ProcessInstance.STATE_ACTIVE);
+		Assert.assertTrue(vacationRequestService.getRuntimeDataService()
+				.getProcessInstanceById(processInstanceId).getState() == ProcessInstance.STATE_ACTIVE);
 	}
 
 }
