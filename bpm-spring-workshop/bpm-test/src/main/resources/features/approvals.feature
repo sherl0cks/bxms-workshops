@@ -14,6 +14,7 @@ Feature: Vacation Approvals
   Scenario: Manager approved long vacation - manager does not approve
     Given a vacation request that is 3 days long
     When I submit the vacation request
+    And my manager declines my vacation request
     Then the request is not approved
 
   Scenario: Manager approved long vacation - manager asks for more info

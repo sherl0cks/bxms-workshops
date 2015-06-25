@@ -70,6 +70,11 @@ public class CucumberSteps {
 		Assert.assertTrue(put.getStatus() == 200);
 	}
 
+	@When("^my manager declines my vacation request$")
+	public void my_manager_declines_my_vacation_request() throws Throwable {
+
+	}
+
 	@When("^my manager asks for more information$")
 	public void my_manager_asks_for_more_information() throws Throwable {
 		Client client = ClientBuilder.newClient();
