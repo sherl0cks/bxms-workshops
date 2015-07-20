@@ -9,7 +9,7 @@ public class Tasks {
 
 	private Long current = 1l;
 	private Long rowCount = 0l;
-	private List<Task> rows = new ArrayList<>();
+	private List<Task> rows = new ArrayList<Task>();
 	private Long total = 0l;
 
 	public Tasks(List<TaskSummary> tasks) {

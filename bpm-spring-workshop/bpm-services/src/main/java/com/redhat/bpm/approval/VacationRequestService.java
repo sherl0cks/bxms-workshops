@@ -47,7 +47,7 @@ public class VacationRequestService {
 		long taskId = tasks.get(0).getId();
 		userTaskService.start(taskId, employeeId);
 
-		Map<String, Object> outVars = new HashMap<>();
+		Map<String, Object> outVars = new HashMap<String, Object>();
 		outVars.put("out_comment", comment);
 
 		userTaskService.complete(taskId, employeeId, outVars);
@@ -73,7 +73,7 @@ public class VacationRequestService {
 		VacationRequest request = (VacationRequest) taskVar.get("in_vacationRequest");
 		request.setStatus(status);
 
-		Map<String, Object> outVars = new HashMap<>();
+		Map<String, Object> outVars = new HashMap<String, Object>();
 		outVars.put("out_vacationRequest", request);
 		if (comment != null && !comment.isEmpty()) {
 			outVars.put("out_comment", comment);

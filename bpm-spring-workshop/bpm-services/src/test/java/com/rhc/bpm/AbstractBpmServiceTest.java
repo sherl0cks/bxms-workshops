@@ -15,7 +15,7 @@ import bitronix.tm.resource.jdbc.PoolingDataSource;
 
 import com.rhc.utiils.TestUtils;
 
-@ContextConfiguration(locations = { "classpath:bpm-services-context.xml" })
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 @ActiveProfiles("test")
 public abstract class AbstractBpmServiceTest extends AbstractJUnit4SpringContextTests {
 

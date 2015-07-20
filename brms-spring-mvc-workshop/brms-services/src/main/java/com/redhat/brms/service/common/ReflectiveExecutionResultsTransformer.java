@@ -34,7 +34,9 @@ public class ReflectiveExecutionResultsTransformer {
 		try {
 			response = responseClazz.newInstance();
 		}
-		catch ( InstantiationException | IllegalAccessException e ) {
+		catch ( InstantiationException  e ) {
+			logger.error( String.format( "New instance of response class could not be created: %s", responseClazz.getName() ) );
+		} catch ( IllegalAccessException e ){
 			logger.error( String.format( "New instance of response class could not be created: %s", responseClazz.getName() ) );
 		}
 
@@ -52,10 +54,15 @@ public class ReflectiveExecutionResultsTransformer {
 						}
 						PropertyUtils.setProperty( response, field.getName(), list );
 					}
-					catch ( IllegalArgumentException | IllegalAccessException | InvocationTargetException
-							| NoSuchMethodException e ) {
+					catch ( IllegalArgumentException e ) {
 						logger.error( String.format( "Could not set results on propery: ", field.getName() ) );
-					}
+					} catch ( IllegalAccessException e ) {
+						logger.error( String.format( "Could not set results on propery: ", field.getName() ) );
+					}catch ( InvocationTargetException e ) {
+						logger.error( String.format( "Could not set results on propery: ", field.getName() ) );
+					}catch ( NoSuchMethodException e ) {
+						logger.error( String.format( "Could not set results on propery: ", field.getName() ) );
+					} 
 				}
 				else {
 					logger.error( "QueryInfo annotation can not be used on " + field.getName()

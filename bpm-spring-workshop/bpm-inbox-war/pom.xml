@@ -23,19 +23,6 @@
 			<artifactId>bpm-services</artifactId>
 		</dependency>
 
-		<!-- RestEast -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-spring</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- MarkDown -->
 		<dependency>
 			<groupId>com.github.rjeschke</groupId>
@@ -48,11 +35,14 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.jboss.spec.javax.servlet</groupId>
 			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- Logging -->

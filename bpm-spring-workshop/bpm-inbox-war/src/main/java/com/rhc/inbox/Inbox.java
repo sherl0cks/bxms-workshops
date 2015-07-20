@@ -26,7 +26,7 @@ public class Inbox {
 
 	public void addTask(Task task) {
 		if (tasks == null) {
-			this.tasks = new ArrayList<>();
+			this.tasks = new ArrayList<Task>();
 		}
 		this.tasks.add(task);
 	}
