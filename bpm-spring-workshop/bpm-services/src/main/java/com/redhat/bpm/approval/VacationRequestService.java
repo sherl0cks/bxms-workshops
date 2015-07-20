@@ -40,6 +40,11 @@ public class VacationRequestService {
 		Map<String, Object> processData = request.toProcessDataMap();
 		return processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), PROCESS_ID, processData);
 	}
+	
+	public Long startTestProcess() {
+		ensureKJarDeployed();
+		return processService.startProcess(DEPLOYMENT_UNIT.getIdentifier(), "test");
+	}
 
 	public void provideMoreInformation(String employeeId, String comment) {
 		List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner(employeeId, new QueryFilter());

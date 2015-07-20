@@ -14,6 +14,7 @@ public class ApprovalKnowledgeTest {
 		Assert.assertNotNull(kieContainer);
 		KieSession session = kieContainer.newKieSession();
 		Assert.assertNotNull(session);
+		session.startProcess("test");
 
 		session.dispose();
 	}

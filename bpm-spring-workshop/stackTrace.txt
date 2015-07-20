@@ -1,0 +1,300 @@
+[7/19/15 22:26:57:821 EDT] 00000065 SystemOut     O 22:26:57.821 [WebContainer : 5] DEBUG o.h.ejb.AbstractEntityManagerImpl - Looking for a JTA transaction to join
+[7/19/15 22:26:57:841 EDT] 00000065 SystemOut     O 22:26:57.841 [WebContainer : 5] DEBUG o.h.ejb.AbstractEntityManagerImpl - Looking for a JTA transaction to join
+[7/19/15 22:26:57:841 EDT] 00000065 SystemOut     O 22:26:57.841 [WebContainer : 5] DEBUG org.hibernate.SQL - select NODE_INST_LOG_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:841 EDT] 00000065 SystemOut     O Hibernate: select NODE_INST_LOG_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:841 EDT] 00000065 SystemOut     O 22:26:57.841 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtaining JDBC connection
+[7/19/15 22:26:57:841 EDT] 00000065 SystemOut     O 22:26:57.841 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtained JDBC connection
+[7/19/15 22:26:57:842 EDT] 00000065 SystemOut     O 22:26:57.842 [WebContainer : 5] DEBUG org.hibernate.id.SequenceGenerator - Sequence identifier generated: BasicHolder[java.lang.Long[17]]
+[7/19/15 22:26:57:842 EDT] 00000065 SystemOut     O 22:26:57.842 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Releasing JDBC connection
+[7/19/15 22:26:57:842 EDT] 00000065 SystemOut     O 22:26:57.842 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Released JDBC connection
+[7/19/15 22:26:57:842 EDT] 00000065 SystemOut     O 22:26:57.842 [WebContainer : 5] DEBUG o.h.e.i.AbstractSaveEventListener - Generated identifier: 17, using strategy: org.hibernate.id.SequenceGenerator
+[7/19/15 22:26:57:844 EDT] 00000065 SystemOut     O 22:26:57.844 [WebContainer : 5] DEBUG o.h.ejb.AbstractEntityManagerImpl - Looking for a JTA transaction to join
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O 22:26:57.845 [WebContainer : 5] DEBUG org.hibernate.SQL - select NODE_INST_LOG_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O Hibernate: select NODE_INST_LOG_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O 22:26:57.845 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtaining JDBC connection
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O 22:26:57.845 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtained JDBC connection
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O 22:26:57.845 [WebContainer : 5] DEBUG org.hibernate.id.SequenceGenerator - Sequence identifier generated: BasicHolder[java.lang.Long[18]]
+[7/19/15 22:26:57:845 EDT] 00000065 SystemOut     O 22:26:57.845 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Releasing JDBC connection
+[7/19/15 22:26:57:846 EDT] 00000065 SystemOut     O 22:26:57.846 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Released JDBC connection
+[7/19/15 22:26:57:846 EDT] 00000065 SystemOut     O 22:26:57.846 [WebContainer : 5] DEBUG o.h.e.i.AbstractSaveEventListener - Generated identifier: 18, using strategy: org.hibernate.id.SequenceGenerator
+[7/19/15 22:26:57:851 EDT] 00000065 SystemOut     O 22:26:57.851 [WebContainer : 5] DEBUG org.hibernate.SQL - select WORKITEMINFO_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:851 EDT] 00000065 SystemOut     O Hibernate: select WORKITEMINFO_ID_SEQ.nextval from dual
+[7/19/15 22:26:57:851 EDT] 00000065 SystemOut     O 22:26:57.851 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtaining JDBC connection
+[7/19/15 22:26:57:851 EDT] 00000065 SystemOut     O 22:26:57.851 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Obtained JDBC connection
+[7/19/15 22:26:57:852 EDT] 00000065 SystemOut     O 22:26:57.852 [WebContainer : 5] DEBUG org.hibernate.id.SequenceGenerator - Sequence identifier generated: BasicHolder[java.lang.Long[5]]
+[7/19/15 22:26:57:852 EDT] 00000065 SystemOut     O 22:26:57.852 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Releasing JDBC connection
+[7/19/15 22:26:57:852 EDT] 00000065 SystemOut     O 22:26:57.852 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Released JDBC connection
+[7/19/15 22:26:57:852 EDT] 00000065 SystemOut     O 22:26:57.852 [WebContainer : 5] DEBUG o.h.e.i.AbstractSaveEventListener - Generated identifier: 5, using strategy: org.hibernate.id.SequenceGenerator
+[7/19/15 22:26:57:912 EDT] 00000065 SystemOut     O 22:26:57.912 [WebContainer : 5] DEBUG o.s.web.servlet.DispatcherServlet - Could not complete request
+org.springframework.web.util.NestedServletException: Handler processing failed; nested exception is java.lang.NoSuchFieldError: org/apache/http/message/BasicLineFormatter.INSTANCE
+	at org.springframework.web.servlet.DispatcherServlet.triggerAfterCompletionWithError(DispatcherServlet.java:1260) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:939) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:851) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:953) [spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:844) [spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:575) [javax.j2ee.servlet.jar:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:829) [spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668) [javax.j2ee.servlet.jar:na]
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1230) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:779) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:478) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1114) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:3923) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.webapp.WebGroup.handleRequest(WebGroup.java:304) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:1006) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1662) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200) [com.ibm.ws.webcontainer.jar:na]
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.ws.http.channel.inbound.impl.HttpICLReadCallback.complete(HttpICLReadCallback.java:88) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905) [com.ibm.ws.runtime.jar:na]
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1881) [com.ibm.ws.runtime.jar:na]
+Caused by: java.lang.NoSuchFieldError: org/apache/http/message/BasicLineFormatter.INSTANCE
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:52) ~[httpcore-4.3.3.redhat-1.jar:4.3.3.redhat-1]
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:56) ~[httpcore-4.3.3.redhat-1.jar:4.3.3.redhat-1]
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<clinit>(DefaultHttpRequestWriterFactory.java:46) ~[httpcore-4.3.3.redhat-1.jar:4.3.3.redhat-1]
+	at java.lang.J9VMInternals.initializeImpl(Native Method) ~[na:1.6.0]
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235) ~[na:1.6.0]
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:72) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:84) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<clinit>(ManagedHttpClientConnectionFactory.java:59) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at java.lang.J9VMInternals.initializeImpl(Native Method) ~[na:1.6.0]
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235) ~[na:1.6.0]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager$InternalConnectionFactory.<init>(PoolingHttpClientConnectionManager.java:494) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:149) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:138) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:114) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.apache.http.impl.client.HttpClientBuilder.build(HttpClientBuilder.java:726) ~[httpclient-4.3.6.redhat-1.jar:4.3.6.redhat-1]
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.getHttpClient(RESTWorkItemHandler.java:491) ~[jbpm-workitems-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.executeWorkItem(RESTWorkItemHandler.java:172) ~[jbpm-workitems-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.persistence.jpa.processinstance.JPAWorkItemManager.internalExecuteWorkItem(JPAWorkItemManager.java:55) ~[drools-persistence-jpa-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.node.WorkItemNodeInstance.internalTrigger(WorkItemNodeInstance.java:133) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerNodeInstance(NodeInstanceImpl.java:364) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerCompleted(NodeInstanceImpl.java:323) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.node.StartNodeInstance.triggerCompleted(StartNodeInstance.java:73) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.node.StartNodeInstance.internalTrigger(StartNodeInstance.java:44) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.ruleflow.instance.RuleFlowProcessInstance.internalStart(RuleFlowProcessInstance.java:35) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.process.instance.impl.ProcessInstanceImpl.start(ProcessInstanceImpl.java:236) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl.start(WorkflowProcessInstanceImpl.java:389) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcessInstance(ProcessRuntimeImpl.java:193) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:176) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:168) ~[jbpm-flow-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.impl.StatefulKnowledgeSessionImpl.startProcess(StatefulKnowledgeSessionImpl.java:1835) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:122) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:40) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.impl.DefaultCommandService.execute(DefaultCommandService.java:36) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.persistence.SingleSessionCommandService$TransactionInterceptor.execute(SingleSessionCommandService.java:548) ~[drools-persistence-jpa-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.persistence.jpa.OptimisticLockRetryInterceptor.execute(OptimisticLockRetryInterceptor.java:73) ~[drools-persistence-jpa-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.persistence.jta.TransactionLockInterceptor.execute(TransactionLockInterceptor.java:79) ~[drools-persistence-jpa-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.persistence.SingleSessionCommandService.execute(SingleSessionCommandService.java:358) ~[drools-persistence-jpa-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.drools.core.command.impl.CommandBasedStatefulKnowledgeSession.startProcess(CommandBasedStatefulKnowledgeSession.java:242) ~[drools-core-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at org.jbpm.kie.services.impl.ProcessServiceImpl.startProcess(ProcessServiceImpl.java:94) ~[jbpm-kie-services-6.2.0.Final-redhat-6.jar:6.2.0.Final-redhat-6]
+	at com.redhat.bpm.approval.VacationRequestService.startProcess(VacationRequestService.java:41) ~[bpm-services-1.0.0-SNAPSHOT.jar:na]
+	at com.rhc.rest.HelloController.deploy(HelloController.java:35) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.6.0]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:60) ~[na:1.6.0]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37) ~[na:1.6.0]
+	at java.lang.reflect.Method.invoke(Method.java:611) ~[na:1.6.0]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215) ~[spring-web-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132) ~[spring-web-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:743) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:672) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:82) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:919) ~[spring-webmvc-3.2.13.RELEASE.jar:3.2.13.RELEASE]
+	... 28 common frames omitted
+[7/19/15 22:26:57:913 EDT] 00000065 ServletWrappe E com.ibm.ws.webcontainer.servlet.ServletWrapper service SRVE0014E: Uncaught service() exception root cause mvc-dispatcher: org.springframework.web.util.NestedServletException: Handler processing failed; nested exception is java.lang.NoSuchFieldError: org/apache/http/message/BasicLineFormatter.INSTANCE
+	at org.springframework.web.servlet.DispatcherServlet.triggerAfterCompletionWithError(DispatcherServlet.java:1260)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:939)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:851)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:953)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:844)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:575)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:829)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1230)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:779)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:478)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1114)
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:3923)
+	at com.ibm.ws.webcontainer.webapp.WebGroup.handleRequest(WebGroup.java:304)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:1006)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1662)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpICLReadCallback.complete(HttpICLReadCallback.java:88)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1881)
+Caused by: java.lang.NoSuchFieldError: org/apache/http/message/BasicLineFormatter.INSTANCE
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:52)
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:56)
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<clinit>(DefaultHttpRequestWriterFactory.java:46)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:72)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:84)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<clinit>(ManagedHttpClientConnectionFactory.java:59)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager$InternalConnectionFactory.<init>(PoolingHttpClientConnectionManager.java:494)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:149)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:114)
+	at org.apache.http.impl.client.HttpClientBuilder.build(HttpClientBuilder.java:726)
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.getHttpClient(RESTWorkItemHandler.java:491)
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.executeWorkItem(RESTWorkItemHandler.java:172)
+	at org.drools.persistence.jpa.processinstance.JPAWorkItemManager.internalExecuteWorkItem(JPAWorkItemManager.java:55)
+	at org.jbpm.workflow.instance.node.WorkItemNodeInstance.internalTrigger(WorkItemNodeInstance.java:133)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerNodeInstance(NodeInstanceImpl.java:364)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerCompleted(NodeInstanceImpl.java:323)
+	at org.jbpm.workflow.instance.node.StartNodeInstance.triggerCompleted(StartNodeInstance.java:73)
+	at org.jbpm.workflow.instance.node.StartNodeInstance.internalTrigger(StartNodeInstance.java:44)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171)
+	at org.jbpm.ruleflow.instance.RuleFlowProcessInstance.internalStart(RuleFlowProcessInstance.java:35)
+	at org.jbpm.process.instance.impl.ProcessInstanceImpl.start(ProcessInstanceImpl.java:236)
+	at org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl.start(WorkflowProcessInstanceImpl.java:389)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcessInstance(ProcessRuntimeImpl.java:193)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:176)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:168)
+	at org.drools.core.impl.StatefulKnowledgeSessionImpl.startProcess(StatefulKnowledgeSessionImpl.java:1835)
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:122)
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:40)
+	at org.drools.core.command.impl.DefaultCommandService.execute(DefaultCommandService.java:36)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.SingleSessionCommandService$TransactionInterceptor.execute(SingleSessionCommandService.java:548)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.jpa.OptimisticLockRetryInterceptor.execute(OptimisticLockRetryInterceptor.java:73)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.jta.TransactionLockInterceptor.execute(TransactionLockInterceptor.java:79)
+	at org.drools.persistence.SingleSessionCommandService.execute(SingleSessionCommandService.java:358)
+	at org.drools.core.command.impl.CommandBasedStatefulKnowledgeSession.startProcess(CommandBasedStatefulKnowledgeSession.java:242)
+	at org.jbpm.kie.services.impl.ProcessServiceImpl.startProcess(ProcessServiceImpl.java:94)
+	at com.redhat.bpm.approval.VacationRequestService.startProcess(VacationRequestService.java:41)
+	at com.rhc.rest.HelloController.deploy(HelloController.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:60)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:611)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:743)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:672)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:82)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:919)
+	... 28 more
+
+[7/19/15 22:26:57:915 EDT] 00000065 SystemOut     O 22:26:57.915 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Aggressively releasing JDBC connection
+[7/19/15 22:26:57:915 EDT] 00000065 SystemOut     O 22:26:57.915 [WebContainer : 5] DEBUG o.h.e.t.i.TransactionCoordinatorImpl - Skipping JTA sync registration due to auto join checking
+[7/19/15 22:26:57:917 EDT] 00000065 SystemOut     O 22:26:57.916 [WebContainer : 5] DEBUG o.h.e.j.i.LogicalConnectionImpl - Aggressively releasing JDBC connection
+[7/19/15 22:26:57:917 EDT] 00000065 SystemOut     O 22:26:57.917 [WebContainer : 5] DEBUG o.h.e.t.i.TransactionCoordinatorImpl - Skipping JTA sync registration due to auto join checking
+[7/19/15 22:26:57:917 EDT] 00000065 webapp        E com.ibm.ws.webcontainer.webapp.WebApp logServletError SRVE0293E: [Servlet Error]-[mvc-dispatcher]: java.lang.NoSuchFieldError: org/apache/http/message/BasicLineFormatter.INSTANCE
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:52)
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<init>(DefaultHttpRequestWriterFactory.java:56)
+	at org.apache.http.impl.io.DefaultHttpRequestWriterFactory.<clinit>(DefaultHttpRequestWriterFactory.java:46)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:72)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<init>(ManagedHttpClientConnectionFactory.java:84)
+	at org.apache.http.impl.conn.ManagedHttpClientConnectionFactory.<clinit>(ManagedHttpClientConnectionFactory.java:59)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:235)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager$InternalConnectionFactory.<init>(PoolingHttpClientConnectionManager.java:494)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:149)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.<init>(PoolingHttpClientConnectionManager.java:114)
+	at org.apache.http.impl.client.HttpClientBuilder.build(HttpClientBuilder.java:726)
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.getHttpClient(RESTWorkItemHandler.java:491)
+	at org.jbpm.process.workitem.rest.RESTWorkItemHandler.executeWorkItem(RESTWorkItemHandler.java:172)
+	at org.drools.persistence.jpa.processinstance.JPAWorkItemManager.internalExecuteWorkItem(JPAWorkItemManager.java:55)
+	at org.jbpm.workflow.instance.node.WorkItemNodeInstance.internalTrigger(WorkItemNodeInstance.java:133)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerNodeInstance(NodeInstanceImpl.java:364)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.triggerCompleted(NodeInstanceImpl.java:323)
+	at org.jbpm.workflow.instance.node.StartNodeInstance.triggerCompleted(StartNodeInstance.java:73)
+	at org.jbpm.workflow.instance.node.StartNodeInstance.internalTrigger(StartNodeInstance.java:44)
+	at org.jbpm.workflow.instance.impl.NodeInstanceImpl.trigger(NodeInstanceImpl.java:171)
+	at org.jbpm.ruleflow.instance.RuleFlowProcessInstance.internalStart(RuleFlowProcessInstance.java:35)
+	at org.jbpm.process.instance.impl.ProcessInstanceImpl.start(ProcessInstanceImpl.java:236)
+	at org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl.start(WorkflowProcessInstanceImpl.java:389)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcessInstance(ProcessRuntimeImpl.java:193)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:176)
+	at org.jbpm.process.instance.ProcessRuntimeImpl.startProcess(ProcessRuntimeImpl.java:168)
+	at org.drools.core.impl.StatefulKnowledgeSessionImpl.startProcess(StatefulKnowledgeSessionImpl.java:1835)
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:122)
+	at org.drools.core.command.runtime.process.StartProcessCommand.execute(StartProcessCommand.java:40)
+	at org.drools.core.command.impl.DefaultCommandService.execute(DefaultCommandService.java:36)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.SingleSessionCommandService$TransactionInterceptor.execute(SingleSessionCommandService.java:548)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.jpa.OptimisticLockRetryInterceptor.execute(OptimisticLockRetryInterceptor.java:73)
+	at org.drools.core.command.impl.AbstractInterceptor.executeNext(AbstractInterceptor.java:41)
+	at org.drools.persistence.jta.TransactionLockInterceptor.execute(TransactionLockInterceptor.java:79)
+	at org.drools.persistence.SingleSessionCommandService.execute(SingleSessionCommandService.java:358)
+	at org.drools.core.command.impl.CommandBasedStatefulKnowledgeSession.startProcess(CommandBasedStatefulKnowledgeSession.java:242)
+	at org.jbpm.kie.services.impl.ProcessServiceImpl.startProcess(ProcessServiceImpl.java:94)
+	at com.redhat.bpm.approval.VacationRequestService.startProcess(VacationRequestService.java:41)
+	at com.rhc.rest.HelloController.deploy(HelloController.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:60)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:611)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:743)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:672)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:82)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:919)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:851)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:953)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:844)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:575)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:829)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1230)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:779)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:478)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1114)
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:3923)
+	at com.ibm.ws.webcontainer.webapp.WebGroup.handleRequest(WebGroup.java:304)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:1006)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1662)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpICLReadCallback.complete(HttpICLReadCallback.java:88)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1881)
+

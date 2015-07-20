@@ -32,7 +32,7 @@ public class HelloController {
 	@RequestMapping( value="/deploy", method = RequestMethod.GET)
 	public String deploy() {
 		
-		service.startProcess(TestDataUtils.getShortVacationRequest()); 
+		service.startTestProcess();
 		LOGGER.info("deployed and run");
 		return "I'm deploying";
 	}
