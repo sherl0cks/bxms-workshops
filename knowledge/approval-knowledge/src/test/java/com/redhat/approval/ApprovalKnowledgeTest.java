@@ -1,5 +1,8 @@
 package com.redhat.approval;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.KieServices;
@@ -14,8 +17,15 @@ public class ApprovalKnowledgeTest {
 		Assert.assertNotNull(kieContainer);
 		KieSession session = kieContainer.newKieSession();
 		Assert.assertNotNull(session);
-		session.startProcess("test");
-		Thread.sleep(7000l);
+		
+		Map<String, Object> vars = new HashMap<String, Object>();
+		vars.put( "comment", "hellooooooO!");
+		vars.put( "retryInterval", "1s");
+		vars.put( "currentRetry", new Integer(0) );
+		vars.put( "maxRetry", new Integer(1) );
+		
+		session.startProcess("test", vars);
+		Thread.sleep(3000l);
 		session.dispose();
 	}
 }

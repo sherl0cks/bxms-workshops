@@ -7,7 +7,7 @@
 		</encoder>
 	</appender>
 
-	<root level="DEBUGS">
+	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
 
@@ -18,5 +18,5 @@
 	<logger name="com.redhat" level="DEBUG" />
 	<logger name="bitronix" level="ERROR" />
 	<logger name="org.eclipse.aether.internal" level="ERROR" />
-	<logger name="org.springframework.web" level="DEBUG"/>
+	<logger name="org.springframework.web" level="INFO"/>
 </configuration>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- origin at X=0.0 Y=0.0 -->
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:java="http://www.java.com/javaTypes" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.1.2.Final" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:java="http://www.java.com/javaTypes" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.1.3.Final" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
   <bpmn2:itemDefinition id="ItemDefinition_1" isCollection="false" structureRef="String"/>
   <bpmn2:itemDefinition id="ItemDefinition_2" isCollection="false" structureRef="Integer"/>
   <bpmn2:itemDefinition id="ItemDefinition_3" isCollection="false" structureRef="Boolean"/>
@@ -322,7 +322,7 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
       <bpmndi:BPMNShape id="BPMNShape_BusinessRuleTask_1" bpmnElement="BusinessRuleTask_1">
         <dc:Bounds height="50.0" width="110.0" x="377.0" y="160.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_2">
-          <dc:Bounds height="28.0" width="92.0" x="386.0" y="171.0"/>
+          <dc:Bounds height="28.0" width="95.0" x="384.0" y="171.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_3" bpmnElement="EndEvent_3">
@@ -340,7 +340,7 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_2" bpmnElement="ExclusiveGateway_2" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="797.0" y="287.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_7">
-          <dc:Bounds height="28.0" width="52.0" x="796.0" y="337.0"/>
+          <dc:Bounds height="28.0" width="55.0" x="795.0" y="337.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_3" bpmnElement="ExclusiveGateway_3" isMarkerVisible="true">
@@ -377,8 +377,8 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_2" bpmnElement="Task_2">
         <dc:Bounds height="50.0" width="110.0" x="910.0" y="160.0"/>
-        <bpmndi:BPMNLabel>
-          <dc:Bounds height="28.0" width="97.0" x="916.0" y="171.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
+          <dc:Bounds height="28.0" width="101.0" x="914.0" y="171.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_BusinessRuleTask_1" targetElement="BPMNShape_ExclusiveGateway_1">
@@ -407,7 +407,7 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
         <di:waypoint xsi:type="dc:Point" x="822.0" y="249.0"/>
         <di:waypoint xsi:type="dc:Point" x="823.0" y="210.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_17">
-          <dc:Bounds height="28.0" width="61.0" x="792.0" y="249.0"/>
+          <dc:Bounds height="28.0" width="66.0" x="790.0" y="249.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_15" bpmnElement="SequenceFlow_15" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_UserTask_4">
@@ -415,7 +415,7 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
         <di:waypoint xsi:type="dc:Point" x="822.0" y="445.0"/>
         <di:waypoint xsi:type="dc:Point" x="759.0" y="445.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_18">
-          <dc:Bounds height="28.0" width="63.0" x="791.0" y="424.0"/>
+          <dc:Bounds height="28.0" width="69.0" x="788.0" y="424.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ExclusiveGateway_4" targetElement="BPMNShape_UserTask_3">
@@ -450,12 +450,12 @@ vacationRequest.status = RequestStatus.PENDING_REVIEW;</tns:script>
         <di:waypoint xsi:type="dc:Point" x="848.0" y="185.0"/>
         <di:waypoint xsi:type="dc:Point" x="879.0" y="185.0"/>
         <di:waypoint xsi:type="dc:Point" x="910.0" y="185.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_15"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_10" bpmnElement="SequenceFlow_10" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_EndEvent_3">
         <di:waypoint xsi:type="dc:Point" x="1020.0" y="185.0"/>
         <di:waypoint xsi:type="dc:Point" x="1079.0" y="185.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_21"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
