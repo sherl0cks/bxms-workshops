@@ -9,13 +9,13 @@ import org.kie.api.runtime.KieSession;
 public class ApprovalKnowledgeTest {
 
 	@Test
-	public void shouldBuildAndRunKnowledge() {
+	public void shouldBuildAndRunKnowledge() throws InterruptedException {
 		KieContainer kieContainer = KieServices.Factory.get().getKieClasspathContainer();
 		Assert.assertNotNull(kieContainer);
 		KieSession session = kieContainer.newKieSession();
 		Assert.assertNotNull(session);
 		session.startProcess("test");
-
+		Thread.sleep(7000l);
 		session.dispose();
 	}
 }

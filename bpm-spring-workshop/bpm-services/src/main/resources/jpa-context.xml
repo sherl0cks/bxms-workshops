@@ -12,7 +12,7 @@
 
 	<!-- JPA Configuration -->
 
-	<beans profile="default">
+	<beans profile="default,jboss">
 
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"

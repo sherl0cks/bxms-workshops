@@ -5,7 +5,9 @@
 
 	<persistence-unit name="org.jbpm.persistence.jpa" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
 		<jta-data-source>jdbc/redhatjbpm</jta-data-source>
+		<!--<jta-data-source>java:/jdbc/redhatjbpm</jta-data-source>--> 
 
 		<mapping-file>META-INF/Taskorm.xml</mapping-file>
 		<mapping-file>META-INF/JBPMorm.xml</mapping-file>
@@ -60,16 +62,16 @@
 		<class>org.jbpm.kie.services.impl.store.DeploymentStoreEntry</class>
 
 		<properties>
-		    
-			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+		    <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /> --> 
 			<property name="hibernate.connection.autocommit" value="true" />
 
 			<property name="hibernate.max_fetch_depth" value="3" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 			<property name="hibernate.show_sql" value="true" />
 			
-			
 			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.WebSphereJtaPlatform"/>
+			<!-- <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/> -->
 			<property name="hibernate.jta.UserTransaction" value="jta/usertransaction"/>
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
 

@@ -32,9 +32,10 @@ public class HelloController {
 	@RequestMapping( value="/deploy", method = RequestMethod.GET)
 	public String deploy() {
 		
-		service.startTestProcess();
-		LOGGER.info("deployed and run");
-		return "I'm deploying";
+		Long id = service.startTestProcess();
+		LOGGER.info( "quartz property " + System.getProperty("org.quartz.properties") );
+		LOGGER.info("deployed and run " + id.toString());
+		return "Deployed and ran process id: " + id.toString();
 	}
 
 }

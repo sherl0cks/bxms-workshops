@@ -8,6 +8,7 @@ import org.jbpm.services.api.model.DeploymentUnit;
 import org.jbpm.services.api.model.NodeInstanceDesc;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.query.QueryContext;
@@ -61,8 +62,7 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		// then
 		QueryContext context = new QueryContext();
 		context.setCount(new Integer(100));
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
-				processInstanceId, context);
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
 
 		Assert.assertEquals(10, auditData.size());
 	}
@@ -74,19 +74,16 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		Long processInstanceId = vacationRequestService.startProcess(TestDataUtil.getLongVacationRequest());
 
 		// when
-		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID,
-				"There is a big meeting during this time, why is this important?");
+		vacationRequestService.needMoreInfoOnTheRequest(MANAGER_ID, "There is a big meeting during this time, why is this important?");
 
-		vacationRequestService
-				.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
+		vacationRequestService.provideMoreInformation(EMPLOYEE_ID, "I need to take my daughter to college orientation.");
 
 		vacationRequestService.approveTheRequest(MANAGER_ID);
 
 		// then
 		QueryContext context = new QueryContext();
 		context.setCount(new Integer(100));
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
-				processInstanceId, context);
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, context);
 		Assert.assertEquals(14, auditData.size());
 	}
 
@@ -101,9 +98,19 @@ public class ApprovalProcessTest extends AbstractBpmServiceTest {
 		// then
 		ProcessInstance instance = processService.getProcessInstance(processInstanceId);
 		Assert.assertNull(instance);
-		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(
-				processInstanceId, new QueryContext());
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(processInstanceId, new QueryContext());
 		Assert.assertEquals(7, auditData.size());
+	}
+
+	@Test
+	public void shouldRunTestProcess() throws InterruptedException {
+		Long id = vacationRequestService.startTestProcess();
+		Thread.sleep(5000l);
+		ProcessInstance instance = processService.getProcessInstance(id);
+		Assert.assertNull(instance);
+		Collection<NodeInstanceDesc> auditData = runtimeDataService.getProcessInstanceHistoryCompleted(id, new QueryContext());
+		Assert.assertEquals(5, auditData.size());
+
 	}
 
 	@After
