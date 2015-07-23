@@ -37,7 +37,6 @@
 			<property name="arguments">
 				<!-- The new Properties -->
 				<util:properties>
-					<prop key="org.quartz.properties">quartz-oracle-local.properties</prop>
 				</util:properties>
 			</property>
 		</bean>

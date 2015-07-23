@@ -28,6 +28,13 @@
 			<artifactId>approval-domain-model</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jbpm.example</groupId>
+			<artifactId>async-examples</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Kie -->
 		<dependency>
 			<groupId>org.kie</groupId>
@@ -68,6 +75,10 @@
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-services-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-executor</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
